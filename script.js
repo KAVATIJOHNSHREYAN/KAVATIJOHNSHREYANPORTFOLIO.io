@@ -551,3 +551,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (preloader) preloader.style.display = 'none';
     }
 });
+
+
+// ==========================================================================
+// FORCE SCROLL TO TOP ON PAGE LOAD
+// ==========================================================================
+// Prevent browser from remembering the scroll position
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+// Force scroll to top when page is fully loaded or refreshed
+window.addEventListener('beforeunload', () => {
+    window.scrollTo(0, 0);
+});
+
+window.scrollTo(0, 0);
