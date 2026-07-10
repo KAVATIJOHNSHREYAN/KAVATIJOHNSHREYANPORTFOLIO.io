@@ -858,9 +858,7 @@ a {
     letter-spacing: 0.05em;
 }
 
-.stat-card:last-child {
-    grid-column: span 2;
-}
+/* .stat-card:last-child rule removed for perfect 2x2 grid */
 
 /* ==========================================================================
    3. EDUCATION TIMELINE
