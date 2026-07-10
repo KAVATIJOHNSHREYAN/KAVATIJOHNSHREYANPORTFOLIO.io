@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kavati John Shreyan | AI with Computational Intelligence Student | Full-Stack AI Developer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Professional developer portfolio of Kavati John Shreyan, a Computer Science Engineering student at KL University specializing in AI with Computational Intelligence systems and Full Stack development. View my verified Siemens and Azure certifications, active projects, and skill set.">
+    <meta name="keywords" content="Kavati John Shreyan, John Shreyan Kavati, AI with Computational Intelligence Student, Full Stack Developer, Data Science, Siemens Intern, Microsoft Azure Cloud, KL University Portfolio, Extracurricular Tracker, Citizen Politician Platform">
+    <meta name="author" content="Kavati John Shreyan">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Kavati John Shreyan | AI with Computational Intelligence Student | Full-Stack AI Developer">
+    <meta property="og:description" content="Portfolio of Kavati John Shreyan. Specializing in AI/ML, Data Science, and Full Stack Development.">
+    <meta property="og:image" content="./assets/profile.jpg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css?v=1.4">
+</head>
+<body>
+    <!-- Theme Overlay Transition Effect -->
+    <div class="theme-transition-overlay"></div>
+
+    <!-- Preloader Overlay (Car Intro Animation) -->
+    <div id="preloader" class="preloader">
+        <!-- Start screen (to bypass browser audio restrictions) -->
+        <div id="preloader-start-screen" class="preloader-start-screen">
+            <button id="preloader-start-btn" class="preloader-start-btn">
+                <span class="btn-glow"></span>
+                <span class="btn-text-content"><i class="fa-solid fa-play"></i> ENTER MY PORTFOLIO</span>
+            </button>
+            <p class="preloader-hint"><i class="fa-solid fa-volume-high"></i> Turn on sound for the full experience</p>
+        </div>
+
+        <!-- Animation Screen -->
+        <div id="preloader-anim-screen" class="preloader-anim-screen hidden">
+            <!-- Glowing Road System -->
+            <div class="road-system">
+                <div id="preloader-road" class="road-line"></div>
+            </div>
+            <!-- Sleek Porsche GT3 RS Photo -->
+            <div id="preloader-car" class="car-container">
+                <img src="assets/porsche.png" alt="Orange Porsche GT3 RS" class="car-img">
+                <!-- Overlay spinning wheels (aligned with the real tires) -->
+                <div class="wheel-overlay front-wheel">
+                    <svg viewBox="0 0 100 100" class="wheel-svg">
+                        <circle cx="50" cy="50" r="46" fill="rgba(0,0,0,0.85)" stroke="var(--accent-orange)" stroke-width="4"/>
+                        <!-- Wheel spokes -->
+                        <path d="M 50 4 L 50 96 M 4 50 L 96 50 M 17 17 L 83 83 M 17 83 L 83 17 M 5 30 L 95 70 M 5 70 L 95 30" stroke="#ffffff" stroke-width="3" />
+                        <circle cx="50" cy="50" r="14" fill="#0c0c12" stroke="var(--accent-orange)" stroke-width="3"/>
+                    </svg>
+                </div>
+                <div class="wheel-overlay rear-wheel">
+                    <svg viewBox="0 0 100 100" class="wheel-svg">
+                        <circle cx="50" cy="50" r="46" fill="rgba(0,0,0,0.85)" stroke="var(--accent-orange)" stroke-width="4"/>
+                        <!-- Wheel spokes -->
+                        <path d="M 50 4 L 50 96 M 4 50 L 96 50 M 17 17 L 83 83 M 17 83 L 83 17 M 5 30 L 95 70 M 5 70 L 95 30" stroke="#ffffff" stroke-width="3" />
+                        <circle cx="50" cy="50" r="14" fill="#0c0c12" stroke="var(--accent-orange)" stroke-width="3"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Transforming Name -->
+            <div id="preloader-name" class="intro-name">
+                Kavati John Shreyan
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#home" class="logo" aria-label="Kavati John Shreyan Homepage">
+                <span class="logo-bold">SHREYAN</span><span class="logo-dot">.</span>
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="nav-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#certifications" class="nav-link">Certificates</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#services" class="nav-link">Expertise</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle light and dark theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <a href="#contact" class="btn btn-nav-cta">Hire Me</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Social Sidebar (Tommy Hans Inspired) -->
+    <aside class="social-sidebar">
+        <div class="sidebar-wrapper">
+            <span class="sidebar-label">FOLLOW ME</span>
+            <div class="sidebar-line"></div>
+            <div class="sidebar-links">
+                <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/kavati-john-shreyan-956a35366" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:2400033326cse2@gmail.com" aria-label="Send Email">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-bg-accent"></div>
+            <div class="container hero-grid">
+                <!-- Hero Content -->
+                <div class="hero-content">
+                    <div class="hero-tag-badge">AI WITH COMPUTATIONAL INTELLIGENCE | FULL STACK DEVELOPER</div>
+                    <h1 class="hero-title">
+                        KAVATI JOHN <br>
+                        <span class="text-gradient font-accent">SHREYAN</span>
+                    </h1>
+                    
+                    <!-- Title Rotator (Text-based Titles) -->
+                    <div class="hero-titles-carousel">
+                        <span class="active-title"><i class="fa-solid fa-graduation-cap"></i> Computer Science Student | AI with Computational Intelligence Student | Full-Stack AI Developer</span>
+                        <span><i class="fa-solid fa-chart-line"></i> Data Science Learner</span>
+                        <span><i class="fa-solid fa-brain"></i> AI with Computational Intelligence</span>
+                        <span><i class="fa-solid fa-code"></i> Full Stack Developer</span>
+                    </div>
+                    
+                    <p class="hero-desc">
+                        Computer Science Engineering student at KL University specializing in AI with Computational Intelligence. Passionate about building robust full-stack web architectures, optimizing data science models, and implementing intelligent AI workflows.
+                    </p>
+                    
+                    <div class="hero-actions" style="flex-wrap: wrap; gap: 1rem;">
+                        <a href="./resume.html" target="_blank" class="btn btn-primary">
+                            <i class="fa-solid fa-file-invoice"></i> View Resume
+                        </a>
+                        <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" class="btn btn-secondary">
+                            <i class="fa-brands fa-github"></i> GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/kavati-john-shreyan-956a35366" target="_blank" class="btn btn-secondary">
+                            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+                        </a>
+                        <a href="#projects" class="btn btn-secondary">
+                            <i class="fa-solid fa-laptop-code"></i> Live Projects
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Hero Visual (Tommy Hans Overlapping Image Design) -->
+                <div class="hero-visual">
+                    <div class="image-frame-bg"></div>
+                    <div class="image-wrapper">
+                        <!-- Profile Image Placeholder (will be replaced by webp portrait) -->
+                        <img src="./assets/profile.jpg" alt="Kavati John Shreyan Portrait" class="profile-img">
+                    </div>
+                    
+                    <!-- Rotating Circular Badge Animation -->
+                    <a href="#contact" class="contact-badge-wrapper" aria-label="Contact Shreyan Now">
+                        <div class="rotating-badge">
+                            <svg viewBox="0 0 100 100" width="120" height="120">
+                                <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+                                <text class="badge-text">
+                                    <textPath href="#circlePath" startOffset="0%">
+                                        CONTACT NOW • HIRE ME • INNOVATE • 
+                                    </textPath>
+                                </text>
+                            </svg>
+                            <div class="badge-center">
+                                <i class="fa-solid fa-arrow-up-right"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <a href="#about" class="scroll-indicator" aria-label="Scroll to About Me section">
+                <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+                <span class="scroll-label">Scroll Down</span>
+            </a>
+        </section>
+
+        <!-- 2. About Me Section -->
+        <section id="about" class="about-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">01 // PROFILE</span>
+                    <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-info">
+                        <h3 class="about-subtitle">Building Intellect with Technology</h3>
+                        <p class="about-text">
+                            I am a highly motivated Computer Science Engineering student specializing in AI with Computational Intelligence. My focus revolves around building intelligent, production-ready AI applications, leveraging Large Language Models, and implementing optimization algorithms.
+                        </p>
+                        <p class="about-text">
+                            Continuously experimenting with modern Full-Stack AI workflows, Retrieval-Augmented Generation (RAG), and custom backend architectures, I aim to create scalable systems that solve complex, real-world problems.
+                        </p>
+                        
+                        <!-- Career Objective -->
+                        <div class="career-objective">
+                            <h4><i class="fa-solid fa-crosshairs text-orange"></i> Career Objective</h4>
+                            <p>
+                                To secure a challenging engineering role specializing in AI pipelines and Full Stack architectures, leveraging strong theoretical and practical computer science foundations to design smart, scalable software solutions.
+                            </p>
+                            <div class="objective-interests">
+                                <span class="interest-tag"><i class="fa-solid fa-robot"></i> Artificial Intelligence</span>
+                                <span class="interest-tag"><i class="fa-solid fa-microchip"></i> Computational Intelligence</span>
+                                <span class="interest-tag"><i class="fa-solid fa-brain"></i> Large Language Models</span>
+                                <span class="interest-tag"><i class="fa-solid fa-layer-group"></i> Intelligent Systems</span>
+                                <span class="interest-tag"><i class="fa-solid fa-database"></i> RAG</span>
+                                <span class="interest-tag"><i class="fa-solid fa-code"></i> Full-Stack AI Development</span>
+                                <span class="interest-tag"><i class="fa-solid fa-chart-line"></i> Optimization Algorithms</span>
+                                <span class="interest-tag"><i class="fa-solid fa-bolt"></i> AI-powered Applications</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Area (Animated counters) -->
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <span class="stat-num" data-val="2">+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num" data-val="20">+</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num" data-val="3">0</span>
+                            <span class="stat-label">LLM Providers</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num" data-val="2">0</span>
+                            <span class="stat-label">Current AI Systems</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Education Section -->
+        <section id="education" class="education-section section-padding section-bg">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">02 // ACADEMICS</span>
+                    <h2 class="section-title">Educational <span class="text-gradient">Timeline</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="timeline-container">
+                    <!-- Education 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024 – Present</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">B.Tech in Computer Science Engineering (AI with Computational Intelligence)</h3>
+                            <h4 class="timeline-inst">KL University</h4>
+                            <p class="timeline-desc">
+                                Currently pursuing Computer Science Engineering with a specialization in AI with Computational Intelligence. Building strong foundational expertise in programming paradigms, database systems, artificial intelligence pipelines, data analysis tools, and software development methodologies.
+                            </p>
+                            <span class="academic-badge"><i class="fa-solid fa-circle-check"></i> Ongoing</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Education 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2022 – 2024</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Intermediate Education (High School / 12th)</h3>
+                            <h4 class="timeline-inst">Vignana Bharathi Junior College</h4>
+                            <p class="timeline-desc">
+                                Completed higher secondary education focusing on Mathematics, Physics, and Chemistry. Developed critical analytical thinking, logical reasoning skills, and scientific problem-solving abilities.
+                            </p>
+                            <span class="academic-badge badge-completed"><i class="fa-solid fa-graduation-cap"></i> Completed</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Education 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2021 – 2022</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Secondary Education (10th Class)</h3>
+                            <h4 class="timeline-inst">Vignana Bharathi High School</h4>
+                            <p class="timeline-desc">
+                                Finished general secondary school syllabus with an emphasis on standard core subjects, science projects, and basic computer introductory concepts.
+                            </p>
+                            <span class="academic-badge badge-completed"><i class="fa-solid fa-graduation-cap"></i> Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Skills Section -->
+        <section id="skills" class="skills-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">03 // EXPERTISE</span>
+                    <h2 class="section-title">Technical & Soft <span class="text-gradient">Skills</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="skills-grid" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                    <span class="skill-badge">Artificial Intelligence</span>
+                    <span class="skill-badge">Computational Intelligence</span>
+                    <span class="skill-badge">Large Language Models</span>
+                    <span class="skill-badge">Prompt Engineering</span>
+                    <span class="skill-badge">Retrieval-Augmented Generation</span>
+                    <span class="skill-badge">Natural Language Processing</span>
+                    <span class="skill-badge">AI Agents</span>
+                    <span class="skill-badge">Python</span>
+                    <span class="skill-badge">FastAPI</span>
+                    <span class="skill-badge">Next.js</span>
+                    <span class="skill-badge">TypeScript</span>
+                    <span class="skill-badge">React</span>
+                    <span class="skill-badge">Zustand</span>
+                    <span class="skill-badge">SQLite</span>
+                    <span class="skill-badge">REST APIs</span>
+                    <span class="skill-badge">Git</span>
+                    <span class="skill-badge">GitHub</span>
+                    <span class="skill-badge">Vercel</span>
+                    <span class="skill-badge">Render</span>
+                    <span class="skill-badge">Responsive UI Development</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Experience Section -->
+        <section id="experience" class="experience-section section-padding section-bg">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">04 // EXPERIENCE</span>
+                    <h2 class="section-title">Work <span class="text-gradient">Experience</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="experience-timeline">
+                    <!-- Experience 1 -->
+                    <div class="exp-item">
+                        <div class="exp-meta">
+                            <div class="exp-company">Siemens</div>
+                            <div class="exp-duration">Apr 2026 – Jun 2026</div>
+                            <div class="exp-badge">Data Science</div>
+                        </div>
+                        <div class="exp-detail">
+                            <h3 class="exp-role">Data Science Intern</h3>
+                            <ul class="exp-bullet-list">
+                                <li>Cleaned and manipulated enterprise-scale datasets using Python's NumPy and Pandas data analysis ecosystems.</li>
+                                <li>Designed and trained baseline machine learning models, evaluating classification and regression metrics.</li>
+                                <li>Constructed structural data preparation pipelines (ETL) to feed clean training inputs into model systems.</li>
+                                <li>Acquired deep industry knowledge of corporate developer workflows, logging systems, and software lifecycles.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="certifications-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">05 // CREDENTIALS</span>
+                    <h2 class="section-title">Certifications & <span class="text-gradient">Licenses</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="certifications-grid">
+                    <!-- Certificate 1: Siemens -->
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="./assets/cert-siemens.png" alt="Siemens Data Science Internship Certificate">
+                            <div class="cert-overlay">
+                                <a href="./assets/cert-siemens.png" target="_blank" class="cert-zoom-btn" aria-label="View Full Certificate"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                            </div>
+                        </div>
+                        <div class="cert-info">
+                            <span class="cert-org">Siemens</span>
+                            <h3 class="cert-title">Data Science Virtual Internship</h3>
+                            <p class="cert-desc">
+                                Completed a professional virtual internship program focusing on data analytical pipelines, machine learning applications, and enterprise data models.
+                            </p>
+                            <div class="cert-meta">
+                                <span class="cert-date"><i class="fa-regular fa-calendar"></i> June 2026</span>
+                                <span class="cert-status verified"><i class="fa-solid fa-circle-check"></i> Verified</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certificate 2: Azure -->
+                    <div class="cert-card">
+                        <div class="cert-img-wrapper">
+                            <img src="./assets/cert-azure.png" alt="Microsoft Azure Fundamentals AZ-900 Score Report">
+                            <div class="cert-overlay">
+                                <a href="./assets/cert-azure.png" target="_blank" class="cert-zoom-btn" aria-label="View Full Score Report"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                            </div>
+                        </div>
+                        <div class="cert-info">
+                            <span class="cert-org">Microsoft</span>
+                            <h3 class="cert-title">Azure Fundamentals (AZ-900)</h3>
+                            <p class="cert-desc">
+                                Demonstrated foundational proficiency in Microsoft Azure cloud architectures, infrastructure deployments, compute capabilities, security compliance, and cost optimization tools.
+                            </p>
+                            <div class="cert-meta">
+                                <span class="cert-date"><i class="fa-regular fa-calendar"></i> June 2026</span>
+                                <span class="cert-status verified"><i class="fa-solid fa-circle-check"></i> Verified (Score Report)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Hackathons Section -->
+        <section id="hackathons" class="hackathons-section section-padding section-bg">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">06 // HACKATHONS</span>
+                    <h2 class="section-title">Hackathon <span class="text-gradient">Achievements</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="hackathons-container">
+                    <div class="hackathon-intro">
+                        <div class="intro-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h3>Innovating Under Pressure</h3>
+                        <p>
+                            Participating in collaborative development hackathons has shaped my abilities to design functional product skeletons rapidly, work under tight deadlines, and align technologies dynamically.
+                        </p>
+                    </div>
+                    
+                    <div class="hackathon-cards">
+                        <!-- Hackathon Card 1 -->
+                        <div class="hackathon-card">
+                            <div class="h-badge">Frontend Focus</div>
+                            <div class="h-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                            <h4>Frontend Contributions</h4>
+                            <p>Created highly responsive, accessible user interfaces within short intervals, enabling teams to present working interactive mockups to juries.</p>
+                            <span class="h-stat"><i class="fa-regular fa-clock"></i> 24-48 Hr Sprints</span>
+                        </div>
+                        
+                        <!-- Hackathon Card 2 -->
+                        <div class="hackathon-card">
+                            <div class="h-badge">Full Stack</div>
+                            <div class="h-icon"><i class="fa-solid fa-server"></i></div>
+                            <h4>Full Stack Prototypes</h4>
+                            <p>Integrated APIs, databases, and UI layouts under speed runs, ensuring clean server-to-client operations and presentation readiness.</p>
+                            <span class="h-stat"><i class="fa-solid fa-people-group"></i> Team Collaboration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Projects Portfolio Section -->
+        <section id="projects" class="projects-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">07 // FEATURED SYSTEM</span>
+                    <h2 class="section-title">Featured <span class="text-gradient">AI System</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="featured-project-card">
+                    <div class="project-info" style="padding: 2.5rem;">
+                        <h3 class="project-title" style="font-size: 2rem; margin-bottom: 1rem;">SAMRAT AETHERMIND V2</h3>
+                        <p class="project-desc" style="font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: justify;">
+                            SAMRAT AETHERMIND V2 is an advanced full-stack AI ecosystem designed and developed completely from scratch to provide an intelligent, personalized, and production-ready AI experience. The platform integrates multiple Large Language Models (LLMs), including Google Gemini, Cohere, and OpenAI, allowing users to seamlessly switch between AI providers. It features an advanced Retrieval-Augmented Generation (RAG) system for document-based question answering using PDF and TXT files, secure API key management, intelligent chat management with search, pin, rename, hide and delete functionality, customizable interface themes, multilingual support, and an advanced voice assistant with optional wake word activation, multiple personalities, accents, speech controls, and continuous conversation mode. The backend includes a custom request management architecture capable of handling up to 100 API requests per minute, improving scalability while reducing dependency on standard free-tier API limitations. Built using Next.js, TypeScript, Zustand, FastAPI, Python, SQLite, Vercel, and Render, the project demonstrates expertise in AI with Computational Intelligence, LLM integration, backend engineering, deployment, responsive UI development, and modern AI application architecture.
+                        </p>
+                        <div class="project-tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;">
+                            <span class="tech-badge">Next.js</span>
+                            <span class="tech-badge">TypeScript</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">FastAPI</span>
+                            <span class="tech-badge">SQLite</span>
+                            <span class="tech-badge">Zustand</span>
+                            <span class="tech-badge">Gemini</span>
+                            <span class="tech-badge">Cohere</span>
+                            <span class="tech-badge">OpenAI</span>
+                            <span class="tech-badge">LLMs</span>
+                            <span class="tech-badge">RAG</span>
+                            <span class="tech-badge">Voice AI</span>
+                            <span class="tech-badge">REST APIs</span>
+                            <span class="tech-badge">Vercel</span>
+                            <span class="tech-badge">Render</span>
+                        </div>
+                        <div class="hero-actions">
+                            <a href="https://samrat-aethermind-v2.vercel.app/" target="_blank" class="btn btn-primary">Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="https://github.com/KAVATIJOHNSHREYAN/SAMRAT_AETHERMIND_V2" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+                <!-- Previous Full-Stack Projects -->
+                <div class="section-header" style="margin-top: 5rem;">
+                    <span class="section-tag">07.2 // PREVIOUS WORK</span>
+                    <h2 class="section-title">Full Stack <span class="text-gradient">Projects</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="projects-grid" style="margin-top: 2rem;">
+                    <!-- Project 1: Citizen-Politician -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-img-wrapper">
+                            <img src="./assets/project-citizen-2.png" alt="Citizen-Politician Platform Mockup">
+                            <div class="project-overlay">
+                                <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" rel="noopener noreferrer" aria-label="View Project on GitHub"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span>HTML/CSS</span>
+                                <span>JavaScript</span>
+                                <span>Spring Boot</span>
+                                <span>MySQL</span>
+                            </div>
+                            <h3 class="project-title">Citizen-Politician Interaction Platform</h3>
+                            <p class="project-desc">
+                                A civic collaboration interface designed to bridge the transparency and communication gap between citizens and municipal political representatives.
+                            </p>
+                            <div class="project-highlights">
+                                <strong>Problem Solved:</strong> Addressed community reporting delays by creating a roles-based validation portal enabling citizens to submit issues and representatives to moderate community announcements.
+                            </div>
+                            <div class="project-impact" style="margin-top: 1rem;">
+                                <i class="fa-solid fa-circle-nodes text-orange"></i> <strong>Technologies:</strong> HTML, CSS, JavaScript (ES6+), Java Spring Boot, MySQL, REST APIs, and RBAC.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 2: Extracurricular Management -->
+                    <div class="project-card" data-category="web">
+                        <div class="project-img-wrapper">
+                            <img src="./assets/project-student-1.png" alt="ECA Management Mockup">
+                            <div class="project-overlay">
+                                <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" rel="noopener noreferrer" aria-label="View Project on GitHub"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span>React.js</span>
+                                <span>Spring Boot</span>
+                                <span>MySQL</span>
+                                <span>PDF-Gen</span>
+                            </div>
+                            <h3 class="project-title">Student ECA Achievement System</h3>
+                            <p class="project-desc">
+                                A full-stack extracurricular activity (ECA) logging and validation portal built to manage student certificate verification workflows.
+                            </p>
+                            <div class="project-highlights">
+                                <strong>Problem Solved:</strong> Eliminated manual administration processing bottlenecks by designing a digital dashboard for students to request achievements and admins to approve them.
+                            </div>
+                            <div class="project-impact font-weight-bold" style="margin-top: 1rem;">
+                                <i class="fa-solid fa-circle-nodes text-orange"></i> <strong>Result & Tech:</strong> Built using React.js, Spring Boot, MySQL. <strong>Features a custom PDF download utility to export a certified student activity report.</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        <!-- 7.5. AI with Computational Intelligence Projects -->
+        <section id="ai-projects" class="ai-projects-section section-padding section-bg">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">07.5 // COMPUTATIONAL INTELLIGENCE</span>
+                    <h2 class="section-title">AI with Computational Intelligence <span class="text-gradient">Projects</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="projects-grid" style="grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <!-- Project One -->
+                    <div class="project-card ai-card">
+                        <div class="project-info">
+                            <h3 class="project-title" style="margin-bottom: 0.5rem;">SAMRAT AETHERMIND V2</h3>
+                            <div style="margin-bottom: 1rem;"><span class="status-badge ready"><i class="fa-solid fa-circle-check"></i> Production Ready</span></div>
+                            <p class="project-desc">Advanced multi-LLM AI ecosystem featuring voice intelligence, Retrieval-Augmented Generation, intelligent document understanding, custom backend architecture, and production-ready AI workflows.</p>
+                            <div class="hero-actions" style="margin-top: 1.5rem;">
+                                <a href="https://samrat-aethermind-v2.vercel.app/" target="_blank" class="btn btn-secondary btn-sm">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Two -->
+                    <div class="project-card ai-card">
+                        <div class="project-info">
+                            <h3 class="project-title" style="margin-bottom: 0.5rem;">Smart Resource & Timetable Optimizer (SRTO)</h3>
+                            <div style="margin-bottom: 1rem;"><span class="status-badge dev"><i class="fa-solid fa-person-digging"></i> Currently Under Development</span></div>
+                            <p class="project-desc">Smart Resource & Timetable Optimizer (SRTO) is an AI with Computational Intelligence project focused on solving academic scheduling and resource allocation problems using intelligent optimization techniques. The system automatically generates conflict-free timetables by considering faculty availability, classrooms, laboratories, subjects, student sections, institutional constraints, and scheduling priorities. It aims to improve resource utilization, reduce scheduling conflicts, and provide scalable intelligent timetable generation through computational intelligence algorithms and optimization methods.</p>
+                            <div class="project-tags" style="margin-top: 1.5rem;">
+                                <span>Python</span>
+                                <span>AI with Computational Intelligence</span>
+                                <span>Optimization Algorithms</span>
+                                <span>Scheduling</span>
+                                <span>Constraint Satisfaction</span>
+                                <span>Data Structures</span>
+                                <span>Algorithm Design</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Stats Section -->
+        <section id="github-activity" class="github-section section-padding section-bg">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">08 // OPEN SOURCE</span>
+                    <h2 class="section-title">GitHub <span class="text-gradient">Contributions</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="github-stats-container">
+                    <div class="github-profile-card">
+                        <i class="fa-brands fa-github git-logo-bg"></i>
+                        <h3>@KAVATIJOHNSHREYAN</h3>
+                        <p>Exploring and contributing to open-source software, building templates, and sharing full-stack academic projects.</p>
+                        <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <i class="fa-brands fa-github"></i> Visit Profile
+                        </a>
+                    </div>
+                    
+                    <div class="github-widgets-grid">
+                        <!-- GitHub Stats Widget -->
+                        <div class="github-widget">
+                            <img src="https://github-readme-stats.vercel.app/api?username=KAVATIJOHNSHREYAN&show_icons=true&theme=dark&hide_border=true&bg_color=0d171f&title_color=ff3c00&icon_color=ff3c00&text_color=94a3b8" alt="GitHub Stats" class="git-widget-dark">
+                            <img src="https://github-readme-stats.vercel.app/api?username=KAVATIJOHNSHREYAN&show_icons=true&theme=default&hide_border=true&bg_color=ffffff&title_color=ff3c00&icon_color=ff3c00&text_color=3b5266" alt="GitHub Stats" class="git-widget-light">
+                        </div>
+                        
+                        <!-- GitHub Languages Widget -->
+                        <div class="github-widget">
+                            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=KAVATIJOHNSHREYAN&layout=compact&theme=dark&hide_border=true&bg_color=0d171f&title_color=ff3c00&text_color=94a3b8" alt="Top Languages" class="git-widget-dark">
+                            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=KAVATIJOHNSHREYAN&layout=compact&theme=default&hide_border=true&bg_color=ffffff&title_color=ff3c00&text_color=3b5266" alt="Top Languages" class="git-widget-light">
+                        </div>
+                    </div>
+                    
+                    <!-- Contribution Graph Widget -->
+                    <div class="github-graph-card">
+                        <h4>Contribution Activity</h4>
+                        <div class="graph-wrapper">
+                            <img src="https://ghchart.rshah.org/ff3c00/KAVATIJOHNSHREYAN" alt="GitHub Contribution Chart" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8.5. Areas of Interest -->
+        <section id="interests" class="interests-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">08.5 // FOCUS AREAS</span>
+                    <h2 class="section-title">Areas of <span class="text-gradient">Interest</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="skills-grid" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                    <span class="skill-badge highlight">Artificial Intelligence</span>
+                    <span class="skill-badge highlight">Computational Intelligence</span>
+                    <span class="skill-badge highlight">Large Language Models</span>
+                    <span class="skill-badge highlight">AI Agents</span>
+                    <span class="skill-badge highlight">Retrieval-Augmented Generation</span>
+                    <span class="skill-badge highlight">Full-Stack AI Development</span>
+                    <span class="skill-badge highlight">Natural Language Processing</span>
+                    <span class="skill-badge highlight">Optimization Algorithms</span>
+                    <span class="skill-badge highlight">Intelligent Systems</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Areas of Expertise Section -->
+        <section id="services"  class="services-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">09 // DOMAINS</span>
+                    <h2 class="section-title">Areas of <span class="text-gradient">Expertise</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="services-grid">
+                    <!-- Service 1 -->
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+                        <h3>AI with Computational Intelligence Solutions</h3>
+                        <p>Designing predictive models, classification algorithms, and implementing baseline ML architectures to uncover actionable parameters.</p>
+                        <ul class="service-details">
+                            <li>Predictive analytics</li>
+                            <li>Machine learning models</li>
+                            <li>AI-powered applications</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-chart-simple"></i></div>
+                        <h3>Data Analysis</h3>
+                        <p>Reviewing raw datasets, performing ETL pipelines, establishing analytics, and rendering clear insights for structural decisions.</p>
+                        <ul class="service-details">
+                            <li>Data cleaning</li>
+                            <li>Data interpretation</li>
+                            <li>Analytical insights</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-desktop"></i></div>
+                        <h3>Frontend Development</h3>
+                        <p>Constructing sleek, responsive user interfaces with smooth layouts, high accessibility parameters, and responsive grid layouts.</p>
+                        <ul class="service-details">
+                            <li>Responsive websites</li>
+                            <li>Interactive user interfaces</li>
+                            <li>Modern web experiences</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
+                        <h3>Full Stack Development</h3>
+                        <p>Developing client-server software programs complete with relational database integrations, modular routing, and UI interactions.</p>
+                        <ul class="service-details">
+                            <li>End-to-end applications</li>
+                            <li>Backend integration</li>
+                            <li>Database connectivity</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
+                        <h3>REST API Integration</h3>
+                        <p>Linking backend components and frontend visuals via REST operations, standardizing request JSON structures, and resolving CORS issues.</p>
+                        <ul class="service-details">
+                            <li>API consumption</li>
+                            <li>Backend communication</li>
+                            <li>System integration</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Service 6 -->
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <h3>Generative AI Tools</h3>
+                        <p>Configuring LLM setups, integrating prompt setups, semantic embeddings, and scripting customized AI workflows.</p>
+                        <ul class="service-details">
+                            <li>AI-powered tools</li>
+                            <li>Intelligent assistants</li>
+                            <li>Experimental AI solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Contact Section -->
+        <section id="contact" class="contact-section section-padding section-bg">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">08 // CONNECT</span>
+                    <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="contact-grid">
+                    <!-- Contact Information Cards -->
+                    <div class="contact-info-cards">
+                        <!-- Email Card -->
+                        <div class="contact-info-card">
+                            <div class="c-icon"><i class="fa-regular fa-envelope"></i></div>
+                            <div class="c-details">
+                                <span>Email Address</span>
+                                <a href="mailto:2400033326cse2@gmail.com" class="c-link">2400033326cse2@gmail.com</a>
+                            </div>
+                            <button class="copy-btn" data-copy="2400033326cse2@gmail.com" aria-label="Copy email to clipboard">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Phone Card -->
+                        <div class="contact-info-card">
+                            <div class="c-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div class="c-details">
+                                <span>Phone Number</span>
+                                <a href="tel:+918374556692" class="c-link">+91 8374556692</a>
+                            </div>
+                            <button class="copy-btn" data-copy="+918374556692" aria-label="Copy phone number to clipboard">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Location Card -->
+                        <div class="contact-info-card">
+                            <div class="c-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="c-details">
+                                <span>Location</span>
+                                <span class="c-text">Chirala, Andhra Pradesh, India</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Social Cards -->
+                        <div class="contact-socials-card">
+                            <span>Connect on Socials</span>
+                            <div class="social-links-row">
+                                <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" rel="noopener noreferrer" class="social-icon-box" aria-label="GitHub">
+                                    <i class="fa-brands fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/kavati-john-shreyan-956a35366" target="_blank" rel="noopener noreferrer" class="social-icon-box" aria-label="LinkedIn">
+                                    <i class="fa-brands fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="contact-form-wrapper">
+                        <form id="contact-form" class="contact-form">
+                            <h3 class="form-title">Send a Message</h3>
+                            
+                            <div class="form-group">
+                                <input type="text" id="form-name" required placeholder=" " aria-required="true">
+                                <label for="form-name">Your Name</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" id="form-email" required placeholder=" " aria-required="true">
+                                <label for="form-email">Your Email</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" id="form-subject" required placeholder=" " aria-required="true">
+                                <label for="form-subject">Subject</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <textarea id="form-message" required placeholder=" " aria-required="true" rows="5"></textarea>
+                                <label for="form-message">Message</label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-icon"><i class="fa-regular fa-paper-plane"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 10. Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="#home" class="footer-logo">
+                    <span class="logo-bold">SHREYAN</span><span class="logo-dot">.</span>
+                </a>
+                <p class="footer-tagline">Aspiring AI with Computational Intelligence Student & Full Stack Web Developer. Continuously engineering intelligent solutions for real-world complexity.</p>
+            </div>
+            
+            <div class="footer-nav">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-socials">
+                <h4>Follow Me</h4>
+                <div class="footer-social-icons">
+                    <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/kavati-john-shreyan-956a35366" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="mailto:2400033326cse2@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Kavati John Shreyan. All Rights Reserved. Built with <i class="fa-solid fa-heart text-orange"></i>.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

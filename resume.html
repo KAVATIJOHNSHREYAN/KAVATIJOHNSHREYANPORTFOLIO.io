@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kavati John Shreyan - Resume</title>
+    <!-- Google Fonts: Inter for clean professional typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons in screen UI -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #000000;
+            --secondary-color: #000000;
+            --accent-color: #000000;
+            --text-color: #000000;
+            --border-color: #000000;
+            --body-bg: #f8fafc;
+            --resume-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--body-bg);
+            color: var(--text-color);
+            line-height: 1.4;
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Floating Controls Header */
+        .controls {
+            width: 100%;
+            max-width: 820px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.6rem 1.25rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .controls-text {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #3b5266;
+        }
+
+        .btn-print {
+            padding: 0.45rem 1.1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #ffffff;
+            background-color: #ff3c00; /* Orange highlight for UI action */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 8px rgba(255, 60, 0, 0.2);
+        }
+
+        .btn-print:hover {
+            background-color: #d62400;
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            padding: 0.45rem 0.9rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #3b5266;
+            background: transparent;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Resume A4 Sheet Layout */
+        .resume-page {
+            width: 100%;
+            max-width: 820px;
+            background: var(--resume-bg);
+            padding: 2.25rem 2.5rem;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        /* Header section */
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.15rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.01em;
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.4rem 0.6rem;
+            font-size: 0.78rem;
+            color: var(--secondary-color);
+            font-weight: 400;
+        }
+
+        .contact-info span {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .contact-info a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        .contact-info a:hover {
+            color: #000000;
+        }
+
+        /* Section Layout */
+        .resume-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        h2 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.15rem;
+            margin-bottom: 0.2rem;
+        }
+
+        p.summary-text {
+            font-size: 0.78rem;
+            color: var(--text-color);
+            text-align: justify;
+        }
+
+        /* Lists and Timeline Grids */
+        .item-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.05rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .item-subheader {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+
+        ul.item-bullets {
+            margin-left: 1.1rem;
+            font-size: 0.78rem;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            margin-top: 0.1rem;
+        }
+
+        /* Skills Grid Layout */
+        .skills-table {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 0.25rem 0.8rem;
+            font-size: 0.78rem;
+        }
+
+        .skills-category {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .skills-list {
+            color: var(--text-color);
+        }
+
+        /* Certifications & Achievements list */
+        .cert-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .cert-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .cert-org {
+            color: var(--secondary-color);
+        }
+
+        /* Media Queries for Print (forces standard document rules) */
+        @media print {
+            body {
+                background: #ffffff;
+                color: #000000;
+                padding: 0;
+                margin: 0;
+            }
+            .controls {
+                display: none !important;
+            }
+            .resume-page {
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-height: auto !important;
+                background: transparent !important;
+            }
+            :root {
+                --primary-color: #000000;
+                --secondary-color: #000000;
+                --text-color: #000000;
+                --border-color: #000000;
+            }
+            a {
+                text-decoration: underline !important;
+                color: #000000 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating action controls -->
+    <div class="controls">
+        <a href="./index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+        <span class="controls-text">ATS-Friendly Single-Page Resume</span>
+        <button onclick="window.print()" class="btn-print"><i class="fa-solid fa-download"></i> Download as PDF</button>
+    </div>
+
+    <!-- Printable Resume Page -->
+    <div class="resume-page">
+        <!-- 1. Header Section -->
+        <header>
+            <h1>Kavati John Shreyan</h1>
+            <div class="contact-info">
+                <span>Email: <a href="mailto:2400033326cse2@gmail.com">2400033326cse2@gmail.com</a></span>
+                <span>|</span>
+                <span>Phone: +91 8374556692</span>
+                <span>|</span>
+                <span>Location: Andhra Pradesh, India</span>
+                <span>|</span>
+                <span><a href="https://linkedin.com/in/kavati-john-shreyan-956a35366" target="_blank">LinkedIn</a></span>
+                <span>|</span>
+                <span><a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank">GitHub</a></span>
+            </div>
+        </header>
+
+        <!-- 2. Professional Summary -->
+        <section class="resume-section">
+            <h2>Professional Summary</h2>
+            <p class="summary-text">
+                Computer Science Engineering student at KL University specializing in AI with Computational Intelligence. Highly motivated to secure a challenging software engineering role, leveraging hands-on experience in full-stack architecture design, machine learning models development, and robust data workflows. Demonstrated success in building scalable web applications and collaborating within professional data science environments.
+            </p>
+        </section>
+
+        <!-- 3. Education Section -->
+        <section class="resume-section">
+            <h2>Education</h2>
+            <div class="item-row">
+                <div class="item-header">
+                    <span>K L University</span>
+                    <span>Andhra Pradesh, India</span>
+                </div>
+                <div class="item-subheader">
+                    <span>B.Tech in Computer Science Engineering (AI with Computational Intelligence)</span>
+                    <span>2024 – Present</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>CGPA: 7.74</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4. Experience Section -->
+        <section class="resume-section">
+            <h2>Experience</h2>
+            <div class="item-row">
+                <div class="item-header">
+                    <span>Siemens</span>
+                    <span>Remote / Virtual</span>
+                </div>
+                <div class="item-subheader">
+                    <span>Data Science Intern</span>
+                    <span>April 2026 – June 2026</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Cleaned and manipulated large datasets using Python NumPy and Pandas libraries to establish clean analytical models.</li>
+                    <li>Developed and evaluated baseline classification models, analyzing precision and regression thresholds.</li>
+                    <li>Structured automated data preparation and ETL scripts for downstream machine learning model pipelines.</li>
+                    <li>Acquired foundational expertise in enterprise development cycles, git operations, and technical reporting workflows.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. Projects Section -->
+        <section class="resume-section">
+            <h2>Projects</h2>
+            
+            <div class="item-row">
+                <div class="item-header">
+                    <span>SAMRAT AETHERMIND V2</span>
+                    <span>Next.js, Python, FastAPI, LLMs, Voice AI</span>
+                </div>
+                <div class="item-subheader">
+                    <span>Advanced Multi-LLM AI Ecosystem</span>
+                    <span>Production Ready</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Developed a custom AI platform integrating Gemini, Cohere, and OpenAI with seamless provider switching and robust API management.</li>
+                    <li>Engineered an advanced Retrieval-Augmented Generation (RAG) system for document-based question answering using PDFs and text files.</li>
+                    <li>Designed an intelligent voice assistant featuring wake word activation, multiple accents, and continuous conversational modes.</li>
+                    <li>Built a custom backend architecture capable of handling 100+ requests per minute for high-scalability production environments.</li>
+                </ul>
+            </div>
+
+            <div class="item-row">
+                <div class="item-header">
+                    <span>Smart Resource & Timetable Optimizer (SRTO)</span>
+                    <span>Python, Optimization Algorithms, Constraint Satisfaction</span>
+                </div>
+                <div class="item-subheader">
+                    <span>AI with Computational Intelligence Scheduler</span>
+                    <span>Under Development</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Designing an intelligent optimization engine to automatically generate conflict-free academic timetables considering institutional constraints.</li>
+                    <li>Implementing constraint satisfaction models to efficiently allocate faculty, classrooms, and student sections for maximum resource utilization.</li>
+                    <li>Applying computational intelligence algorithms and data structures to deliver scalable, dynamic scheduling solutions.</li>
+                </ul>
+            </div>
+        </section>
+
+        
+            <div class="item-row">
+                <div class="item-header">
+                    <span>Student ECA Achievement System (STDEXT)</span>
+                    <span>Java, React, MySQL, REST APIs</span>
+                </div>
+                <div class="item-subheader">
+                    <span>Full-Stack Extracurricular Management Application</span>
+                    <span>April 2026</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Designed and implemented a React frontend and Spring Boot backend to track and verify student certificates.</li>
+                    <li>Solved manual administrative bottlenecks by building real-time approval dashboards for verification personnel.</li>
+                    <li>Implemented a custom PDF student report generator to let verified students download official ECA scorecards.</li>
+                </ul>
+            </div>
+
+            <div class="item-row">
+                <div class="item-header">
+                    <span>Citizen-Politician Interaction Platform</span>
+                    <span>Spring Boot, HTML, CSS, JS, MySQL</span>
+                </div>
+                <div class="item-subheader">
+                    <span>Civic Engagement and Communication Portal</span>
+                    <span>March 2026</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Created a dynamic web portal to bridge transparency gaps between municipal citizens and local political representatives.</li>
+                    <li>Built secure, role-based access controls (RBAC) separating representatives, moderators, and general citizens.</li>
+                    <li>Enabled real-time issue reporting, tracking, and representatives dashboard verification panels.</li>
+                </ul>
+            </div>
+
+        <!-- 6. Technical Skills Section -->
+        <section class="resume-section">
+            <h2>Skills</h2>
+            <div class="skills-table">
+                <div class="skills-category">Core Expertise</div>
+                <div class="skills-list">Artificial Intelligence, Computational Intelligence, Large Language Models (LLMs), Prompt Engineering, RAG</div>
+                
+                <div class="skills-category">Programming & Languages</div>
+                <div class="skills-list">Python, TypeScript, JavaScript, SQL</div>
+                
+                <div class="skills-category">Frameworks & Libraries</div>
+                <div class="skills-list">FastAPI, Next.js, React, Zustand, REST APIs</div>
+                
+                <div class="skills-category">Databases & Infrastructure</div>
+                <div class="skills-list">SQLite, Vercel, Render, Git, GitHub</div>
+            </div>
+        </section>
+
+        <!-- 7. Certifications Section -->
+        <section class="resume-section">
+            <h2>Certifications</h2>
+            
+            <div class="cert-row">
+                <div>
+                    <span class="cert-name">Microsoft Certified: Azure Fundamentals (AZ-900)</span>
+                    <span class="cert-org">— Microsoft</span>
+                </div>
+                <span>June 2026</span>
+            </div>
+
+            <div class="cert-row">
+                <div>
+                    <span class="cert-name">Data Science Virtual Internship Certificate</span>
+                    <span class="cert-org">— Siemens</span>
+                </div>
+                <span>June 2026</span>
+            </div>
+        </section>
+
+        <!-- 8. Achievements Section -->
+        <section class="resume-section">
+            <h2>Achievements</h2>
+            <ul class="item-bullets">
+                <li>Participated in university hackathons specializing in rapid frontend mocks and collaborative full-stack implementations.</li>
+                <li>Active member of KL University Technical and Coding Clubs, supporting student community events.</li>
+                <li>Consistently engaged in personal full-stack software development projects.</li>
+            </ul>
+        </section>
+    </div>
+
+</body>
+</html>
