@@ -456,10 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function playIntroSound() {
         try {
             const ctx = getAudioContext();
-            if (ctx.state === 'suspended') {
-                ctx.resume();
-            }
-            
+            // Context is already resumed in the click handler
             const now = ctx.currentTime;
             
             // Try loading and playing the custom uploaded .m4a sound from the 13th second
@@ -512,15 +509,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (startBtn && preloader) {
         startBtn.addEventListener('click', () => {
-            // 1. Play Sound
-            playIntroSound();
+            // Fix INP Issue: Initialize AudioContext in the user gesture synchronously
+            const ctx = getAudioContext();
+            if (ctx.state === 'suspended') {
+                ctx.resume();
+            }
             
-            // 2. Transition Start Screen to Animation Screen
-            startScreen.classList.add('fade-out');
-            
+            // Fix INP Issue: Yield to main thread so the browser can paint the click interaction
             setTimeout(() => {
-                startScreen.style.display = 'none';
-                animScreen.classList.remove('hidden');
+                // 1. Play Sound
+                playIntroSound();
+                
+                // 2. Transition Start Screen to Animation Screen
+                startScreen.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    startScreen.style.display = 'none';
+                    animScreen.classList.remove('hidden');
                 
                 // 3. Trigger coordinated animations
                 carContainer.classList.add('active');
