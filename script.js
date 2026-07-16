@@ -507,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    if (startBtn && preloader) {
+        if (startBtn && preloader) {
         startBtn.addEventListener('click', () => {
             // Fix INP Issue: Initialize AudioContext in the user gesture synchronously
             const ctx = getAudioContext();
@@ -526,29 +526,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     startScreen.style.display = 'none';
                     animScreen.classList.remove('hidden');
-                
-                // 3. Trigger coordinated animations
-                carContainer.classList.add('active');
-                if (introName) introName.classList.add('active');
-                
-                // 4. Fade out preloader overlay after name stays visible
-                setTimeout(() => {
-                    preloader.classList.add('fade-out');
-                    document.body.classList.remove('preloading');
                     
-                    // Smoothly fade out and stop the custom car sound over 800ms
-                    if (activeIntroAudio) {
-                        fadeAndStopAudio(activeIntroAudio, 800);
-                    }
+                    // 3. Trigger coordinated animations
+                    carContainer.classList.add('active');
+                    if (introName) introName.classList.add('active');
                     
-                    // Hide preloader element
+                    // 4. Fade out preloader overlay after name stays visible
                     setTimeout(() => {
-                        preloader.style.display = 'none';
-                    }, 800);
+                        preloader.classList.add('fade-out');
+                        document.body.classList.remove('preloading');
+                        
+                        // Smoothly fade out and stop the custom car sound over 800ms
+                        if (activeIntroAudio) {
+                            fadeAndStopAudio(activeIntroAudio, 800);
+                        }
+                        
+                        // Hide preloader element
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                        }, 800);
+                        
+                    }, 4300); // Allow letters to appear slowly, car to drive away, and name to stay visible before fading
                     
-                }, 4300); // Allow letters to appear slowly, car to drive away, and name to stay visible before fading
-                
-            }, 500); // Wait for start screen fade out
+                }, 500); // Wait for start screen fade out
+            }, 0); // Yield to main thread
         });
     } else {
         // Fallback if elements not found
@@ -559,6 +560,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ==========================================================================
+
+    // ==========================================================================
+    // 12. FAILSAFE AUTO-SKIP
+    // ==========================================================================
+    setTimeout(() => {
+        if (document.body.classList.contains('preloading')) {
+            console.warn("Failsafe triggered: Preloader initialization exceeded 5 seconds. Skipping intro screen.");
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.display = 'none';
+            }
+            document.body.classList.remove('preloading');
+            
+            if (typeof activeIntroAudio !== 'undefined' && activeIntroAudio) {
+                activeIntroAudio.pause();
+            }
+        }
+    }, 5000);
+
 // FORCE SCROLL TO TOP ON PAGE LOAD
 // ==========================================================================
 // Prevent browser from remembering the scroll position
