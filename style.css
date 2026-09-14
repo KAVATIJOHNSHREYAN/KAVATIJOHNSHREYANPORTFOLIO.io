@@ -1151,53 +1151,60 @@ a {
    ========================================================================== */
 
 .hackathons-container {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 4rem;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
 }
 
 .hackathon-intro {
+    max-width: 800px;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 0.75rem;
 }
 
 .intro-icon {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: var(--accent-orange);
+    margin-bottom: 0.25rem;
 }
 
 .hackathon-intro h3 {
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 800;
     letter-spacing: -0.01em;
 }
 
 .hackathon-intro p {
     color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .hackathon-cards {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
 }
 
 .hackathon-card {
     background-color: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    padding: 2.25rem;
-    border-radius: 6px;
+    padding: 2rem 1.75rem;
+    border-radius: 8px;
     position: relative;
     box-shadow: var(--card-shadow);
-    transition: transform var(--transition-fast), border-color var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .hackathon-card:hover {
     transform: translateY(-5px);
     border-color: var(--accent-orange);
+    box-shadow: 0 12px 30px rgba(255, 60, 0, 0.15);
 }
 
 .h-badge {
@@ -1207,17 +1214,17 @@ a {
     font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
-    padding: 0.2rem 0.5rem;
+    padding: 0.25rem 0.6rem;
     background-color: var(--bg-tertiary);
-    border-radius: 4px;
+    border-radius: 20px;
     border: 1px solid var(--border-color);
-    color: var(--text-secondary);
+    color: var(--accent-orange);
 }
 
 .h-icon {
-    font-size: 1.75rem;
+    font-size: 1.65rem;
     color: var(--accent-orange);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
 }
 
 .hackathon-card h4 {
@@ -1225,12 +1232,15 @@ a {
     font-size: 1.15rem;
     font-weight: 700;
     margin-bottom: 0.75rem;
+    line-height: 1.3;
 }
 
 .hackathon-card p {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
+    line-height: 1.55;
     color: var(--text-muted);
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
 }
 
 .h-stat {
@@ -1239,7 +1249,10 @@ a {
     color: var(--text-secondary);
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
+    gap: 0.4rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.85rem;
+    width: 100%;
 }
 
 /* ==========================================================================
@@ -1990,6 +2003,10 @@ a {
         gap: 1.5rem;
     }
     
+    .hackathon-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
     .hackathons-container {
         grid-template-columns: 1fr;
         gap: 2.5rem;
@@ -2027,6 +2044,7 @@ a {
     
     .skills-grid,
     .projects-grid,
+    .hackathon-cards,
     .services-grid {
         grid-template-columns: 1fr;
     }
