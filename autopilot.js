@@ -116,11 +116,14 @@
     });
   }
 
-  // Custom Quadratic Ease-In-Out Smooth Scrolling Engine
-  function smoothScrollTo(targetY, duration = 1200) {
+  // Custom Continuous Smooth Scrolling Engine
+  function smoothScrollTo(targetY, minDuration = 2500) {
     return new Promise((resolve) => {
       const startY = window.pageYOffset;
       const difference = targetY - startY;
+      const distance = Math.abs(difference);
+      // Calculate dynamic duration based on distance so scrolling feels naturally smooth and steady
+      const duration = Math.max(minDuration, Math.min(Math.floor(distance * 2.2), 4000));
       const startTime = performance.now();
 
       function step(currentTime) {
@@ -145,7 +148,7 @@
     });
   }
 
-  // Create Controller Bar
+  // Create Controller Bar (Top-Right position with minimize/hide capability)
   function createControllerBar() {
     if (document.getElementById("ap-controller-bar")) return;
 
@@ -157,7 +160,12 @@
           <i class="fa-solid fa-circle-play"></i>
           <span>Autopilot Active</span>
         </div>
-        <div class="ap-step-num" id="ap-step-num">Step 1 of ${tourSteps.length}</div>
+        <div class="ap-controls">
+          <div class="ap-step-num" id="ap-step-num">Step 1 of ${tourSteps.length}</div>
+          <button class="ap-btn-minimize" id="ap-btn-minimize" title="Minimize / Hide Controller">
+            <i class="fa-solid fa-chevron-down" id="ap-minimize-icon"></i>
+          </button>
+        </div>
       </div>
       <div class="ap-body" id="ap-step-text">Loading tour...</div>
       <div class="ap-footer">
@@ -176,6 +184,23 @@
     stepText = document.getElementById("ap-step-text");
     stepNumber = document.getElementById("ap-step-num");
     progressBarFill = document.getElementById("ap-progress-fill");
+
+    // Minimize / Expand toggle handler
+    const minBtn = document.getElementById("ap-btn-minimize");
+    const minIcon = document.getElementById("ap-minimize-icon");
+    if (minBtn) {
+      minBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        controllerBar.classList.toggle("minimized");
+        if (controllerBar.classList.contains("minimized")) {
+          minIcon.className = "fa-solid fa-chevron-up";
+          minBtn.title = "Expand Controller";
+        } else {
+          minIcon.className = "fa-solid fa-chevron-down";
+          minBtn.title = "Minimize / Hide Controller";
+        }
+      });
+    }
 
     document.getElementById("ap-btn-stop").addEventListener("click", () => {
       stopAutopilot(true);
