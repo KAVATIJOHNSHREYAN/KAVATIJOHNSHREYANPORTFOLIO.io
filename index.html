@@ -26,6 +26,7 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css?v=1.4">
+    <link rel="stylesheet" href="autopilot.css">
 </head>
 <body>
     <!-- Theme Overlay Transition Effect -->
@@ -106,6 +107,9 @@
                 <button id="theme-toggle" class="theme-btn" aria-label="Toggle light and dark theme">
                     <i class="fa-solid fa-moon"></i>
                 </button>
+                <button onclick="window.startAutopilotTour()" class="btn-nav-ap" aria-label="Start Autopilot Walkthrough Tour">
+                    <i class="fa-solid fa-plane-departure"></i> Tour
+                </button>
                 <a href="#contact" class="btn btn-nav-cta">Hire Me</a>
             </div>
         </div>
@@ -159,6 +163,9 @@
                         <a href="./resume.html" target="_blank" class="btn btn-primary">
                             <i class="fa-solid fa-file-invoice"></i> View Resume
                         </a>
+                        <button id="btn-hero-autopilot" onclick="window.startAutopilotTour()" class="btn btn-primary" style="background: var(--accent-orange); border-color: var(--accent-orange);">
+                            <i class="fa-solid fa-plane-departure"></i> Autopilot Tour
+                        </button>
                         <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" class="btn btn-secondary">
                             <i class="fa-brands fa-github"></i> GitHub
                         </a>
@@ -913,5 +920,6 @@
     <!-- Scripts -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
+    <script src="autopilot.js"></script>
 </body>
 </html>
