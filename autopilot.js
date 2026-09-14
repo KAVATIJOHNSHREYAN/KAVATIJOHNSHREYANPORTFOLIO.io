@@ -182,20 +182,7 @@
     });
   }
 
-  // Create Floating Skip Button (Bottom-Right)
-  function createSkipButton() {
-    if (document.getElementById("ap-skip-btn")) return;
 
-    skipFloatingBtn = document.createElement("button");
-    skipFloatingBtn.id = "ap-skip-btn";
-    skipFloatingBtn.innerHTML = `<i class="fa-solid fa-forward-step"></i> <span>Skip Tour</span>`;
-    document.body.appendChild(skipFloatingBtn);
-
-    skipFloatingBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      stopAutopilot(true);
-    });
-  }
 
   // Create Tour Finish Overlay
   function createFinishOverlay() {
@@ -304,14 +291,12 @@
     if (isAutopilotActive) return;
 
     createControllerBar();
-    createSkipButton();
     createFinishOverlay();
 
     isAutopilotActive = true;
     setTourButtonsRunning(true);
 
     controllerBar.classList.add("active");
-    skipFloatingBtn.classList.add("active");
 
     // Wait until preloader finishes completely if active
     await waitForPreloader();
@@ -359,7 +344,6 @@
   // Complete Tour Procedure
   async function finishTour() {
     controllerBar.classList.remove("active");
-    if (skipFloatingBtn) skipFloatingBtn.classList.remove("active");
 
     if (lastHighlighted) {
       lastHighlighted.classList.remove("ap-highlight-section");
@@ -397,7 +381,6 @@
 
     // Hide control widgets
     if (controllerBar) controllerBar.classList.remove("active");
-    if (skipFloatingBtn) skipFloatingBtn.classList.remove("active");
     if (finishOverlay) finishOverlay.classList.remove("active");
 
     // Restore original button states & enable manual interactions
@@ -431,10 +414,9 @@
     const handleOverride = (e) => {
       if (!isAutopilotActive) return;
 
-      // Ignore clicks inside controller, skip button, or trigger buttons
+      // Ignore clicks inside controller or trigger buttons
       if (
         e.target.closest("#ap-controller-bar") ||
-        e.target.closest("#ap-skip-btn") ||
         e.target.closest(".btn-nav-ap") ||
         e.target.closest("#btn-hero-autopilot")
       ) {
