@@ -595,19 +595,7 @@ a {
 }
 
 .image-frame-bg {
-    position: absolute;
-    width: 360px;
-    height: 360px;
-    border: 2px solid var(--accent-orange);
-    border-radius: 50%;
-    top: 15px;
-    left: calc(50% - 165px);
-    z-index: 1;
-    transition: transform var(--transition-slow);
-}
-
-.hero-visual:hover .image-frame-bg {
-    transform: translate(-8px, -8px) scale(1.02);
+    display: none;
 }
 
 .image-wrapper {
