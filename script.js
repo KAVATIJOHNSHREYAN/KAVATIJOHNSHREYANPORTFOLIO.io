@@ -507,8 +507,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-        if (startBtn && preloader) {
-        startBtn.addEventListener('click', () => {
+        let preloaderTriggered = false;
+        const enterPortfolio = () => {
+            if (preloaderTriggered) return;
+            preloaderTriggered = true;
+
             // Fix INP Issue: Initialize AudioContext in the user gesture synchronously
             const ctx = getAudioContext();
             if (ctx.state === 'suspended') {
@@ -550,34 +553,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                 }, 500); // Wait for start screen fade out
             }, 0); // Yield to main thread
-        });
-    } else {
-        // Fallback if elements not found
-        document.body.classList.remove('preloading');
-        if (preloader) preloader.style.display = 'none';
-    }
-});
+        };
 
-
-// ==========================================================================
-
-    // ==========================================================================
-    // 12. FAILSAFE AUTO-SKIP
-    // ==========================================================================
-    setTimeout(() => {
-        if (document.body.classList.contains('preloading')) {
-            console.warn("Failsafe triggered: Preloader initialization exceeded 5 seconds. Skipping intro screen.");
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.style.display = 'none';
-            }
-            document.body.classList.remove('preloading');
+        if (startBtn && preloader) {
+            startBtn.addEventListener('click', enterPortfolio);
             
-            if (typeof activeIntroAudio !== 'undefined' && activeIntroAudio) {
-                activeIntroAudio.pause();
-            }
+            // Allow Enter key press to enter portfolio
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' && document.body.classList.contains('preloading')) {
+                    e.preventDefault();
+                    enterPortfolio();
+                }
+            });
+        } else {
+            // Fallback if elements not found
+            document.body.classList.remove('preloading');
+            if (preloader) preloader.style.display = 'none';
         }
-    }, 5000);
+});
 
 // FORCE SCROLL TO TOP ON PAGE LOAD
 // ==========================================================================
