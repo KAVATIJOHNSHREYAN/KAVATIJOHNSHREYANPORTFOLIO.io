@@ -137,12 +137,12 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
             widgetContainer.id = "ai-chat-root";
             widgetContainer.innerHTML = `
                 <!-- Floating Trigger Button -->
-                <button id="ai-chat-trigger" class="ai-chat-trigger" aria-label="Open Ask AI Shreyan Chat">
+                <button id="ai-chat-trigger" class="ai-chat-trigger" aria-label="Open Ask Aether AI Chat">
                     <div class="trigger-icon-wrapper">
-                        <i class="fa-solid fa-robot trigger-bot-icon"></i>
+                        <i class="fa-solid fa-sparkles trigger-bot-icon"></i>
                         <span class="trigger-pulse-dot"></span>
                     </div>
-                    <span class="trigger-label">Ask AI Shreyan</span>
+                    <span class="trigger-label">Ask Aether AI</span>
                 </button>
 
                 <!-- Floating Chat Panel Window -->
@@ -155,8 +155,8 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
                                 <span class="status-online"></span>
                             </div>
                             <div class="header-text">
-                                <h3>Ask AI Shreyan</h3>
-                                <p>Interactive Knowledge Engine</p>
+                                <h3>Ask Aether AI</h3>
+                                <p>Shreyan's Portfolio Assistant</p>
                             </div>
                         </div>
                         <div class="header-actions">
@@ -169,9 +169,9 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
                     <div id="ai-chat-messages" class="ai-chat-messages">
                         <!-- Initial Greeting Message -->
                         <div class="chat-msg bot-msg">
-                            <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                            <div class="msg-avatar"><i class="fa-solid fa-brain"></i></div>
                             <div class="msg-bubble">
-                                Hello! 👋 I'm **Shreyan's AI Assistant**. 
+                                Hello! 👋 I'm **Aether AI**, Shreyan's portfolio assistant. 
                                 <br><br>
                                 Ask me anything about Shreyan's **projects**, **skills**, **SIH 2026 hackathon experience**, **Siemens internship**, or **how to contact him**.
                             </div>
@@ -335,7 +335,7 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
                 msgDiv.innerHTML = `<div class="msg-bubble">${this.escapeHTML(content)}</div>`;
             } else {
                 msgDiv.innerHTML = `
-                    <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="msg-avatar"><i class="fa-solid fa-brain"></i></div>
                     <div class="msg-bubble">${formattedHtml}</div>
                 `;
             }
