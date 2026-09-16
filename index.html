@@ -338,60 +338,72 @@
                     <div class="section-line"></div>
                 </div>
                 
+                <!-- Skills Filter Pills -->
+                <div class="filter-tabs-wrapper" id="skills-filter-tabs">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="languages">Languages</button>
+                    <button class="filter-btn" data-filter="ai">AI & LLMs</button>
+                    <button class="filter-btn" data-filter="web">Web Dev</button>
+                    <button class="filter-btn" data-filter="db">Databases</button>
+                    <button class="filter-btn" data-filter="cloud">Cloud & Auth</button>
+                    <button class="filter-btn" data-filter="tools">Tools</button>
+                    <button class="filter-btn" data-filter="soft">Soft Skills</button>
+                </div>
+
                 <div class="skills-grid" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
                     <!-- Programming Languages -->
-                    <span class="skill-badge">Python</span>
-                    <span class="skill-badge">Java</span>
-                    <span class="skill-badge">JavaScript</span>
-                    <span class="skill-badge">TypeScript</span>
+                    <span class="skill-badge" data-category="languages">Python</span>
+                    <span class="skill-badge" data-category="languages">Java</span>
+                    <span class="skill-badge" data-category="languages">JavaScript</span>
+                    <span class="skill-badge" data-category="languages">TypeScript</span>
 
                     <!-- Artificial Intelligence -->
-                    <span class="skill-badge">Artificial Intelligence</span>
-                    <span class="skill-badge">Computational Intelligence</span>
-                    <span class="skill-badge">Large Language Models (LLMs)</span>
-                    <span class="skill-badge">Retrieval-Augmented Generation (RAG)</span>
-                    <span class="skill-badge">Prompt Engineering</span>
-                    <span class="skill-badge">AI Chatbots</span>
+                    <span class="skill-badge" data-category="ai">Artificial Intelligence</span>
+                    <span class="skill-badge" data-category="ai">Computational Intelligence</span>
+                    <span class="skill-badge" data-category="ai">Large Language Models (LLMs)</span>
+                    <span class="skill-badge" data-category="ai">Retrieval-Augmented Generation (RAG)</span>
+                    <span class="skill-badge" data-category="ai">Prompt Engineering</span>
+                    <span class="skill-badge" data-category="ai">AI Chatbots</span>
 
                     <!-- Web Development -->
-                    <span class="skill-badge">HTML5</span>
-                    <span class="skill-badge">CSS3</span>
-                    <span class="skill-badge">React</span>
-                    <span class="skill-badge">Next.js</span>
-                    <span class="skill-badge">FastAPI</span>
-                    <span class="skill-badge">REST APIs</span>
-                    <span class="skill-badge">JWT Authentication</span>
+                    <span class="skill-badge" data-category="web">HTML5</span>
+                    <span class="skill-badge" data-category="web">CSS3</span>
+                    <span class="skill-badge" data-category="web">React</span>
+                    <span class="skill-badge" data-category="web">Next.js</span>
+                    <span class="skill-badge" data-category="web">FastAPI</span>
+                    <span class="skill-badge" data-category="web">REST APIs</span>
+                    <span class="skill-badge" data-category="web">JWT Authentication</span>
 
                     <!-- Databases -->
-                    <span class="skill-badge">MySQL</span>
-                    <span class="skill-badge">SQLite</span>
-                    <span class="skill-badge">Firebase Firestore</span>
+                    <span class="skill-badge" data-category="db">MySQL</span>
+                    <span class="skill-badge" data-category="db">SQLite</span>
+                    <span class="skill-badge" data-category="db">Firebase Firestore</span>
 
                     <!-- Authentication & Security -->
-                    <span class="skill-badge">Google Sign-In</span>
-                    <span class="skill-badge">Firebase Authentication</span>
-                    <span class="skill-badge">Face Authentication</span>
-                    <span class="skill-badge">Fingerprint Authentication</span>
+                    <span class="skill-badge" data-category="cloud">Google Sign-In</span>
+                    <span class="skill-badge" data-category="cloud">Firebase Authentication</span>
+                    <span class="skill-badge" data-category="cloud">Face Authentication</span>
+                    <span class="skill-badge" data-category="cloud">Fingerprint Authentication</span>
 
                     <!-- Cloud & Backend -->
-                    <span class="skill-badge">Firebase Console</span>
-                    <span class="skill-badge">Google Cloud</span>
-                    <span class="skill-badge">Vercel</span>
-                    <span class="skill-badge">Render</span>
+                    <span class="skill-badge" data-category="cloud">Firebase Console</span>
+                    <span class="skill-badge" data-category="cloud">Google Cloud</span>
+                    <span class="skill-badge" data-category="cloud">Vercel</span>
+                    <span class="skill-badge" data-category="cloud">Render</span>
 
                     <!-- Development Tools -->
-                    <span class="skill-badge">Git</span>
-                    <span class="skill-badge">GitHub</span>
-                    <span class="skill-badge">Antigravity</span>
+                    <span class="skill-badge" data-category="tools">Git</span>
+                    <span class="skill-badge" data-category="tools">GitHub</span>
+                    <span class="skill-badge" data-category="tools">Antigravity</span>
 
                     <!-- Soft Skills -->
-                    <span class="skill-badge">Problem Solving</span>
-                    <span class="skill-badge">Team Collaboration</span>
-                    <span class="skill-badge">Leadership</span>
-                    <span class="skill-badge">Communication</span>
-                    <span class="skill-badge">Critical Thinking</span>
-                    <span class="skill-badge">Quick Learner</span>
-                    <span class="skill-badge">Time Management</span>
+                    <span class="skill-badge" data-category="soft">Problem Solving</span>
+                    <span class="skill-badge" data-category="soft">Team Collaboration</span>
+                    <span class="skill-badge" data-category="soft">Leadership</span>
+                    <span class="skill-badge" data-category="soft">Communication</span>
+                    <span class="skill-badge" data-category="soft">Critical Thinking</span>
+                    <span class="skill-badge" data-category="soft">Quick Learner</span>
+                    <span class="skill-badge" data-category="soft">Time Management</span>
                 </div>
             </div>
         </section>
@@ -541,6 +553,14 @@
                     <div class="section-line"></div>
                 </div>
                 
+                <!-- Projects Filter Pills -->
+                <div class="filter-tabs-wrapper" id="projects-filter-tabs">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="ai">AI & LLMs</button>
+                    <button class="filter-btn" data-filter="web">Full-Stack & Web</button>
+                    <button class="filter-btn" data-filter="opensource">Open Source</button>
+                </div>
+
                 <div class="projects-grid">
                     <!-- Project 1: SAMRAT -->
                     <div class="project-card" data-category="ai">

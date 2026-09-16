@@ -196,39 +196,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ==========================================================================
-    // 7. PROJECTS PORTFOLIO FILTERING SYSTEM
+    // 7. CATEGORY FILTERING SYSTEM (SKILLS & PROJECTS)
     // ==========================================================================
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+    // A. Skills Filter Tabs
+    const skillsTabContainer = document.getElementById('skills-filter-tabs');
+    if (skillsTabContainer) {
+        const skillBtns = skillsTabContainer.querySelectorAll('.filter-btn');
+        const skillBadges = document.querySelectorAll('.skill-badge');
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active state and add to clicked
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            const filterValue = btn.getAttribute('data-filter');
-            
-            projectCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                
-                if (filterValue === 'all' || category === filterValue) {
-                    card.classList.remove('hidden');
-                    // Small timeout for CSS transition opacity triggers
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 50);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(15px)';
-                    setTimeout(() => {
-                        card.classList.add('hidden');
-                    }, 300);
-                }
+        skillBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                skillBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterVal = btn.getAttribute('data-filter');
+
+                skillBadges.forEach(badge => {
+                    const category = badge.getAttribute('data-category');
+                    if (filterVal === 'all' || category === filterVal) {
+                        badge.classList.remove('filter-hidden');
+                        setTimeout(() => {
+                            badge.style.opacity = '1';
+                            badge.style.transform = 'scale(1)';
+                        }, 20);
+                    } else {
+                        badge.style.opacity = '0';
+                        badge.style.transform = 'scale(0.92)';
+                        setTimeout(() => {
+                            badge.classList.add('filter-hidden');
+                        }, 250);
+                    }
+                });
             });
         });
-    });
+    }
+
+    // B. Projects Filter Tabs
+    const projectsTabContainer = document.getElementById('projects-filter-tabs');
+    if (projectsTabContainer) {
+        const projectBtns = projectsTabContainer.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        projectBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                projectBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterVal = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    const category = card.getAttribute('data-category') || '';
+                    const match = filterVal === 'all' || category.includes(filterVal);
+
+                    if (match) {
+                        card.classList.remove('filter-hidden');
+                        card.classList.remove('hidden');
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 20);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(15px)';
+                        setTimeout(() => {
+                            card.classList.add('filter-hidden');
+                            card.classList.add('hidden');
+                        }, 250);
+                    }
+                });
+            });
+        });
+    }
 
 
     // ==========================================================================

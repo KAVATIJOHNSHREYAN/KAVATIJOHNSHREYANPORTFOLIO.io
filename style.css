@@ -2818,6 +2818,58 @@ body.preloading {
 }
 
 /* ==========================================================================
+   INTERACTIVE CATEGORY FILTER TABS (SKILLS & PROJECTS)
+   ========================================================================== */
+.filter-tabs-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+    background: rgba(18, 18, 26, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    padding: 0.5rem 1.25rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-btn:hover {
+    color: #ffffff;
+    border-color: var(--accent-orange);
+    background: rgba(255, 60, 0, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 60, 0, 0.2);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #ff3c00, #d62400);
+    color: #ffffff;
+    border-color: var(--accent-orange);
+    box-shadow: 0 6px 20px rgba(255, 60, 0, 0.35);
+}
+
+/* Smooth filtering transition for badge and card elements */
+.skill-badge, .project-card {
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.skill-badge.filter-hidden, .project-card.filter-hidden {
+    display: none !important;
+    opacity: 0;
+    transform: scale(0.92);
+}
+
+/* ==========================================================================
    INTERACTIVE ASK AI SHREYAN CHAT WIDGET
    ========================================================================== */
 #ai-chat-root {
