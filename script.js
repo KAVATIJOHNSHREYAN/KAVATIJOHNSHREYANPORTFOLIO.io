@@ -268,6 +268,134 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ==========================================================================
+    // 8. SYSTEM ARCHITECTURE & SPECS MODAL LOGIC
+    // ==========================================================================
+    const archModalOverlay = document.getElementById('arch-modal-overlay');
+    const archModalClose = document.getElementById('arch-modal-close');
+    const archModalTitle = document.getElementById('arch-modal-title');
+    const archModalContent = document.getElementById('arch-modal-body-content');
+    const archBtns = document.querySelectorAll('.btn-arch-modal');
+
+    const ARCH_DATA = {
+        samrat: {
+            title: "SAMRAT AETHERMIND V2 — System Architecture",
+            steps: [
+                { step: "Node 01: Client UI", title: "Next.js & TypeScript Frontend", desc: "Zustand state management, interactive voice input, audio waveforms, responsive glassmorphism UI." },
+                { step: "Node 02: API Gateway", title: "FastAPI Backend Router", desc: "Async Python REST API gateway, JWT session authentication, payload validation, streaming endpoints." },
+                { step: "Node 03: AI Engine", title: "Multi-LLM & RAG Engine", desc: "Dynamic model routing between Gemini 1.5, OpenAI GPT-4o, and Cohere. Retrieval-Augmented Generation document QA." },
+                { step: "Node 04: Persistence", title: "Database & Vector Store", desc: "SQLite relational database for session storage, conversation logs, and vector embeddings cache." }
+            ],
+            specs: [
+                { label: "Frontend Deployment", val: "Vercel Edge Network" },
+                { label: "Backend Deployment", val: "Render Web Service" },
+                { label: "AI Models Supported", val: "Gemini, OpenAI, Cohere" },
+                { label: "Architecture Pattern", val: "RAG + Async REST API" }
+            ]
+        },
+        srto: {
+            title: "Smart Resource & Timetable Optimizer — Architecture",
+            steps: [
+                { step: "Node 01: Dashboard UI", title: "React & TypeScript Frontend", desc: "Role-Based Access Control (RBAC) views for departments, faculty, classrooms, and student schedules." },
+                { step: "Node 02: REST Services", title: "FastAPI Middleware", desc: "Secure API routing, request validation, authentication tokens, automated PDF report generators." },
+                { step: "Node 03: Solver Engine", title: "Constraint Optimization Algorithm", desc: "AI-assisted computational intelligence algorithm evaluating classroom capacity, faculty loads, and time slots." },
+                { step: "Node 04: Database", title: "SQLite / MySQL Persistence", desc: "Structured relational tables for course matrices, room allocations, faculty profiles, and schedule outputs." }
+            ],
+            specs: [
+                { label: "Frontend Stack", val: "React, Next.js, TypeScript" },
+                { label: "Backend Framework", val: "Python FastAPI" },
+                { label: "Security Protocol", val: "JWT & Role-Based Access" },
+                { label: "Deployment Targets", val: "Vercel (FE) + Render (BE)" }
+            ]
+        },
+        edu: {
+            title: "AetherMind EDU — Modular Education AI Architecture",
+            steps: [
+                { step: "Node 01: Student Portal", title: "Next.js 14 Interactive Web App", desc: "Adaptive learning dashboard, course progress tracker, real-time AI tutor interface." },
+                { step: "Node 02: AI Microservices", title: "FastAPI Agent Orchestrator", desc: "Microservices for personalized learning path generation, automated document Q&A, and quiz generation." },
+                { step: "Node 03: Knowledge Base", title: "Vector Index & LLM RAG", desc: "Educational textbook vector embeddings index powering instant, context-aware student answers." },
+                { step: "Node 04: Analytics", title: "SQLite Data Warehouse", desc: "Tracks student learning analytics, comprehension scores, and modular AI interaction logs." }
+            ],
+            specs: [
+                { label: "Development Status", val: "In Active Engineering" },
+                { label: "Primary Stack", val: "Next.js, Python FastAPI" },
+                { label: "AI Components", val: "LLM Agents & RAG" },
+                { label: "Target Host", val: "Vercel + Cloud Backends" }
+            ]
+        }
+    };
+
+    if (archModalOverlay && archBtns.length > 0) {
+        archBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const projectKey = btn.getAttribute('data-project');
+                const data = ARCH_DATA[projectKey];
+
+                if (data) {
+                    archModalTitle.textContent = data.title;
+                    
+                    let html = `
+                        <div class="arch-flow-diagram">
+                            <h4 style="color: var(--accent-orange); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;"><i class="fa-solid fa-network-wired"></i> End-to-End System Flow</h4>
+                            <div class="arch-flow-steps">
+                    `;
+
+                    data.steps.forEach(s => {
+                        html += `
+                            <div class="arch-node-card">
+                                <span class="arch-node-step">${s.step}</span>
+                                <h5 class="arch-node-title">${s.title}</h5>
+                                <p class="arch-node-desc">${s.desc}</p>
+                            </div>
+                        `;
+                    });
+
+                    html += `
+                            </div>
+                        </div>
+                        
+                        <h4 style="color: var(--accent-orange); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 1.5rem; margin-bottom: 0.5rem;"><i class="fa-solid fa-sliders"></i> Key Technical Specifications</h4>
+                        <div class="tech-specs-grid">
+                    `;
+
+                    data.specs.forEach(sp => {
+                        html += `
+                            <div class="spec-item">
+                                <span class="spec-label">${sp.label}</span>
+                                <span class="spec-val">${sp.val}</span>
+                            </div>
+                        `;
+                    });
+
+                    html += `</div>`;
+
+                    archModalContent.innerHTML = html;
+                    archModalOverlay.classList.remove('hidden');
+                    archModalOverlay.setAttribute('aria-hidden', 'false');
+                }
+            });
+        });
+
+        const closeModal = () => {
+            archModalOverlay.classList.add('hidden');
+            archModalOverlay.setAttribute('aria-hidden', 'true');
+        };
+
+        archModalClose.addEventListener('click', closeModal);
+
+        archModalOverlay.addEventListener('click', (e) => {
+            if (e.target === archModalOverlay) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !archModalOverlay.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    }
+
 
     // ==========================================================================
     // 8. COPY TO CLIPBOARD BUTTONS

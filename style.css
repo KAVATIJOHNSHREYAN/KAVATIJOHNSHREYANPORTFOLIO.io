@@ -2869,6 +2869,216 @@ body.preloading {
     transform: scale(0.92);
 }
 
+/* Architecture Button on Project Cards */
+.btn-arch-modal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    background: rgba(255, 60, 0, 0.08);
+    border: 1px solid rgba(255, 60, 0, 0.3);
+    border-radius: 6px;
+    color: var(--accent-orange);
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-top: 0.25rem;
+}
+
+.btn-arch-modal:hover {
+    background: var(--accent-orange);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255, 60, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   SYSTEM ARCHITECTURE MODAL DIALOG
+   ========================================================================== */
+.arch-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 5, 10, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.arch-modal-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.arch-modal-dialog {
+    width: 100%;
+    max-width: 860px;
+    max-height: 90vh;
+    background: rgba(14, 14, 22, 0.95);
+    border: 1px solid rgba(255, 60, 0, 0.35);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 60, 0, 0.2);
+    animation: modalPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes modalPop {
+    from { opacity: 0; transform: scale(0.92) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.arch-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.75rem;
+    background: rgba(22, 22, 32, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.arch-header-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.arch-header-title i {
+    font-size: 1.25rem;
+}
+
+.arch-header-title h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+}
+
+.arch-modal-close {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.arch-modal-close:hover {
+    background: rgba(255, 60, 0, 0.2);
+    color: #ffffff;
+    border-color: var(--accent-orange);
+}
+
+.arch-modal-body {
+    padding: 1.75rem;
+    overflow-y: auto;
+}
+
+/* System Flow Diagrams */
+.arch-flow-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.arch-flow-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.arch-node-card {
+    background: rgba(22, 22, 32, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid var(--accent-orange);
+    border-radius: 10px;
+    padding: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.arch-node-step {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--accent-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.arch-node-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.arch-node-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Specs Table Grid */
+.tech-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    background: rgba(18, 18, 26, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-top: 1rem;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.spec-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.spec-val {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+@media (max-width: 600px) {
+    .arch-modal-dialog {
+        max-height: 95vh;
+    }
+    .tech-specs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ==========================================================================
    INTERACTIVE ASK AI SHREYAN CHAT WIDGET
    ========================================================================== */

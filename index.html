@@ -586,8 +586,9 @@
                             <div class="project-highlights">
                                 <strong>Architecture:</strong> Engineered a highly scalable custom backend using FastAPI, providing robust session management and seamless model switching between Gemini, OpenAI, and Cohere architectures.
                             </div>
-                            <div class="project-impact" style="margin-top: 1rem;">
-                                <i class="fa-solid fa-circle-nodes text-orange"></i> <span><strong>Technologies:</strong> Next.js, TypeScript, FastAPI, Python, SQLite, Zustand, Vercel, Render.</span>
+                            <div class="project-impact" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                                <div><i class="fa-solid fa-circle-nodes text-orange"></i> <span><strong>Technologies:</strong> Next.js, TypeScript, FastAPI, Python, SQLite, Zustand, Vercel, Render.</span></div>
+                                <button class="btn-arch-modal" data-project="samrat"><i class="fa-solid fa-diagram-project"></i> View Architecture & Diagram</button>
                             </div>
                         </div>
                     </div>
@@ -616,8 +617,9 @@
                             <div class="project-highlights">
                                 <strong>Problem Solved:</strong> Replaces manual academic scheduling by deploying automated timetable validation, advanced reporting, and conflict-free institutional administration dashboards via secure REST APIs.
                             </div>
-                            <div class="project-impact font-weight-bold" style="margin-top: 1rem;">
-                                <i class="fa-solid fa-circle-nodes text-orange"></i> <span><strong>Result & Tech:</strong> React, TypeScript, FastAPI, Python, SQLite, JWT Authentication. Deployed on Vercel and Render.</span>
+                            <div class="project-impact font-weight-bold" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                                <div><i class="fa-solid fa-circle-nodes text-orange"></i> <span><strong>Result & Tech:</strong> React, TypeScript, FastAPI, Python, SQLite, JWT Authentication. Deployed on Vercel and Render.</span></div>
+                                <button class="btn-arch-modal" data-project="srto"><i class="fa-solid fa-diagram-project"></i> View Architecture & Diagram</button>
                             </div>
                         </div>
                     </div>
@@ -685,8 +687,9 @@
                             <div class="project-highlights">
                                 <strong>Architecture:</strong> Designing scalable AI education architecture leveraging modular AI services, intelligent LLM agents, and Retrieval-Augmented Generation workflows.
                             </div>
-                            <div class="project-impact font-weight-bold" style="margin-top: 1rem;">
-                                <i class="fa-solid fa-circle-nodes text-orange"></i> <span><strong>Technologies:</strong> Next.js, React, TypeScript, FastAPI, Python, LLMs, RAG, AI Agents, SQLite.</span>
+                            <div class="project-impact font-weight-bold" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                                <div><i class="fa-solid fa-circle-nodes text-orange"></i> <span><strong>Technologies:</strong> Next.js, React, TypeScript, FastAPI, Python, LLMs, RAG, AI Agents, SQLite.</span></div>
+                                <button class="btn-arch-modal" data-project="edu"><i class="fa-solid fa-diagram-project"></i> View Architecture & Diagram</button>
                             </div>
                         </div>
                     </div>
@@ -978,6 +981,26 @@
             <p>&copy; 2026 Kavati John Shreyan. All Rights Reserved. Built with <i class="fa-solid fa-heart text-orange"></i>.</p>
         </div>
     </footer>
+
+    <!-- System Architecture Modal Overlay -->
+    <div id="arch-modal-overlay" class="arch-modal-overlay hidden" aria-hidden="true">
+        <div class="arch-modal-dialog">
+            <div class="arch-modal-header">
+                <div class="arch-header-title">
+                    <i class="fa-solid fa-diagram-project text-orange"></i>
+                    <h3 id="arch-modal-title">System Architecture & Specs</h3>
+                </div>
+                <button id="arch-modal-close" class="arch-modal-close" aria-label="Close Architecture Modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="arch-modal-body">
+                <div id="arch-modal-body-content">
+                    <!-- Dynamic Architecture Flow & Specs Container -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Toast Notification Container -->
     <div id="toast-container" class="toast-container"></div>
