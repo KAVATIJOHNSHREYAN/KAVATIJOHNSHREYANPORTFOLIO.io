@@ -37,7 +37,8 @@ Which project would you like to inspect?`,
 
 • **Description:** Enterprise-grade multimodal AI platform unifying intelligent conversations, document understanding, OCR, Vision AI, image generation, voice interaction, Retrieval-Augmented Generation (RAG), secure workspaces, and AI routing.
 • **Tech Stack:** Python, FastAPI, Streamlit, Firebase, Supabase, Qdrant Vector DB, Amazon Bedrock, JavaScript, HTML, CSS.
-• **Key Capabilities:** Intelligent AI Routing, Multi-LLM Support, Chat Workspaces, Document Intelligence, OCR & PDF Analysis, Vision AI, Image Generation, Voice Assistant, Web Intelligence.`,
+• **Key Capabilities:** Intelligent AI Routing, Multi-LLM Support, Chat Workspaces, Document Intelligence, OCR & PDF Analysis, Vision AI, Image Generation, Voice Assistant, Web Intelligence.
+• **Live Demo:** [aethermind-multi-modal-ai-fwt8jmcqdbbmoahwveobze.streamlit.app](https://aethermind-multi-modal-ai-fwt8jmcqdbbmoahwveobze.streamlit.app/)`,
             chips: ["🏗️ AetherMind Genesis", "🗓️ Timetable Optimizer", "📜 Resume", "📬 Contact Shreyan"]
         },
         {
