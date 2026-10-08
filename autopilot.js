@@ -56,7 +56,7 @@
     {
       selector: "#hackathons",
       navHref: "#hackathons",
-      message: "Reviewing Smart India Hackathon (SIH) 2026 18-hour sprint & full-stack prototypes.",
+      message: "Reviewing Hackathons: AWS 18-Hour Hackathon (KL University) & Smart India Hackathon (SIH 2026).",
       duration: 4500
     },
     {

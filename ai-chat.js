@@ -78,13 +78,17 @@ Which project would you like to inspect?`,
             chips: ["⚡ AetherMind Multi-Modal AI", "🏗️ AetherMind Genesis", "📜 Resume"]
         },
         {
-            intents: ["hackathon", "sih", "smart india hackathon", "sih 2026", "competition", "team"],
-            response: `🏆 **Smart India Hackathon (SIH) 2026**:
+            intents: ["hackathon", "sih", "smart india hackathon", "sih 2026", "aws hackathon", "aws", "kl university hackathon", "competition", "team"],
+            response: `🏆 **Hackathon Achievements**:
 
-Shreyan participated in **SIH 2026** as part of a **6-member development team** collaborating on a complex real-world problem statement. 
+1. ☁️ **AWS 18-Hour Hackathon (KL University)**:
+   • Participated in an intensive **18-hour AWS Hackathon** hosted at KL University.
+   • Engineered a cloud-native prototype under strict deadlines.
+   • Pitched to industry experts and judges, receiving official scoring, marks, and architectural feedback.
 
-⏱️ **18-Hour Sprint:** Worked continuously for **18 hours** (6:00 PM to 12:00 PM the following day) under strict deadlines, contributing to core development, rapid decision-making, and full-stack problem-solving.`,
-            chips: ["🚀 Top Projects", "💼 Siemens Internship", "📬 Contact Shreyan"]
+2. 🇮🇳 **Smart India Hackathon (SIH) 2026**:
+   • Worked continuously for **18 hours** in a 6-member team on a real-world problem statement, delivering rapid problem solving and full-stack API integration.`,
+            chips: ["⚡ Flagship AI Platform", "💼 Siemens Internship", "📬 Contact Shreyan"]
         },
         {
             intents: ["siemens", "internship", "experience", "work experience", "data science intern"],

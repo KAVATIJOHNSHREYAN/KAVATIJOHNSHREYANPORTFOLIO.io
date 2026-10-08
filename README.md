@@ -17,7 +17,7 @@ Welcome to the official repository for **Kavati John Shreyan's** professional po
 
 - 🎓 **Education:** B.Tech in CSE (AI & Computational Intelligence), KL University (2024–Present) | CGPA: **7.74**
 - 💼 **Experience:** Data Science Intern at **Siemens** (April 2026 – June 2026)
-- 🏆 **Hackathons:** Smart India Hackathon (**SIH 2026**) 18-Hour High-Pressure Sprint
+- 🏆 **Hackathons:** **AWS 18-Hour Hackathon (KL University)** (Expert Evaluated & Scored) | Smart India Hackathon (**SIH 2026**)
 - 📜 **Certifications:** Microsoft Certified Azure Fundamentals, Siemens Data Science Virtual Internship
 - 🎯 **Career Focus:** AI Engineer, Software Architect, Machine Learning Engineer, Full-Stack AI Developer
 
