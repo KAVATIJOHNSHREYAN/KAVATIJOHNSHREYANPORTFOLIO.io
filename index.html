@@ -788,11 +788,17 @@
                         </div>
                     </div>
                     
-                    <!-- Contribution Graph Widget -->
+                    <!-- Contribution Graph Widget with Snake Eating Animation -->
                     <div class="github-graph-card">
-                        <h4>Contribution Activity</h4>
-                        <div class="graph-wrapper">
-                            <img src="https://ghchart.rshah.org/ff3c00/KAVATIJOHNSHREYAN" alt="GitHub Contribution Chart" />
+                        <div class="graph-card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                            <h4 style="margin-bottom: 0;"><i class="fa-solid fa-staff-snake text-orange"></i> Contribution Activity</h4>
+                            <div class="snake-stats-badge" style="font-size: 0.8rem; font-weight: 700; color: var(--accent-orange); background: rgba(255, 60, 0, 0.1); border: 1px solid rgba(255, 60, 0, 0.25); padding: 0.25rem 0.75rem; border-radius: 20px; display: inline-flex; align-items: center; gap: 0.5rem;">
+                                <i class="fa-solid fa-play fa-spin" style="font-size: 0.7rem;"></i>
+                                <span id="snake-score">Contributions Eaten: 0</span>
+                            </div>
+                        </div>
+                        <div class="graph-wrapper canvas-snake-wrapper" style="overflow-x: auto; max-width: 100%; display: flex; justify-content: center;">
+                            <canvas id="github-snake-canvas" width="870" height="150" style="max-width: 100%; height: auto; display: block;"></canvas>
                         </div>
                     </div>
                 </div>
@@ -1066,6 +1072,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
     <script src="autopilot.js"></script>
+    <script src="snake-graph.js"></script>
     <script src="ai-chat.js"></script>
 </body>
 </html>
