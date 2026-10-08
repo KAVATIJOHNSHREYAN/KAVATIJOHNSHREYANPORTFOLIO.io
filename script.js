@@ -278,19 +278,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const archBtns = document.querySelectorAll('.btn-arch-modal');
 
     const ARCH_DATA = {
-        samrat: {
-            title: "SAMRAT AETHERMIND V2 — System Architecture",
+        aethermind: {
+            title: "AetherMind Multi-Modal AI — Flagship Enterprise Architecture",
             steps: [
-                { step: "Node 01: Client UI", title: "Next.js & TypeScript Frontend", desc: "Zustand state management, interactive voice input, audio waveforms, responsive glassmorphism UI." },
-                { step: "Node 02: API Gateway", title: "FastAPI Backend Router", desc: "Async Python REST API gateway, JWT session authentication, payload validation, streaming endpoints." },
-                { step: "Node 03: AI Engine", title: "Multi-LLM & RAG Engine", desc: "Dynamic model routing between Gemini 1.5, OpenAI GPT-4o, and Cohere. Retrieval-Augmented Generation document QA." },
-                { step: "Node 04: Persistence", title: "Database & Vector Store", desc: "SQLite relational database for session storage, conversation logs, and vector embeddings cache." }
+                { step: "Node 01: Client UI", title: "Modern Glassmorphism UI", desc: "Built with Streamlit & JavaScript, featuring real-time audio waveforms, OCR previews, image creation canvas, and responsive chat workspaces." },
+                { step: "Node 02: Intelligent Router", title: "FastAPI Routing Gateway", desc: "Async Python API router supporting payload validation, streaming endpoints, and intelligent multi-LLM load balancing." },
+                { step: "Node 03: Multimodal AI Engine", title: "Amazon Bedrock & Multi-LLM Orchestration", desc: "Unified provider engine leveraging Amazon Bedrock, Google Gemini, OpenAI GPT-4o, Cohere, Vision AI, and OCR document parsing." },
+                { step: "Node 04: Vector Memory & Storage", title: "Qdrant Vector DB & Supabase / Firebase", desc: "High-performance RAG vector embeddings storage, secure user authentication, and persistent conversation session stores." }
             ],
             specs: [
-                { label: "Frontend Deployment", val: "Vercel Edge Network" },
-                { label: "Backend Deployment", val: "Render Web Service" },
-                { label: "AI Models Supported", val: "Gemini, OpenAI, Cohere" },
-                { label: "Architecture Pattern", val: "RAG + Async REST API" }
+                { label: "Deployment Platform", val: "Render Web Services + Vercel" },
+                { label: "Vector Database", val: "Qdrant Vector Engine" },
+                { label: "Cloud & Auth", val: "Amazon Bedrock, Firebase, Supabase" },
+                { label: "Supported Modalities", val: "Text, Document OCR, Vision, Image Gen, Voice" }
+            ]
+        },
+        genesis: {
+            title: "AetherMind Genesis — AI Software Architecture & Engineering Blueprint Engine",
+            steps: [
+                { step: "Node 01: Requirement Parser", title: "React & TypeScript Frontend", desc: "Interactive canvas for entering software concepts, functional specifications, and target tech stack parameters." },
+                { step: "Node 02: Architect Agent", title: "FastAPI Agent Orchestrator", desc: "AI Agent system that synthesizes requirements into high-level system components, flowcharts, and component graphs." },
+                { step: "Node 03: Spec Generator", title: "LLM Blueprint Generator", desc: "Generates production-grade REST API contracts, database schemas (SQL/NoSQL), deployment pipelines, and UI wireframe designs." },
+                { step: "Node 04: Export Engine", title: "Vector Search & Document Builder", desc: "Formats complete software architecture blueprints into interactive documentation, Markdown, and exportable engineering packages." }
+            ],
+            specs: [
+                { label: "Core Stack", val: "Python FastAPI, React, TypeScript" },
+                { label: "AI Components", val: "Agentic Workflows & Multi-LLM Prompts" },
+                { label: "Outputs", val: "System Schemas, API Specs, Flowcharts, UI Plans" },
+                { label: "Architecture", val: "Microservices & Agent Pipeline" }
             ]
         },
         srto: {
@@ -317,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { step: "Node 04: Analytics", title: "SQLite Data Warehouse", desc: "Tracks student learning analytics, comprehension scores, and modular AI interaction logs." }
             ],
             specs: [
-                { label: "Development Status", val: "In Active Engineering" },
+                { label: "Development Status", val: "Completed Platform" },
                 { label: "Primary Stack", val: "Next.js, Python FastAPI" },
                 { label: "AI Components", val: "LLM Agents & RAG" },
                 { label: "Target Host", val: "Vercel + Cloud Backends" }

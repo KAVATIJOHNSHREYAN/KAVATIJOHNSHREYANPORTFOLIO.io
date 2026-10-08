@@ -1,5 +1,5 @@
 /**
- * Ask AI Shreyan - Interactive Portfolio AI Chat Widget
+ * Ask Aether AI - Interactive Portfolio AI Chat Widget
  * Author: Kavati John Shreyan
  * Description: Client-side NLP & Knowledge Engine powered by structured intent matching.
  */
@@ -10,41 +10,71 @@
     // Knowledge Base Data Structure
     const KNOWLEDGE_BASE = [
         {
-            intents: ["hi", "hello", "hey", "who are you", "start", "greetings", "help"],
-            response: `Hello! 👋 I'm **Shreyan's AI Assistant**. 
+            intents: ["hi", "hello", "hey", "who are you", "start", "greetings", "help", "ai"],
+            response: `Hello! 👋 I'm **Ask Aether AI**, Shreyan's portfolio assistant. 
 
 I can answer your questions about Shreyan's **projects**, **skills**, **SIH 2026 hackathon experience**, **Siemens internship**, or **how to contact him**. 
 
 What would you like to explore?`,
-            chips: ["🚀 Top Projects", "🏆 SIH 2026 Hackathon", "🛠️ Tech Stack", "💼 Siemens Internship"]
+            chips: ["⚡ Flagship AI Platform", "🏗️ AetherMind Genesis", "🏆 SIH 2026 Hackathon", "💼 Siemens Internship"]
         },
         {
-            intents: ["project", "projects", "work", "apps", "samrat", "aethermind", "timetable", "optimizer", "attendance"],
-            response: `Here are **Shreyan's key projects**:
+            intents: ["project", "projects", "work", "apps", "portfolio", "code"],
+            response: `Here are **Shreyan's featured engineering projects**:
 
-1. ⚡ **SAMRAT AETHERMIND V2** — Advanced Multi-LLM AI Platform integrating Gemini, OpenAI & Cohere with RAG document QA and voice interactions.
-2. 🗓️ **Smart Resource & Timetable Optimizer** — AI-assisted university timetable optimizer with secure RBAC, room scheduling, and institutional analytics.
-3. 📊 **KL University Attendance Calculator** — Open-source responsive frontend utility built with React & Next.js.
-4. 📚 **AetherMind EDU** — AI-powered personalized learning platform architecture (currently in development).
+1. ⚡ **AetherMind Multi-Modal AI** — Enterprise Multimodal AI platform with AI routing, Vision AI, OCR, voice interaction, RAG, and document intelligence.
+2. 🏗️ **AetherMind Genesis** — AI software architecture platform generating production-ready software blueprints, flowcharts, APIs, and UI/UX specs.
+3. 🗓️ **Smart Resource & Timetable Optimizer** — AI-assisted university timetable & resource optimization platform with RBAC & FastAPI backend.
+4. 📊 **KL University Attendance Calculator** — Open-source responsive student attendance utility with modern UI/UX redesign.
+5. 📚 **AetherMind EDU** — Comprehensive AI education platform delivering personalized tutoring, RAG study assistants, and career guidance.
 
-Would you like more details on a specific project?`,
-            chips: ["⚡ SAMRAT AETHERMIND", "🗓️ Timetable Optimizer", "🏆 SIH 2026 Hackathon"]
+Which project would you like to inspect?`,
+            chips: ["⚡ AetherMind Multi-Modal AI", "🏗️ AetherMind Genesis", "🗓️ Timetable Optimizer", "📊 Attendance Calculator"]
         },
         {
-            intents: ["samrat", "aethermind v2", "llm platform", "multi-llm"],
-            response: `⚡ **SAMRAT AETHERMIND V2** is Shreyan's flagship AI project!
+            intents: ["aethermind multi-modal ai", "multimodal", "multimodal ai", "flagship", "aethermind multi modal", "samrat"],
+            response: `⚡ **AetherMind Multi-Modal AI** (⭐ Flagship AI Platform):
 
-• **Tech Stack:** Next.js, TypeScript, FastAPI, Python, SQLite, Zustand, Vercel, Render.
-• **Key Features:** Multi-LLM model switching (Gemini, OpenAI, Cohere), Retrieval-Augmented Generation (RAG) for document Q&A, voice interaction, multilingual support, and customized chat sessions.`,
-            chips: ["🗓️ Timetable Optimizer", "🛠️ Tech Stack", "📬 Contact Shreyan"]
+• **Description:** Enterprise-grade multimodal AI platform unifying intelligent conversations, document understanding, OCR, Vision AI, image generation, voice interaction, Retrieval-Augmented Generation (RAG), secure workspaces, and AI routing.
+• **Tech Stack:** Python, FastAPI, Streamlit, Firebase, Supabase, Qdrant Vector DB, Amazon Bedrock, JavaScript, HTML, CSS.
+• **Key Capabilities:** Intelligent AI Routing, Multi-LLM Support, Chat Workspaces, Document Intelligence, OCR & PDF Analysis, Vision AI, Image Generation, Voice Assistant, Web Intelligence.`,
+            chips: ["🏗️ AetherMind Genesis", "🗓️ Timetable Optimizer", "📜 Resume", "📬 Contact Shreyan"]
         },
         {
-            intents: ["timetable", "resource optimizer", "optimizer", "smart resource"],
+            intents: ["genesis", "aethermind genesis", "blueprint", "software architect", "architecture platform"],
+            response: `🏗️ **AetherMind Genesis**:
+
+• **Description:** AI-powered software architecture and product engineering platform that transforms raw ideas into production-ready software blueprints.
+• **Tech Stack:** Python, FastAPI, React, TypeScript, AI Agents, LLMs, Prompt Engineering, Vector Search.
+• **Key Features:** AI Software Architect, Blueprint Generator, System Design, UI/UX Planning, Database & API Architecture, Flowcharts, Documentation Generator.`,
+            chips: ["⚡ AetherMind Multi-Modal AI", "📚 AetherMind EDU", "📜 Resume"]
+        },
+        {
+            intents: ["timetable", "resource optimizer", "optimizer", "smart resource", "srto"],
             response: `🗓️ **Smart Resource & Timetable Optimizer**:
 
+• **Description:** AI-assisted university resource & timetable optimization platform automating academic timetable generation, faculty allocation, and classroom management.
 • **Tech Stack:** React, TypeScript, FastAPI, Python, SQLite, JWT Authentication.
-• **Highlights:** Automates complex academic timetable constraints, role-based access control (RBAC), room & faculty availability tracking, and automated reporting. Deployed on Vercel & Render.`,
-            chips: ["⚡ SAMRAT AETHERMIND", "🛠️ Tech Stack", "📜 Resume"]
+• **Deployment:** Frontend on Vercel, Backend microservices on Render.`,
+            chips: ["📊 Attendance Calculator", "🛠️ Tech Stack", "📜 Resume"]
+        },
+        {
+            intents: ["attendance", "attendance calculator", "kl university attendance", "ltps"],
+            response: `📊 **KL University Attendance Calculator**:
+
+• **Description:** Modern open-source attendance calculator featuring a complete UI/UX redesign, responsive mobile layout, and intuitive student tracking.
+• **Tech Stack:** React, Next.js, Tailwind CSS, JavaScript, UI/UX Design.
+• **Live Demo:** [ltps-attendance-calculator.vercel.app](https://ltps-attendance-calculator.vercel.app)`,
+            chips: ["⚡ AetherMind Multi-Modal AI", "🛠️ Tech Stack", "📜 Resume"]
+        },
+        {
+            intents: ["edu", "aethermind edu", "education", "tutor"],
+            response: `📚 **AetherMind EDU**:
+
+• **Description:** Comprehensive AI-powered education platform delivering personalized learning, intelligent tutoring, adaptive assessments, document intelligence, and career guidance.
+• **Tech Stack:** Next.js, React, FastAPI, Python, AI Agents, LLMs, RAG, SQLite.
+• **Features:** AI Tutor, Personalized Learning Paths, Document Q&A, Career Advisory, Smart Assessments.`,
+            chips: ["⚡ AetherMind Multi-Modal AI", "🏗️ AetherMind Genesis", "📜 Resume"]
         },
         {
             intents: ["hackathon", "sih", "smart india hackathon", "sih 2026", "competition", "team"],
@@ -52,7 +82,7 @@ Would you like more details on a specific project?`,
 
 Shreyan participated in **SIH 2026** as part of a **6-member development team** collaborating on a complex real-world problem statement. 
 
-⏱️ **High-Pressure Execution:** Worked continuously for **18 hours** (6:00 PM to 12:00 PM the following day) under strict deadlines, contributing to core development, rapid decision-making, and full-stack problem-solving.`,
+⏱️ **18-Hour Sprint:** Worked continuously for **18 hours** (6:00 PM to 12:00 PM the following day) under strict deadlines, contributing to core development, rapid decision-making, and full-stack problem-solving.`,
             chips: ["🚀 Top Projects", "💼 Siemens Internship", "📬 Contact Shreyan"]
         },
         {
@@ -66,13 +96,14 @@ Shreyan participated in **SIH 2026** as part of a **6-member development team** 
             chips: ["🛠️ Tech Stack", "📜 Resume", "🎓 Education"]
         },
         {
-            intents: ["skill", "skills", "tech stack", "languages", "python", "java", "react", "fastapi", "rag", "llm", "frameworks"],
+            intents: ["skill", "skills", "tech stack", "languages", "python", "java", "react", "fastapi", "rag", "llm", "frameworks", "qdrant", "bedrock"],
             response: `🛠️ **Shreyan's Technical Stack**:
 
-• **Programming:** Python, Java, JavaScript, TypeScript
-• **Artificial Intelligence:** LLMs, RAG, Computational Intelligence, Prompt Engineering, AI Chatbots
-• **Web Development:** HTML5, CSS3, React, Next.js, FastAPI, REST APIs, JWT
-• **Databases & Cloud:** MySQL, SQLite, Firebase, Google Cloud, Vercel, Render
+• **Languages:** Python, Java, JavaScript, TypeScript, HTML5, CSS3
+• **AI & LLMs:** Multimodal AI, RAG, AI Agents, Qdrant Vector DB, Amazon Bedrock, Prompt Engineering, Vision AI
+• **Web & Backend:** FastAPI, Streamlit, React, Next.js, REST APIs, JWT, Supabase, Firebase
+• **Databases:** Qdrant, Supabase, Firebase Firestore, MySQL, SQLite
+• **Cloud & Hosting:** Vercel, Render, Google Cloud, AWS
 • **Tools:** Git, GitHub, Antigravity, VS Code`,
             chips: ["🚀 Top Projects", "📜 Resume", "📬 Contact Shreyan"]
         },
@@ -132,7 +163,6 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
         }
 
         initDOM() {
-            // Render Widget Elements into DOM
             const widgetContainer = document.createElement("div");
             widgetContainer.id = "ai-chat-root";
             widgetContainer.innerHTML = `
@@ -171,7 +201,7 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
                         <div class="chat-msg bot-msg">
                             <div class="msg-avatar"><i class="fa-solid fa-brain"></i></div>
                             <div class="msg-bubble">
-                                Hello! 👋 I'm **Aether AI**, Shreyan's portfolio assistant. 
+                                Hello! 👋 I'm **Ask Aether AI**, Shreyan's portfolio assistant. 
                                 <br><br>
                                 Ask me anything about Shreyan's **projects**, **skills**, **SIH 2026 hackathon experience**, **Siemens internship**, or **how to contact him**.
                             </div>
@@ -179,10 +209,10 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
 
                         <!-- Quick Action Chips -->
                         <div class="quick-chips-container" id="quick-chips">
-                            <button class="chip-btn" data-query="🚀 Top Projects">🚀 Top Projects</button>
+                            <button class="chip-btn" data-query="⚡ Flagship AI Platform">⚡ Flagship AI Platform</button>
+                            <button class="chip-btn" data-query="🏗️ AetherMind Genesis">🏗️ AetherMind Genesis</button>
                             <button class="chip-btn" data-query="🏆 SIH 2026 Hackathon">🏆 SIH 2026</button>
                             <button class="chip-btn" data-query="🛠️ Tech Stack">🛠️ Tech Stack</button>
-                            <button class="chip-btn" data-query="💼 Siemens Internship">💼 Siemens</button>
                         </div>
                     </div>
 
@@ -197,7 +227,6 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
             `;
             document.body.appendChild(widgetContainer);
 
-            // Save DOM references
             this.triggerBtn = document.getElementById("ai-chat-trigger");
             this.chatWindow = document.getElementById("ai-chat-window");
             this.closeBtn = document.getElementById("ai-chat-close");
@@ -221,7 +250,6 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
                 }
             });
 
-            // Delegate quick chip clicks
             this.messagesContainer.addEventListener("click", (e) => {
                 const chip = e.target.closest(".chip-btn");
                 if (chip && !this.isTyping) {
@@ -230,7 +258,6 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
                 }
             });
 
-            // Close on Escape key
             document.addEventListener("keydown", (e) => {
                 if (e.key === "Escape" && this.isOpen) {
                     this.toggleWindow(false);
@@ -255,29 +282,25 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
         clearChat() {
             this.messagesContainer.innerHTML = `
                 <div class="chat-msg bot-msg">
-                    <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                    <div class="msg-avatar"><i class="fa-solid fa-brain"></i></div>
                     <div class="msg-bubble">
                         Chat reset! Ask me anything about Shreyan's **projects**, **skills**, **SIH 2026**, **internship**, or **contact info**.
                     </div>
                 </div>
                 <div class="quick-chips-container" id="quick-chips">
-                    <button class="chip-btn" data-query="🚀 Top Projects">🚀 Top Projects</button>
+                    <button class="chip-btn" data-query="⚡ Flagship AI Platform">⚡ Flagship AI Platform</button>
+                    <button class="chip-btn" data-query="🏗️ AetherMind Genesis">🏗️ AetherMind Genesis</button>
                     <button class="chip-btn" data-query="🏆 SIH 2026 Hackathon">🏆 SIH 2026</button>
                     <button class="chip-btn" data-query="🛠️ Tech Stack">🛠️ Tech Stack</button>
-                    <button class="chip-btn" data-query="💼 Siemens Internship">💼 Siemens</button>
                 </div>
             `;
         }
 
         handleUserQuery(userQuery) {
-            // Append User Message
             this.appendMessage(userQuery, "user");
-
-            // Show Typing Indicator
             this.showTypingIndicator();
             this.isTyping = true;
 
-            // Match intent and generate response with small realistic delay
             setTimeout(() => {
                 this.hideTypingIndicator();
                 const matched = this.findBestMatch(userQuery);
@@ -305,7 +328,7 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
             typingDiv.id = "ai-typing-indicator";
             typingDiv.className = "chat-msg bot-msg typing";
             typingDiv.innerHTML = `
-                <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+                <div class="msg-avatar"><i class="fa-solid fa-brain"></i></div>
                 <div class="msg-bubble typing-dots">
                     <span></span><span></span><span></span>
                 </div>
@@ -322,7 +345,6 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
         }
 
         appendMessage(content, sender, chips = []) {
-            // Remove existing inline chips container to keep conversation clean
             const existingChips = this.messagesContainer.querySelectorAll(".quick-chips-container");
             existingChips.forEach(c => c.remove());
 
@@ -342,7 +364,6 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
 
             this.messagesContainer.appendChild(msgDiv);
 
-            // Add Quick Action Chips if provided
             if (chips && chips.length > 0) {
                 const chipsDiv = document.createElement("div");
                 chipsDiv.className = "quick-chips-container";
@@ -361,11 +382,8 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
 
         parseMarkdown(text) {
             let html = text
-                // Bold
                 .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-                // Links [text](url)
                 .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
-                // New lines
                 .replace(/\n/g, "<br>");
             return html;
         }
@@ -381,7 +399,6 @@ Try asking about his **projects**, **SIH 2026 hackathon**, **Siemens internship*
         }
     }
 
-    // Initialize Widget when DOM is ready
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", () => new AIChatWidget());
     } else {
