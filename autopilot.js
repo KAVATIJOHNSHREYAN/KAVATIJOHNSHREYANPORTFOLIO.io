@@ -1,30 +1,111 @@
-// Autopilot Recruiter Walkthrough Script - Continuous Smooth Scroll Implementation
+// Autopilot Walkthrough Tour Script - Robust Smooth Recruiter Flow
 
 (function () {
   "use strict";
 
   let isAutopilotActive = false;
-  let animationFrameId = null;
+  let currentStepIndex = 0;
+  let activeTimeouts = [];
+  let tourStartTime = 0;
+
+  // DOM elements created dynamically
   let controllerBar = null;
   let stepText = null;
   let stepNumber = null;
   let progressBarFill = null;
 
-  // Key Portfolio Sections for Recruiter Tracking
-  const sections = [
-    { id: "home", title: "01 // HERO & IDENTITY", message: "Inspecting Kavati John Shreyan's profile, hero overview, and core engineering identity." },
-    { id: "about", title: "02 // PROFILE & OBJECTIVE", message: "Reviewing About Me, Computer Science background, and AI Career Objectives." },
-    { id: "education", title: "03 // ACADEMICS", message: "Reviewing Educational Timeline & B.Tech specialization at KL University." },
-    { id: "skills", title: "04 // SKILLS MATRIX", message: "Analyzing core technical skills: Python, Java, Next.js, FastAPI, Multimodal AI, RAG, and Cloud." },
-    { id: "experience", title: "05 // WORK EXPERIENCE", message: "Examining Data Science Internship at Siemens & data pipeline architectures." },
-    { id: "certifications", title: "06 // CREDENTIALS", message: "Reviewing verified credentials: Microsoft Certified Azure Fundamentals & Siemens Data Science." },
-    { id: "hackathons", title: "07 // HACKATHONS", message: "Reviewing Smart India Hackathon (SIH) 2026 18-hour sprint & full-stack prototypes." },
-    { id: "projects", title: "08 // FEATURED PROJECTS", message: "Inspecting Flagship AetherMind Multi-Modal AI, AetherMind Genesis, SRTO, Attendance Calc, & EDU." },
-    { id: "github-activity", title: "09 // OPEN SOURCE", message: "Reviewing GitHub contributions, open-source repositories, and code metrics." },
-    { id: "interests", title: "10 // FOCUS AREAS", message: "Reviewing core areas of interest in AI, LLM Agents, and RAG systems." },
-    { id: "services", title: "11 // EXPERTISE", message: "Reviewing technical expertise across AI, Data Science, Full-Stack, and REST APIs." },
-    { id: "contact", title: "12 // CONTACT & CONNECT", message: "Reaching Contact section, email details, and professional social profiles." }
+  /**
+   * Tour Steps Definition covering the complete portfolio in order:
+   */
+  const tourSteps = [
+    {
+      selector: "#home",
+      navHref: "#home",
+      message: "Inspecting Kavati John Shreyan's profile, hero overview, and core engineering identity.",
+      duration: 4000
+    },
+    {
+      selector: "#about",
+      navHref: "#about",
+      message: "Reviewing Profile, Computer Science background, and AI & Full-Stack Career Objectives.",
+      duration: 4500
+    },
+    {
+      selector: "#education",
+      navHref: "#education",
+      message: "Reviewing Educational Timeline & B.Tech specialization at KL University.",
+      duration: 4000
+    },
+    {
+      selector: "#skills",
+      navHref: "#skills",
+      message: "Analyzing core technical skills: Python, Java, Next.js, FastAPI, Multimodal AI, RAG, and Cloud.",
+      duration: 4500
+    },
+    {
+      selector: "#experience",
+      navHref: "#experience",
+      message: "Examining Data Science Internship at Siemens & enterprise data pipeline architectures.",
+      duration: 4500
+    },
+    {
+      selector: "#certifications",
+      navHref: "#certifications",
+      message: "Reviewing verified credentials: Microsoft Certified Azure Fundamentals & Siemens Data Science.",
+      duration: 4000
+    },
+    {
+      selector: "#hackathons",
+      navHref: "#hackathons",
+      message: "Reviewing Smart India Hackathon (SIH) 2026 18-hour sprint & full-stack prototypes.",
+      duration: 4500
+    },
+    {
+      selector: "#projects",
+      navHref: "#projects",
+      message: "Inspecting Flagship AetherMind Multi-Modal AI, AetherMind Genesis, SRTO, Attendance Calc, & EDU.",
+      duration: 5500
+    },
+    {
+      selector: "#services",
+      navHref: "#services",
+      message: "Reviewing technical expertise across AI Solutions, Data Analysis, Full-Stack, & REST APIs.",
+      duration: 4000
+    },
+    {
+      selector: "#contact",
+      navHref: "#contact",
+      message: "Reaching Contact section, email details, direct message form, and social profiles.",
+      duration: 4500
+    }
   ];
+
+  function delay(ms) {
+    return new Promise((resolve) => {
+      const timeout = setTimeout(resolve, ms);
+      activeTimeouts.push(timeout);
+    });
+  }
+
+  // Smooth scroll helper using window.scrollTo behavior smooth
+  function scrollToElement(selector) {
+    return new Promise((resolve) => {
+      const target = document.querySelector(selector);
+      if (!target) return resolve();
+
+      const headerOffset = 85;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: Math.max(0, offsetPosition),
+        behavior: "smooth"
+      });
+
+      // Allow 1.2s for smooth scroll animation to complete
+      setTimeout(resolve, 1200);
+    });
+  }
 
   function createControllerBar() {
     if (document.getElementById("ap-controller-bar")) return;
@@ -38,13 +119,13 @@
           <span>Recruiter Smooth Autopilot</span>
         </div>
         <div class="ap-controls">
-          <div class="ap-step-num" id="ap-step-num">Section 1 of ${sections.length}</div>
+          <div class="ap-step-num" id="ap-step-num">Step 1 of ${tourSteps.length}</div>
           <button class="ap-btn-minimize" id="ap-btn-minimize" title="Minimize / Hide Controller">
             <i class="fa-solid fa-chevron-down" id="ap-minimize-icon"></i>
           </button>
         </div>
       </div>
-      <div class="ap-body" id="ap-step-text">Starting recruiter smooth walkthrough...</div>
+      <div class="ap-body" id="ap-step-text">Starting recruiter walkthrough...</div>
       <div class="ap-footer">
         <div class="ap-progress-track">
           <div class="ap-progress-fill" id="ap-progress-fill"></div>
@@ -78,9 +159,39 @@
       });
     }
 
-    document.getElementById("ap-btn-stop").addEventListener("click", () => {
+    document.getElementById("ap-btn-stop").addEventListener("click", (e) => {
+      e.stopPropagation();
       stopAutopilot(true);
     });
+  }
+
+  function updateMessage(text) {
+    if (stepText) {
+      stepText.textContent = text;
+    }
+  }
+
+  let lastHighlighted = null;
+  function highlightSection(selector, navHref) {
+    if (lastHighlighted) {
+      lastHighlighted.classList.remove("ap-highlight-section");
+    }
+
+    const target = document.querySelector(selector);
+    if (target) {
+      target.classList.add("ap-highlight-section");
+      lastHighlighted = target;
+    }
+
+    if (navHref) {
+      document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === navHref) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
   }
 
   function setTourButtonsRunning(running) {
@@ -126,80 +237,64 @@
     });
   }
 
-  // Continuous Recruiter Scroll Engine
-  async function runContinuousRecruiterScroll() {
+  async function runTour() {
+    if (isAutopilotActive) return;
+
     createControllerBar();
     isAutopilotActive = true;
+    tourStartTime = Date.now();
     setTourButtonsRunning(true);
+
     controllerBar.classList.add("active");
 
     await waitForPreloader();
     if (!isAutopilotActive) return;
 
-    // Scroll to top first
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    await new Promise(r => setTimeout(r, 600));
+    for (let i = 0; i < tourSteps.length; i++) {
+      if (!isAutopilotActive) break;
 
-    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const speed = 1.35; // Pixels per frame (Smooth recruiter reading speed)
-    let currentPos = window.pageYOffset;
-    let currentSectionIndex = 0;
+      currentStepIndex = i;
+      const step = tourSteps[i];
 
-    function step() {
-      if (!isAutopilotActive) return;
+      if (stepNumber) stepNumber.textContent = `Step ${i + 1} of ${tourSteps.length}`;
+      updateMessage(step.message);
+      highlightSection(step.selector, step.navHref);
 
-      currentPos += speed;
-      window.scrollTo(0, currentPos);
+      const percent = ((i + 1) / tourSteps.length) * 100;
+      if (progressBarFill) progressBarFill.style.width = `${percent}%`;
 
-      // Update progress bar
-      const progress = Math.min((currentPos / totalHeight) * 100, 100);
-      if (progressBarFill) progressBarFill.style.width = `${progress}%`;
+      // Smooth scroll to target section
+      await scrollToElement(step.selector);
+      if (!isAutopilotActive) break;
 
-      // Determine current section in view
-      const viewportMid = currentPos + window.innerHeight * 0.4;
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i].id);
-        if (el && el.offsetTop <= viewportMid) {
-          if (currentSectionIndex !== i) {
-            currentSectionIndex = i;
-            if (stepNumber) stepNumber.textContent = `Section ${i + 1} of ${sections.length}`;
-            if (stepText) stepText.textContent = sections[i].message;
-
-            // Highlight nav link
-            document.querySelectorAll('.nav-link').forEach(link => {
-              if (link.getAttribute('href') === `#${sections[i].id}`) {
-                link.classList.add('active');
-              } else {
-                link.classList.remove('active');
-              }
-            });
-          }
-          break;
-        }
-      }
-
-      if (currentPos < totalHeight && isAutopilotActive) {
-        animationFrameId = requestAnimationFrame(step);
-      } else {
-        finishAutopilot();
-      }
+      // Dwell at section for recruiter to read
+      await delay(step.duration);
     }
 
-    animationFrameId = requestAnimationFrame(step);
+    if (isAutopilotActive) {
+      finishTour();
+    }
   }
 
-  function finishAutopilot() {
+  function finishTour() {
     stopAutopilot(false);
+
+    // Scroll back smoothly to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     if (typeof window.showToast === "function") {
-      window.showToast("Recruiter smooth walkthrough completed!", "success");
+      window.showToast("Recruiter smooth walkthrough complete!", "success");
     }
   }
 
   function stopAutopilot(fromUserGesture = false) {
     isAutopilotActive = false;
-    if (animationFrameId) {
-      cancelAnimationFrame(animationFrameId);
-      animationFrameId = null;
+
+    activeTimeouts.forEach(clearTimeout);
+    activeTimeouts = [];
+
+    if (lastHighlighted) {
+      lastHighlighted.classList.remove("ap-highlight-section");
     }
 
     if (controllerBar) {
@@ -209,30 +304,49 @@
     setTourButtonsRunning(false);
 
     if (fromUserGesture && typeof window.showToast === "function") {
-      window.showToast("Autopilot stopped.", "info");
+      window.showToast("Autopilot tour stopped.", "info");
     }
   }
 
   function setupOverrideHandlers() {
-    const handleUserInteraction = (e) => {
+    const handleOverride = (e) => {
       if (!isAutopilotActive) return;
 
-      // Allow clicking buttons inside controller bar without stopping
-      if (e.target.closest("#ap-controller-bar")) {
+      // Ignore user input during the first 1200ms of launching tour to prevent accidental cancellation
+      if (Date.now() - tourStartTime < 1200) {
+        return;
+      }
+
+      // Ignore clicks inside controller or trigger buttons
+      if (
+        e.target.closest("#ap-controller-bar") ||
+        e.target.closest(".btn-nav-ap") ||
+        e.target.closest("#btn-hero-autopilot")
+      ) {
         return;
       }
 
       stopAutopilot(true);
     };
 
-    window.addEventListener("wheel", handleUserInteraction, { passive: true });
-    window.addEventListener("touchmove", handleUserInteraction, { passive: true });
-    window.addEventListener("mousedown", handleUserInteraction, { passive: true });
+    window.addEventListener("wheel", handleOverride, { passive: true });
+    window.addEventListener("touchmove", handleOverride, { passive: true });
+    window.addEventListener("mousedown", handleOverride, { passive: true });
     window.addEventListener("keydown", (e) => {
-      if (isAutopilotActive && ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Space", "Escape"].includes(e.key)) {
+      if (!isAutopilotActive) return;
+      if (Date.now() - tourStartTime < 1200) return;
+      if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Space", "Escape"].includes(e.key)) {
         stopAutopilot(true);
       }
     }, { passive: true });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (isAutopilotActive && Date.now() - tourStartTime >= 1200) {
+          stopAutopilot(true);
+        }
+      });
+    });
   }
 
   function init() {
@@ -240,8 +354,8 @@
 
     window.startAutopilotTour = function () {
       if (isAutopilotActive) return;
-      runContinuousRecruiterScroll().catch((err) => {
-        console.error("Autopilot Error:", err);
+      runTour().catch((err) => {
+        console.error("Autopilot Tour Error: ", err);
         stopAutopilot(false);
       });
     };
@@ -249,6 +363,13 @@
     window.stopAutopilotTour = function () {
       stopAutopilot(true);
     };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("autopilot") === "true") {
+      setTimeout(() => {
+        window.startAutopilotTour();
+      }, 500);
+    }
   }
 
   if (document.readyState === "loading") {
