@@ -1,111 +1,29 @@
-// Autopilot Walkthrough Tour Script - Robust Smooth Recruiter Flow
+// Autopilot Recruiter Walkthrough Script - Continuous Slow Scroll Engine
 
 (function () {
   "use strict";
 
   let isAutopilotActive = false;
-  let currentStepIndex = 0;
-  let activeTimeouts = [];
+  let scrollAnimFrame = null;
   let tourStartTime = 0;
 
-  // DOM elements created dynamically
   let controllerBar = null;
   let stepText = null;
   let stepNumber = null;
   let progressBarFill = null;
 
-  /**
-   * Tour Steps Definition covering the complete portfolio in order:
-   */
-  const tourSteps = [
-    {
-      selector: "#home",
-      navHref: "#home",
-      message: "Inspecting Kavati John Shreyan's profile, hero overview, and core engineering identity.",
-      duration: 4000
-    },
-    {
-      selector: "#about",
-      navHref: "#about",
-      message: "Reviewing Profile, Computer Science background, and AI & Full-Stack Career Objectives.",
-      duration: 4500
-    },
-    {
-      selector: "#education",
-      navHref: "#education",
-      message: "Reviewing Educational Timeline & B.Tech specialization at KL University.",
-      duration: 4000
-    },
-    {
-      selector: "#skills",
-      navHref: "#skills",
-      message: "Analyzing core technical skills: Python, Java, Next.js, FastAPI, Multimodal AI, RAG, and Cloud.",
-      duration: 4500
-    },
-    {
-      selector: "#experience",
-      navHref: "#experience",
-      message: "Examining Data Science Internship at Siemens & enterprise data pipeline architectures.",
-      duration: 4500
-    },
-    {
-      selector: "#certifications",
-      navHref: "#certifications",
-      message: "Reviewing verified credentials: Microsoft Certified Azure Fundamentals & Siemens Data Science.",
-      duration: 4000
-    },
-    {
-      selector: "#hackathons",
-      navHref: "#hackathons",
-      message: "Reviewing Smart India Hackathon (SIH) 2026 18-hour sprint & full-stack prototypes.",
-      duration: 4500
-    },
-    {
-      selector: "#projects",
-      navHref: "#projects",
-      message: "Inspecting Flagship AetherMind Multi-Modal AI, AetherMind Genesis, SRTO, Attendance Calc, & EDU.",
-      duration: 5500
-    },
-    {
-      selector: "#services",
-      navHref: "#services",
-      message: "Reviewing technical expertise across AI Solutions, Data Analysis, Full-Stack, & REST APIs.",
-      duration: 4000
-    },
-    {
-      selector: "#contact",
-      navHref: "#contact",
-      message: "Reaching Contact section, email details, direct message form, and social profiles.",
-      duration: 4500
-    }
+  const sections = [
+    { id: "home", title: "01 // HERO & IDENTITY", message: "Inspecting Kavati John Shreyan's profile, hero overview, and core engineering identity." },
+    { id: "about", title: "02 // PROFILE & OBJECTIVE", message: "Reviewing Profile, Computer Science background, and AI & Full-Stack Career Objectives." },
+    { id: "education", title: "03 // ACADEMICS", message: "Reviewing Educational Timeline & B.Tech specialization at KL University." },
+    { id: "skills", title: "04 // SKILLS MATRIX", message: "Analyzing core technical skills: Python, Java, Next.js, FastAPI, Multimodal AI, RAG, and Cloud." },
+    { id: "experience", title: "05 // WORK EXPERIENCE", message: "Examining Data Science Internship at Siemens & enterprise data pipeline architectures." },
+    { id: "certifications", title: "06 // CREDENTIALS", message: "Reviewing verified credentials: Microsoft Certified Azure Fundamentals & Siemens Data Science." },
+    { id: "hackathons", title: "07 // HACKATHONS", message: "Reviewing Smart India Hackathon (SIH) 2026 18-hour sprint & full-stack prototypes." },
+    { id: "projects", title: "08 // FEATURED PROJECTS", message: "Inspecting Flagship AetherMind Multi-Modal AI, AetherMind Genesis, SRTO, Attendance Calc, & EDU." },
+    { id: "services", title: "09 // EXPERTISE", message: "Reviewing technical expertise across AI Solutions, Data Analysis, Full-Stack, & REST APIs." },
+    { id: "contact", title: "10 // CONTACT & CONNECT", message: "Reaching Contact section, email details, direct message form, and social profiles." }
   ];
-
-  function delay(ms) {
-    return new Promise((resolve) => {
-      const timeout = setTimeout(resolve, ms);
-      activeTimeouts.push(timeout);
-    });
-  }
-
-  // Smooth scroll helper using window.scrollTo behavior smooth
-  function scrollToElement(selector) {
-    return new Promise((resolve) => {
-      const target = document.querySelector(selector);
-      if (!target) return resolve();
-
-      const headerOffset = 85;
-      const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: Math.max(0, offsetPosition),
-        behavior: "smooth"
-      });
-
-      // Allow 1.2s for smooth scroll animation to complete
-      setTimeout(resolve, 1200);
-    });
-  }
 
   function createControllerBar() {
     if (document.getElementById("ap-controller-bar")) return;
@@ -116,16 +34,16 @@
       <div class="ap-header">
         <div class="ap-title">
           <i class="fa-solid fa-circle-play text-orange"></i>
-          <span>Recruiter Smooth Autopilot</span>
+          <span>Continuous Recruiter Autopilot</span>
         </div>
         <div class="ap-controls">
-          <div class="ap-step-num" id="ap-step-num">Step 1 of ${tourSteps.length}</div>
+          <div class="ap-step-num" id="ap-step-num">Section 1 of ${sections.length}</div>
           <button class="ap-btn-minimize" id="ap-btn-minimize" title="Minimize / Hide Controller">
             <i class="fa-solid fa-chevron-down" id="ap-minimize-icon"></i>
           </button>
         </div>
       </div>
-      <div class="ap-body" id="ap-step-text">Starting recruiter walkthrough...</div>
+      <div class="ap-body" id="ap-step-text">Starting recruiter continuous scroll...</div>
       <div class="ap-footer">
         <div class="ap-progress-track">
           <div class="ap-progress-fill" id="ap-progress-fill"></div>
@@ -163,35 +81,6 @@
       e.stopPropagation();
       stopAutopilot(true);
     });
-  }
-
-  function updateMessage(text) {
-    if (stepText) {
-      stepText.textContent = text;
-    }
-  }
-
-  let lastHighlighted = null;
-  function highlightSection(selector, navHref) {
-    if (lastHighlighted) {
-      lastHighlighted.classList.remove("ap-highlight-section");
-    }
-
-    const target = document.querySelector(selector);
-    if (target) {
-      target.classList.add("ap-highlight-section");
-      lastHighlighted = target;
-    }
-
-    if (navHref) {
-      document.querySelectorAll('.nav-link').forEach(link => {
-        if (link.getAttribute('href') === navHref) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
-    }
   }
 
   function setTourButtonsRunning(running) {
@@ -237,64 +126,85 @@
     });
   }
 
-  async function runTour() {
+  // Continuous Scroll Loop Engine
+  async function startContinuousScroll() {
     if (isAutopilotActive) return;
 
     createControllerBar();
     isAutopilotActive = true;
     tourStartTime = Date.now();
     setTourButtonsRunning(true);
-
     controllerBar.classList.add("active");
 
     await waitForPreloader();
     if (!isAutopilotActive) return;
 
-    for (let i = 0; i < tourSteps.length; i++) {
-      if (!isAutopilotActive) break;
+    // Reset scroll to top
+    window.scrollTo(0, 0);
 
-      currentStepIndex = i;
-      const step = tourSteps[i];
+    let currentY = 0;
+    const speed = 1.15; // Smooth recruiter reading speed (pixels per frame)
+    let lastSectionIndex = -1;
 
-      if (stepNumber) stepNumber.textContent = `Step ${i + 1} of ${tourSteps.length}`;
-      updateMessage(step.message);
-      highlightSection(step.selector, step.navHref);
+    function step() {
+      if (!isAutopilotActive) return;
 
-      const percent = ((i + 1) / tourSteps.length) * 100;
-      if (progressBarFill) progressBarFill.style.width = `${percent}%`;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      currentY += speed;
+      window.scrollTo(0, currentY);
 
-      // Smooth scroll to target section
-      await scrollToElement(step.selector);
-      if (!isAutopilotActive) break;
+      // Update Progress Bar
+      const progressPercent = Math.min((currentY / maxScroll) * 100, 100);
+      if (progressBarFill) {
+        progressBarFill.style.width = `${progressPercent}%`;
+      }
 
-      // Dwell at section for recruiter to read
-      await delay(step.duration);
+      // Track Current Section in Viewport
+      const viewportMid = currentY + window.innerHeight * 0.4;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const targetEl = document.getElementById(sections[i].id);
+        if (targetEl && targetEl.offsetTop <= viewportMid) {
+          if (lastSectionIndex !== i) {
+            lastSectionIndex = i;
+            if (stepNumber) stepNumber.textContent = `Section ${i + 1} of ${sections.length}`;
+            if (stepText) stepText.textContent = sections[i].message;
+
+            // Highlight nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+              if (link.getAttribute('href') === `#${sections[i].id}`) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+          break;
+        }
+      }
+
+      if (currentY < maxScroll && isAutopilotActive) {
+        scrollAnimFrame = requestAnimationFrame(step);
+      } else {
+        finishTour();
+      }
     }
 
-    if (isAutopilotActive) {
-      finishTour();
-    }
+    scrollAnimFrame = requestAnimationFrame(step);
   }
 
   function finishTour() {
     stopAutopilot(false);
-
-    // Scroll back smoothly to top
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
     if (typeof window.showToast === "function") {
-      window.showToast("Recruiter smooth walkthrough complete!", "success");
+      window.showToast("Recruiter continuous walkthrough complete!", "success");
     }
   }
 
   function stopAutopilot(fromUserGesture = false) {
     isAutopilotActive = false;
 
-    activeTimeouts.forEach(clearTimeout);
-    activeTimeouts = [];
-
-    if (lastHighlighted) {
-      lastHighlighted.classList.remove("ap-highlight-section");
+    if (scrollAnimFrame) {
+      cancelAnimationFrame(scrollAnimFrame);
+      scrollAnimFrame = null;
     }
 
     if (controllerBar) {
@@ -312,17 +222,13 @@
     const handleOverride = (e) => {
       if (!isAutopilotActive) return;
 
-      // Ignore user input during the first 1200ms of launching tour to prevent accidental cancellation
-      if (Date.now() - tourStartTime < 1200) {
+      // Ignore user interactions for the first 2000ms after tour launch
+      if (Date.now() - tourStartTime < 2000) {
         return;
       }
 
-      // Ignore clicks inside controller or trigger buttons
-      if (
-        e.target.closest("#ap-controller-bar") ||
-        e.target.closest(".btn-nav-ap") ||
-        e.target.closest("#btn-hero-autopilot")
-      ) {
+      // Allow clicking inside controller bar
+      if (e.target.closest("#ap-controller-bar")) {
         return;
       }
 
@@ -334,19 +240,11 @@
     window.addEventListener("mousedown", handleOverride, { passive: true });
     window.addEventListener("keydown", (e) => {
       if (!isAutopilotActive) return;
-      if (Date.now() - tourStartTime < 1200) return;
+      if (Date.now() - tourStartTime < 2000) return;
       if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Space", "Escape"].includes(e.key)) {
         stopAutopilot(true);
       }
     }, { passive: true });
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        if (isAutopilotActive && Date.now() - tourStartTime >= 1200) {
-          stopAutopilot(true);
-        }
-      });
-    });
   }
 
   function init() {
@@ -354,7 +252,7 @@
 
     window.startAutopilotTour = function () {
       if (isAutopilotActive) return;
-      runTour().catch((err) => {
+      startContinuousScroll().catch((err) => {
         console.error("Autopilot Tour Error: ", err);
         stopAutopilot(false);
       });
