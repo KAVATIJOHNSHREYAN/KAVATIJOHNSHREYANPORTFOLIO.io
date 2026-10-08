@@ -44,7 +44,7 @@ Full-Stack AI Developer | AI / ML Enthusiast | Software Engineer
 
 ## 📂 Featured Projects
 
-### 1. 🤖 [AetherMind Multi-Modal AI](https://github.com/KAVATIJOHNSHREYAN/SAMRAT_AETHERMIND_V2)
+### 1. 🤖 [AetherMind Multi-Modal AI](https://aethermind-multi-modal-ai-fwt8jmcqdbbmoahwveobze.streamlit.app/)
 - **Description:** Multi-LLM AI productivity assistant supporting intelligent document processing, Retrieval-Augmented Generation (RAG), voice interaction, and multi-model switching (Gemini, OpenAI, Cohere).
 - **Tech Stack:** Next.js, TypeScript, FastAPI, Python, SQLite, Zustand, Vercel, Render.
 
