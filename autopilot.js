@@ -1,7 +1,7 @@
 /**
  * ==========================================================================
  * kjs PORTFOLIO AUTOPILOT V2.0 – TRUE FULL-PAGE CONTINUOUS SCROLL ENGINE
- * Recruiter Walkthrough: Pixel-by-Pixel Smooth Continuous Page Review
+ * 2.5-MINUTE RECRUITER WALKTHROUGH WITH LINK PREVIEW POPUPS
  * ==========================================================================
  */
 
@@ -43,7 +43,7 @@
       selector: "#home",
       navHref: "#home",
       title: "Hero Overview",
-      speech: "Welcome to Kavati John Shreyan's portfolio. Reviewing hero overview and core engineering identity."
+      speech: "Welcome to Kavati John Shreyan's portfolio. Reviewing hero overview and engineering background."
     },
     {
       id: "about",
@@ -64,7 +64,7 @@
       selector: "#skills",
       navHref: "#skills",
       title: "Technical Stack",
-      speech: "Analyzing core technical stack including Python, FastAPI, Multimodal AI, RAG, and Cloud Architectures."
+      speech: "Analyzing core technical stack including Python, FastAPI, Multimodal AI, RAG, and Cloud."
     },
     {
       id: "experience",
@@ -85,37 +85,38 @@
       selector: "#hackathons",
       navHref: "#hackathons",
       title: "18-Hour Hackathons",
-      speech: "Reviewing 18-hour continuous hackathons hosted at KL University: AWS Cloud Hackathon and Smart India Hackathon 2026."
+      speech: "Reviewing 18-hour continuous hackathons at KL University: AWS Cloud Hackathon and SIH 2026."
     },
     {
       id: "projects",
       selector: "#projects",
       navHref: "#projects",
       title: "Featured AI Projects",
-      speech: "Exploring 5 production AI platforms including AetherMind Multi-Modal AI, Genesis, Resource Optimizer, Attendance Calculator, and EDU."
+      speech: "Exploring 5 production AI platforms including AetherMind Multi-Modal AI, Genesis, SRTO, Attendance Calc, and EDU."
     },
     {
       id: "services",
       selector: "#services",
       navHref: "#services",
       title: "Technical Services",
-      speech: "Reviewing enterprise service capabilities across AI Engineering, Full-Stack Web Development, and Data Analysis."
+      speech: "Reviewing enterprise service capabilities across AI Engineering, Full-Stack Web, and Data Analysis."
     },
     {
       id: "contact",
       selector: "#contact",
       navHref: "#contact",
       title: "Contact & Connect",
-      speech: "Reaching Contact section and official communication channels. Full-page walkthrough complete."
+      speech: "Reaching Contact section and official communication channels. Walkthrough complete."
     }
   ];
 
   // ==========================================================================
-  // 3. VIRTUAL CURSOR ENGINE
+  // 3. VIRTUAL CURSOR ENGINE & LINK PREVIEW POPUP
   // ==========================================================================
   class CursorEngine {
     constructor() {
       this.cursorEl = null;
+      this.previewEl = null;
       this.currentX = window.innerWidth / 2;
       this.currentY = window.innerHeight / 2;
       this.animId = null;
@@ -123,14 +124,25 @@
     }
 
     init() {
-      if (document.getElementById("ap-virtual-cursor")) return;
-      this.cursorEl = document.createElement("div");
-      this.cursorEl.id = "ap-virtual-cursor";
-      this.cursorEl.innerHTML = `
-        <div class="ap-cursor-pointer"></div>
-        <div class="ap-cursor-ring"></div>
-      `;
-      document.body.appendChild(this.cursorEl);
+      if (!document.getElementById("ap-virtual-cursor")) {
+        this.cursorEl = document.createElement("div");
+        this.cursorEl.id = "ap-virtual-cursor";
+        this.cursorEl.innerHTML = `
+          <div class="ap-cursor-pointer"></div>
+          <div class="ap-cursor-ring"></div>
+        `;
+        document.body.appendChild(this.cursorEl);
+      } else {
+        this.cursorEl = document.getElementById("ap-virtual-cursor");
+      }
+
+      if (!document.getElementById("ap-link-preview-popup")) {
+        this.previewEl = document.createElement("div");
+        this.previewEl.id = "ap-link-preview-popup";
+        document.body.appendChild(this.previewEl);
+      } else {
+        this.previewEl = document.getElementById("ap-link-preview-popup");
+      }
     }
 
     show() {
@@ -139,9 +151,22 @@
 
     hide() {
       if (this.cursorEl) this.cursorEl.classList.remove("active");
+      this.hideLinkPreview();
     }
 
-    moveTo(x, y, duration = 700) {
+    showLinkPreview(text, iconClass = "fa-solid fa-link") {
+      if (!this.previewEl) return;
+      this.previewEl.innerHTML = `<i class="${iconClass}"></i> <span>${text}</span>`;
+      this.previewEl.style.left = `${Math.min(window.innerWidth - 220, this.currentX + 15)}px`;
+      this.previewEl.style.top = `${Math.max(20, this.currentY - 35)}px`;
+      this.previewEl.classList.add("active");
+    }
+
+    hideLinkPreview() {
+      if (this.previewEl) this.previewEl.classList.remove("active");
+    }
+
+    moveTo(x, y, duration = 500) {
       return new Promise((resolve) => {
         const startX = this.currentX;
         const startY = this.currentY;
@@ -171,7 +196,7 @@
       });
     }
 
-    async moveOverElement(element, duration = 750) {
+    async moveOverElement(element, duration = 550) {
       if (!element) return;
       const rect = element.getBoundingClientRect();
       const targetX = rect.left + rect.width / 2;
@@ -188,12 +213,12 @@
       }
     }
 
-    async microJitter(count = 3, distance = 4) {
+    async microJitter(count = 2, distance = 4) {
       for (let i = 0; i < count; i++) {
         const offsetX = (Math.random() - 0.5) * distance * 2;
         const offsetY = (Math.random() - 0.5) * distance * 2;
-        await this.moveTo(this.currentX + offsetX, this.currentY + offsetY, 250);
-        await delay(180);
+        await this.moveTo(this.currentX + offsetX, this.currentY + offsetY, 180);
+        await delay(120);
       }
     }
   }
@@ -214,7 +239,7 @@
       this.lastSpokenId = id;
 
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 1.0;
+      utterance.rate = 1.05;
       utterance.pitch = 1.0;
       utterance.lang = "en-US";
 
@@ -241,7 +266,7 @@
   }
 
   // ==========================================================================
-  // 5. TRUE FULL-PAGE CONTINUOUS SCROLL TOUR ENGINE
+  // 5. TRUE FULL-PAGE CONTINUOUS SCROLL TOUR ENGINE (2.5 MINUTE SPEED)
   // ==========================================================================
   class ContinuousAutopilotTour {
     constructor() {
@@ -249,7 +274,8 @@
       this.isPaused = false;
       this.isCardDwelling = false;
 
-      this.baseSpeed = 1.4; // Base pixels per frame at 60fps (~85px/sec)
+      // Adjusted Speed for exact ~2.5 Minute (150 Seconds) Total Walkthrough
+      this.baseSpeed = 2.65; // pixels per frame at 60fps (~160px/sec)
       this.currentSpeed = this.baseSpeed;
       this.animFrameId = null;
 
@@ -262,6 +288,7 @@
       this.startTime = 0;
       this.timerInterval = null;
       this.elapsedSeconds = 0;
+      this.totalEstimatedSec = 150; // 2.5 Minutes Target Duration
 
       this.controllerBar = null;
       this.stepText = null;
@@ -290,8 +317,8 @@
       this.controllerBar.innerHTML = `
         <div class="ap-header">
           <div class="ap-title-badge">
-            <i class="fa-solid fa-circle-play"></i>
-            <span>Recruiter Continuous Walkthrough</span>
+            <i class="fa-solid fa-bolt text-orange"></i>
+            <span>2.5-Min Continuous Walkthrough</span>
           </div>
           <div class="ap-top-actions">
             <button class="ap-btn-icon" id="ap-btn-mute" title="Mute / Unmute Voice Narration">
@@ -322,7 +349,7 @@
           <div class="ap-viewing-tag" id="ap-viewing-tag">
             <i class="fa-solid fa-eye"></i> Viewing: <span id="ap-current-section-title">Hero Overview</span>
           </div>
-          <div class="ap-status-msg" id="ap-step-text">Continuous pixel-by-pixel recruiter inspection active...</div>
+          <div class="ap-status-msg" id="ap-step-text">Continuous 2.5-min pixel-by-pixel recruiter inspection...</div>
         </div>
 
         <div class="ap-nav-controls">
@@ -420,10 +447,21 @@
           </div>
           <h3>Full-Page Recruiter Review Complete!</h3>
           <p>
-            ✔ Continuous pixel-by-pixel portfolio walkthrough completed.<br>
-            Thank you for visiting Kavati John Shreyan's profile!
+            ✔ 2.5-Minute continuous pixel-by-pixel portfolio walkthrough completed.<br>
+            Explore links, resume, and profiles below:
           </p>
-          <div class="ap-summary-actions">
+          <div class="ap-summary-actions" style="flex-wrap: wrap;">
+            <a href="resume.html" target="_blank" class="ap-summary-btn primary" style="text-decoration:none;">
+              <i class="fa-solid fa-file-pdf"></i> View Resume PDF
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="ap-summary-btn secondary" style="text-decoration:none;">
+              <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
+            </a>
+            <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" class="ap-summary-btn secondary" style="text-decoration:none;">
+              <i class="fa-brands fa-github"></i> GitHub Profile
+            </a>
+          </div>
+          <div class="ap-summary-actions" style="margin-top: 10px;">
             <button class="ap-summary-btn primary" id="ap-summary-restart">
               <i class="fa-solid fa-rotate-left"></i> Start Walkthrough Again
             </button>
@@ -455,12 +493,7 @@
         if (!this.isActive || this.isPaused) return;
         this.elapsedSeconds++;
 
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const currentY = window.pageYOffset || document.documentElement.scrollTop;
-        const percent = Math.min(100, Math.max(0, (currentY / maxScroll) * 100));
-
-        const estimatedTotalSec = 150;
-        const remaining = Math.max(0, estimatedTotalSec - this.elapsedSeconds);
+        const remaining = Math.max(0, this.totalEstimatedSec - this.elapsedSeconds);
 
         if (this.timerElapsedEl) this.timerElapsedEl.textContent = formatTime(this.elapsedSeconds);
         if (this.timerRemainingEl) this.timerRemainingEl.textContent = formatTime(remaining);
@@ -482,7 +515,6 @@
       }
     }
 
-    // Scroll smoothly to a specific section index during prev/next manual clicks
     scrollToSectionIndex(index) {
       if (index < 0 || index >= sectionsConfig.length) return;
       const targetSec = sectionsConfig[index];
@@ -501,7 +533,6 @@
       if (this.progressPercentEl) this.progressPercentEl.textContent = `${progressPercent}%`;
       if (this.progressBarFill) this.progressBarFill.style.width = `${progressPercent}%`;
 
-      // Determine active section continuously without jumping
       let activeIdx = 0;
       for (let i = 0; i < sectionsConfig.length; i++) {
         const el = document.querySelector(sectionsConfig[i].selector);
@@ -547,11 +578,9 @@
       if (this.isCardDwelling || this.isPaused || !this.isActive) return;
 
       const viewportTop = window.pageYOffset;
-      const viewportBottom = viewportTop + window.innerHeight;
       const viewportMiddle = viewportTop + window.innerHeight * 0.55;
 
-      // Inspectable elements selector query
-      const selectorStr = `.project-card, .cert-card, .hackathon-card, .skills-category-card, .service-card, .timeline-item, .exp-card`;
+      const selectorStr = `.project-card, .cert-card, .hackathon-card, .skills-category-card, .service-card, .timeline-item, .exp-card, .btn-hero-cv, .nav-actions a`;
       const candidates = Array.from(document.querySelectorAll(selectorStr));
 
       for (let i = 0; i < candidates.length; i++) {
@@ -562,15 +591,37 @@
         const elementTopDoc = rect.top + viewportTop;
         const elementBottomDoc = rect.bottom + viewportTop;
 
-        // Check if element is at least 50-60% visible in middle viewport focal zone
-        if (elementTopDoc <= viewportMiddle && elementBottomDoc >= viewportTop + 100) {
-          // Trigger card dwell pause
+        if (elementTopDoc <= viewportMiddle && elementBottomDoc >= viewportTop + 80) {
           this.inspectedElements.add(el);
           this.isCardDwelling = true;
 
           el.classList.add("ap-hover-focus");
-          await this.cursorEngine.moveOverElement(el, 650);
+          await this.cursorEngine.moveOverElement(el, 450);
           this.cursorEngine.setHovering(true);
+
+          // Check if element has a link (LinkedIn, GitHub, Resume, Live Demo)
+          const link = el.tagName === "A" ? el : el.querySelector("a");
+          if (link) {
+            const href = link.getAttribute("href") || "";
+            let linkText = "Preview Link";
+            let iconClass = "fa-solid fa-arrow-up-right-from-square";
+
+            if (href.includes("linkedin")) {
+              linkText = "LinkedIn Profile Preview";
+              iconClass = "fa-brands fa-linkedin";
+            } else if (href.includes("github")) {
+              linkText = "GitHub Repository Preview";
+              iconClass = "fa-brands fa-github";
+            } else if (href.includes("resume") || href.includes("pdf")) {
+              linkText = "Resume PDF Preview";
+              iconClass = "fa-solid fa-file-pdf";
+            } else if (href.includes("streamlit") || href.includes("app")) {
+              linkText = "Live Demo App Preview";
+              iconClass = "fa-solid fa-globe";
+            }
+
+            this.cursorEngine.showLinkPreview(linkText, iconClass);
+          }
 
           if (this.stepText) {
             const titleEl = el.querySelector("h3, h4, .project-title, .exp-role");
@@ -578,10 +629,11 @@
             this.stepText.textContent = `Inspecting ${titleText}...`;
           }
 
-          // Dwell pause (1.8s) while micro-jittering cursor naturally
-          await this.cursorEngine.microJitter(2, 4);
-          await delay(1200);
+          // Dwell pause (~800ms) for 2.5-min total walkthrough pace
+          await this.cursorEngine.microJitter(2, 3);
+          await delay(500);
 
+          this.cursorEngine.hideLinkPreview();
           el.classList.remove("ap-hover-focus");
           this.cursorEngine.setHovering(false);
           this.isCardDwelling = false;
@@ -602,7 +654,7 @@
           return;
         }
 
-        // Smooth pixel-by-pixel continuous scroll increment
+        // Smooth pixel-by-pixel continuous scroll increment (2.5-Min Speed)
         window.scrollBy(0, this.currentSpeed);
 
         this.updateSectionAndProgress();
@@ -637,7 +689,7 @@
       if (overlay) overlay.classList.add("active");
 
       if (typeof window.showToast === "function") {
-        window.showToast("Full-Page Recruiter Walkthrough Complete!", "success");
+        window.showToast("2.5-Min Recruiter Walkthrough Complete!", "success");
       }
     }
 
