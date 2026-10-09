@@ -1,7 +1,7 @@
 /**
  * ==========================================================================
  * kjs PORTFOLIO AUTOPILOT V2.0 – TRUE FULL-PAGE CONTINUOUS SCROLL ENGINE
- * 2.5-MINUTE RECRUITER WALKTHROUGH WITH LINK PREVIEW POPUPS
+ * 2.5-MINUTE RECRUITER WALKTHROUGH WITH NEW TAB OPENING FOR ALL LINKS
  * ==========================================================================
  */
 
@@ -33,6 +33,14 @@
     const secs = Math.floor(seconds % 60);
     return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   }
+
+  // Exact profile links configuration
+  const EXTERNAL_LINKS = {
+    linkedin: "https://www.linkedin.com/in/kavati-john-shreyan-956a35366",
+    github: "https://github.com/KAVATIJOHNSHREYAN",
+    resume: "./resume.html",
+    flagshipDemo: "https://aethermind-multi-modal-ai-fwt8jmcqdbbmoahwveobze.streamlit.app/"
+  };
 
   // ==========================================================================
   // 2. SECTION CONFIGURATION & METADATA
@@ -154,10 +162,16 @@
       this.hideLinkPreview();
     }
 
-    showLinkPreview(text, iconClass = "fa-solid fa-link") {
+    showLinkPreview(text, href, iconClass = "fa-solid fa-arrow-up-right-from-square") {
       if (!this.previewEl) return;
-      this.previewEl.innerHTML = `<i class="${iconClass}"></i> <span>${text}</span>`;
-      this.previewEl.style.left = `${Math.min(window.innerWidth - 220, this.currentX + 15)}px`;
+      this.previewEl.innerHTML = `
+        <a href="${href}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;display:flex;align-items:center;gap:8px;">
+          <i class="${iconClass}"></i>
+          <span>${text}</span>
+          <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:10px;opacity:0.8;margin-left:4px;"></i>
+        </a>
+      `;
+      this.previewEl.style.left = `${Math.min(window.innerWidth - 240, this.currentX + 15)}px`;
       this.previewEl.style.top = `${Math.max(20, this.currentY - 35)}px`;
       this.previewEl.classList.add("active");
     }
@@ -274,7 +288,6 @@
       this.isPaused = false;
       this.isCardDwelling = false;
 
-      // Adjusted Speed for exact ~2.5 Minute (150 Seconds) Total Walkthrough
       this.baseSpeed = 2.65; // pixels per frame at 60fps (~160px/sec)
       this.currentSpeed = this.baseSpeed;
       this.animFrameId = null;
@@ -448,20 +461,20 @@
           <h3>Full-Page Recruiter Review Complete!</h3>
           <p>
             ✔ 2.5-Minute continuous pixel-by-pixel portfolio walkthrough completed.<br>
-            Explore links, resume, and profiles below:
+            Click any button below to open in a new tab:
           </p>
-          <div class="ap-summary-actions" style="flex-wrap: wrap;">
-            <a href="resume.html" target="_blank" class="ap-summary-btn primary" style="text-decoration:none;">
-              <i class="fa-solid fa-file-pdf"></i> View Resume PDF
+          <div class="ap-summary-actions" style="flex-wrap: wrap; gap: 10px; justify-content: center;">
+            <a href="${EXTERNAL_LINKS.resume}" target="_blank" rel="noopener noreferrer" class="ap-summary-btn primary" style="text-decoration:none;">
+              <i class="fa-solid fa-file-pdf"></i> View Resume PDF <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px;margin-left:4px;"></i>
             </a>
-            <a href="https://linkedin.com" target="_blank" class="ap-summary-btn secondary" style="text-decoration:none;">
-              <i class="fa-brands fa-linkedin"></i> LinkedIn Profile
+            <a href="${EXTERNAL_LINKS.linkedin}" target="_blank" rel="noopener noreferrer" class="ap-summary-btn secondary" style="text-decoration:none;">
+              <i class="fa-brands fa-linkedin"></i> LinkedIn Profile <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px;margin-left:4px;"></i>
             </a>
-            <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" class="ap-summary-btn secondary" style="text-decoration:none;">
-              <i class="fa-brands fa-github"></i> GitHub Profile
+            <a href="${EXTERNAL_LINKS.github}" target="_blank" rel="noopener noreferrer" class="ap-summary-btn secondary" style="text-decoration:none;">
+              <i class="fa-brands fa-github"></i> GitHub Profile <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px;margin-left:4px;"></i>
             </a>
           </div>
-          <div class="ap-summary-actions" style="margin-top: 10px;">
+          <div class="ap-summary-actions" style="margin-top: 10px; width: 100%;">
             <button class="ap-summary-btn primary" id="ap-summary-restart">
               <i class="fa-solid fa-rotate-left"></i> Start Walkthrough Again
             </button>
@@ -580,7 +593,7 @@
       const viewportTop = window.pageYOffset;
       const viewportMiddle = viewportTop + window.innerHeight * 0.55;
 
-      const selectorStr = `.project-card, .cert-card, .hackathon-card, .skills-category-card, .service-card, .timeline-item, .exp-card, .btn-hero-cv, .nav-actions a`;
+      const selectorStr = `.project-card, .cert-card, .hackathon-card, .skills-category-card, .service-card, .timeline-item, .exp-card, .btn-hero-cv, .sidebar-links a, .hero-actions a`;
       const candidates = Array.from(document.querySelectorAll(selectorStr));
 
       for (let i = 0; i < candidates.length; i++) {
@@ -602,25 +615,30 @@
           // Check if element has a link (LinkedIn, GitHub, Resume, Live Demo)
           const link = el.tagName === "A" ? el : el.querySelector("a");
           if (link) {
-            const href = link.getAttribute("href") || "";
-            let linkText = "Preview Link";
+            let href = link.getAttribute("href") || "#";
+            if (href === "#") href = EXTERNAL_LINKS.resume;
+
+            let linkText = "Open in New Tab";
             let iconClass = "fa-solid fa-arrow-up-right-from-square";
 
             if (href.includes("linkedin")) {
-              linkText = "LinkedIn Profile Preview";
+              href = EXTERNAL_LINKS.linkedin;
+              linkText = "Open LinkedIn Profile in New Tab";
               iconClass = "fa-brands fa-linkedin";
             } else if (href.includes("github")) {
-              linkText = "GitHub Repository Preview";
+              href = EXTERNAL_LINKS.github;
+              linkText = "Open GitHub Profile in New Tab";
               iconClass = "fa-brands fa-github";
             } else if (href.includes("resume") || href.includes("pdf")) {
-              linkText = "Resume PDF Preview";
+              href = EXTERNAL_LINKS.resume;
+              linkText = "Open Resume PDF in New Tab";
               iconClass = "fa-solid fa-file-pdf";
             } else if (href.includes("streamlit") || href.includes("app")) {
-              linkText = "Live Demo App Preview";
+              linkText = "Open Live Demo App in New Tab";
               iconClass = "fa-solid fa-globe";
             }
 
-            this.cursorEngine.showLinkPreview(linkText, iconClass);
+            this.cursorEngine.showLinkPreview(linkText, href, iconClass);
           }
 
           if (this.stepText) {
@@ -754,6 +772,7 @@
         if (
           e.target.closest("#ap-controller-bar") ||
           e.target.closest("#ap-summary-overlay") ||
+          e.target.closest("#ap-link-preview-popup") ||
           e.target.closest(".btn-nav-ap") ||
           e.target.closest("#btn-hero-autopilot")
         ) {

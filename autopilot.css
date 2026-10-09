@@ -131,7 +131,8 @@ section {
   font-size: 12px;
   font-weight: 600;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px var(--ap-accent-glow);
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
   opacity: 0;
   transform: translateY(10px) scale(0.95);
   transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
