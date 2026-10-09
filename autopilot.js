@@ -1,7 +1,7 @@
 /**
  * ==========================================================================
- * kjs PORTFOLIO AUTOPILOT V2.0 – PREMIUM RECRUITER EXPERIENCE ENHANCEMENT
- * Enterprise-Grade Recruiter Walkthrough Engine
+ * kjs PORTFOLIO AUTOPILOT V2.0 – TRUE FULL-PAGE CONTINUOUS SCROLL ENGINE
+ * Recruiter Walkthrough: Pixel-by-Pixel Smooth Continuous Page Review
  * ==========================================================================
  */
 
@@ -35,25 +35,21 @@
   }
 
   // ==========================================================================
-  // 2. TOUR STEPS DEFINITION (Section inspection timing & descriptions)
+  // 2. SECTION CONFIGURATION & METADATA
   // ==========================================================================
-  const tourSteps = [
+  const sectionsConfig = [
     {
       id: "home",
       selector: "#home",
       navHref: "#home",
       title: "Hero Overview",
-      inspectionTime: 4000, // 4 sec
-      message: "Inspecting Kavati John Shreyan's profile, hero overview, and core engineering identity.",
-      speech: "Welcome to Kavati John Shreyan's portfolio. Examining hero overview and engineering background."
+      speech: "Welcome to Kavati John Shreyan's portfolio. Reviewing hero overview and core engineering identity."
     },
     {
       id: "about",
       selector: "#about",
       navHref: "#about",
       title: "About & Objectives",
-      inspectionTime: 5000, // 5 sec
-      message: "Reviewing Profile, Computer Science background, and AI & Full-Stack Career Objectives.",
       speech: "Reviewing Computer Science background and AI specialization at KL University."
     },
     {
@@ -61,8 +57,6 @@
       selector: "#education",
       navHref: "#education",
       title: "Education Timeline",
-      inspectionTime: 5000, // 5 sec
-      message: "Reviewing Educational Timeline & B.Tech specialization at KL University.",
       speech: "Examining educational timeline and academic coursework in Computational Intelligence."
     },
     {
@@ -70,8 +64,6 @@
       selector: "#skills",
       navHref: "#skills",
       title: "Technical Stack",
-      inspectionTime: 6000, // 6 sec
-      message: "Analyzing core technical skills: Python, Java, Next.js, FastAPI, Multimodal AI, RAG, and Cloud.",
       speech: "Analyzing core technical stack including Python, FastAPI, Multimodal AI, RAG, and Cloud Architectures."
     },
     {
@@ -79,26 +71,20 @@
       selector: "#experience",
       navHref: "#experience",
       title: "Siemens Internship",
-      inspectionTime: 6000, // 6 sec
-      message: "Examining Data Science Virtual Internship at Siemens & enterprise data pipeline architectures.",
-      speech: "Inspecting Data Science virtual internship at Siemens and data pipeline architectures."
+      speech: "Inspecting Data Science virtual internship at Siemens and enterprise data pipelines."
     },
     {
       id: "certifications",
       selector: "#certifications",
       navHref: "#certifications",
       title: "Certifications",
-      inspectionTime: 4000, // 4 sec
-      message: "Reviewing verified credentials: Microsoft Certified Azure Fundamentals & Siemens Data Science.",
-      speech: "Reviewing verified industry credentials: Microsoft Certified Azure Fundamentals and Siemens Data Science."
+      speech: "Reviewing verified credentials: Microsoft Certified Azure Fundamentals and Siemens Data Science."
     },
     {
       id: "hackathons",
       selector: "#hackathons",
       navHref: "#hackathons",
       title: "18-Hour Hackathons",
-      inspectionTime: 5000, // 5 sec
-      message: "Reviewing Hackathons: AWS 18-Hour Hackathon (KL University) & Smart India Hackathon (SIH 2026).",
       speech: "Reviewing 18-hour continuous hackathons hosted at KL University: AWS Cloud Hackathon and Smart India Hackathon 2026."
     },
     {
@@ -106,17 +92,13 @@
       selector: "#projects",
       navHref: "#projects",
       title: "Featured AI Projects",
-      inspectionTime: 10000, // 10 sec (Per-project interactive card inspection)
-      message: "Inspecting Flagship AetherMind Multi-Modal AI, AetherMind Genesis, SRTO, Attendance Calc, & EDU.",
-      speech: "Exploring 5 production AI projects featuring AetherMind Multi-Modal AI, Genesis, Resource Optimizer, Attendance Calculator, and EDU."
+      speech: "Exploring 5 production AI platforms including AetherMind Multi-Modal AI, Genesis, Resource Optimizer, Attendance Calculator, and EDU."
     },
     {
       id: "services",
       selector: "#services",
       navHref: "#services",
       title: "Technical Services",
-      inspectionTime: 5000, // 5 sec
-      message: "Reviewing technical expertise across AI Solutions, Data Analysis, Full-Stack, & REST APIs.",
       speech: "Reviewing enterprise service capabilities across AI Engineering, Full-Stack Web Development, and Data Analysis."
     },
     {
@@ -124,16 +106,9 @@
       selector: "#contact",
       navHref: "#contact",
       title: "Contact & Connect",
-      inspectionTime: 5000, // 5 sec
-      message: "Reaching Contact section, email details, direct message form, and social profiles.",
-      speech: "Reaching Contact section and official communication channels. Portfolio walkthrough complete."
+      speech: "Reaching Contact section and official communication channels. Full-page walkthrough complete."
     }
   ];
-
-  // Total estimated tour duration calculation
-  const TOTAL_ESTIMATED_DURATION_SEC = Math.ceil(
-    tourSteps.reduce((acc, step) => acc + step.inspectionTime / 1000 + 2.5, 0)
-  );
 
   // ==========================================================================
   // 3. VIRTUAL CURSOR ENGINE
@@ -143,8 +118,6 @@
       this.cursorEl = null;
       this.currentX = window.innerWidth / 2;
       this.currentY = window.innerHeight / 2;
-      this.targetX = this.currentX;
-      this.targetY = this.currentY;
       this.animId = null;
       this.init();
     }
@@ -168,7 +141,7 @@
       if (this.cursorEl) this.cursorEl.classList.remove("active");
     }
 
-    moveTo(x, y, duration = 800) {
+    moveTo(x, y, duration = 700) {
       return new Promise((resolve) => {
         const startX = this.currentX;
         const startY = this.currentY;
@@ -198,7 +171,7 @@
       });
     }
 
-    async moveOverElement(element, duration = 900) {
+    async moveOverElement(element, duration = 750) {
       if (!element) return;
       const rect = element.getBoundingClientRect();
       const targetX = rect.left + rect.width / 2;
@@ -219,83 +192,38 @@
       for (let i = 0; i < count; i++) {
         const offsetX = (Math.random() - 0.5) * distance * 2;
         const offsetY = (Math.random() - 0.5) * distance * 2;
-        await this.moveTo(this.currentX + offsetX, this.currentY + offsetY, 300);
-        await delay(200);
+        await this.moveTo(this.currentX + offsetX, this.currentY + offsetY, 250);
+        await delay(180);
       }
     }
   }
 
   // ==========================================================================
-  // 4. EASED SMOOTH SCROLL ENGINE (Cinematic acceleration & deceleration)
-  // ==========================================================================
-  class ScrollEngine {
-    constructor() {
-      this.isScrolling = false;
-      this.animId = null;
-    }
-
-    scrollToTarget(targetY, duration = 1800, easingFunc = Easing.easeInOutExpo) {
-      return new Promise((resolve) => {
-        this.isScrolling = true;
-        const startY = window.pageYOffset || document.documentElement.scrollTop;
-        const distance = targetY - startY;
-        const startTime = performance.now();
-
-        const step = (now) => {
-          if (!this.isScrolling) return resolve(false);
-
-          const elapsed = now - startTime;
-          const progress = Math.min(1, elapsed / duration);
-          const eased = easingFunc(progress);
-
-          window.scrollTo(0, startY + distance * eased);
-
-          if (progress < 1) {
-            this.animId = requestAnimationFrame(step);
-          } else {
-            this.isScrolling = false;
-            resolve(true);
-          }
-        };
-
-        if (this.animId) cancelAnimationFrame(this.animId);
-        this.animId = requestAnimationFrame(step);
-      });
-    }
-
-    stop() {
-      this.isScrolling = false;
-      if (this.animId) cancelAnimationFrame(this.animId);
-    }
-  }
-
-  // ==========================================================================
-  // 5. VOICE NARRATOR (Web Speech API)
+  // 4. VOICE NARRATOR
   // ==========================================================================
   class VoiceNarrator {
     constructor() {
       this.synth = window.speechSynthesis || null;
       this.isMuted = false;
-      this.currentUtterance = null;
+      this.lastSpokenId = null;
     }
 
-    speak(text) {
-      if (!this.synth || this.isMuted || !text) return;
+    speak(id, text) {
+      if (!this.synth || this.isMuted || !text || this.lastSpokenId === id) return;
       this.stop();
+      this.lastSpokenId = id;
 
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 1.0;
       utterance.pitch = 1.0;
       utterance.lang = "en-US";
 
-      // Select preferred voice if available
       const voices = this.synth.getVoices();
       const preferredVoice = voices.find(
         (v) => v.lang.includes("en") && (v.name.includes("Google") || v.name.includes("Natural") || v.name.includes("Samantha"))
       );
       if (preferredVoice) utterance.voice = preferredVoice;
 
-      this.currentUtterance = utterance;
       this.synth.speak(utterance);
     }
 
@@ -313,25 +241,30 @@
   }
 
   // ==========================================================================
-  // 6. MAIN AUTOPILOT CONTROLLER CLASS
+  // 5. TRUE FULL-PAGE CONTINUOUS SCROLL TOUR ENGINE
   // ==========================================================================
-  class AutopilotTour {
+  class ContinuousAutopilotTour {
     constructor() {
       this.isActive = false;
       this.isPaused = false;
-      this.currentStepIdx = 0;
-      this.startTime = 0;
+      this.isCardDwelling = false;
 
-      this.scrollEngine = new ScrollEngine();
+      this.baseSpeed = 1.4; // Base pixels per frame at 60fps (~85px/sec)
+      this.currentSpeed = this.baseSpeed;
+      this.animFrameId = null;
+
       this.cursorEngine = new CursorEngine();
       this.narrator = new VoiceNarrator();
 
+      this.currentSectionIdx = -1;
+      this.inspectedElements = new Set();
+
+      this.startTime = 0;
       this.timerInterval = null;
       this.elapsedSeconds = 0;
 
       this.controllerBar = null;
       this.stepText = null;
-      this.stepNumber = null;
       this.progressBarFill = null;
       this.viewingTag = null;
       this.timerElapsedEl = null;
@@ -347,7 +280,6 @@
       this.createDashboardController();
       this.createSummaryOverlay();
       this.setupUserOverrideHandlers();
-      this.setupObserver();
     }
 
     createDashboardController() {
@@ -359,7 +291,7 @@
         <div class="ap-header">
           <div class="ap-title-badge">
             <i class="fa-solid fa-circle-play"></i>
-            <span>Recruiter Tour V2.0</span>
+            <span>Recruiter Continuous Walkthrough</span>
           </div>
           <div class="ap-top-actions">
             <button class="ap-btn-icon" id="ap-btn-mute" title="Mute / Unmute Voice Narration">
@@ -390,7 +322,7 @@
           <div class="ap-viewing-tag" id="ap-viewing-tag">
             <i class="fa-solid fa-eye"></i> Viewing: <span id="ap-current-section-title">Hero Overview</span>
           </div>
-          <div class="ap-status-msg" id="ap-step-text">Starting recruiter walkthrough...</div>
+          <div class="ap-status-msg" id="ap-step-text">Continuous pixel-by-pixel recruiter inspection active...</div>
         </div>
 
         <div class="ap-nav-controls">
@@ -403,8 +335,8 @@
           <button class="ap-ctrl-btn" id="ap-btn-next" title="Next Section">
             Next <i class="fa-solid fa-forward-step"></i>
           </button>
-          <button class="ap-ctrl-btn" id="ap-btn-skip" title="Skip Tour">
-            Skip <i class="fa-solid fa-forward"></i>
+          <button class="ap-ctrl-btn" id="ap-btn-skip" title="Stop Tour">
+            Stop <i class="fa-solid fa-square"></i>
           </button>
         </div>
 
@@ -430,7 +362,7 @@
       this.btnPause = document.getElementById("ap-btn-pause");
       this.btnMute = document.getElementById("ap-btn-mute");
 
-      // Controller Event Listeners
+      // Buttons
       document.getElementById("ap-btn-minimize").addEventListener("click", (e) => {
         e.stopPropagation();
         this.controllerBar.classList.toggle("minimized");
@@ -458,12 +390,12 @@
 
       document.getElementById("ap-btn-prev").addEventListener("click", (e) => {
         e.stopPropagation();
-        this.jumpStep(this.currentStepIdx - 1);
+        this.scrollToSectionIndex(this.currentSectionIdx - 1);
       });
 
       document.getElementById("ap-btn-next").addEventListener("click", (e) => {
         e.stopPropagation();
-        this.jumpStep(this.currentStepIdx + 1);
+        this.scrollToSectionIndex(this.currentSectionIdx + 1);
       });
 
       document.getElementById("ap-btn-skip").addEventListener("click", (e) => {
@@ -486,14 +418,14 @@
           <div class="ap-summary-icon">
             <i class="fa-solid fa-award"></i>
           </div>
-          <h3>Portfolio Review Complete!</h3>
+          <h3>Full-Page Recruiter Review Complete!</h3>
           <p>
-            ✔ Thank You For Visiting Kavati John Shreyan's Portfolio.<br>
-            Looking Forward To Connecting & Exploring High-Impact AI Engineering Opportunities!
+            ✔ Continuous pixel-by-pixel portfolio walkthrough completed.<br>
+            Thank you for visiting Kavati John Shreyan's profile!
           </p>
           <div class="ap-summary-actions">
             <button class="ap-summary-btn primary" id="ap-summary-restart">
-              <i class="fa-solid fa-rotate-left"></i> Start Tour Again
+              <i class="fa-solid fa-rotate-left"></i> Start Walkthrough Again
             </button>
             <button class="ap-summary-btn secondary" id="ap-summary-close">
               <i class="fa-solid fa-xmark"></i> Close Summary
@@ -521,9 +453,14 @@
 
       this.timerInterval = setInterval(() => {
         if (!this.isActive || this.isPaused) return;
-
         this.elapsedSeconds++;
-        const remaining = Math.max(0, TOTAL_ESTIMATED_DURATION_SEC - this.elapsedSeconds);
+
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const currentY = window.pageYOffset || document.documentElement.scrollTop;
+        const percent = Math.min(100, Math.max(0, (currentY / maxScroll) * 100));
+
+        const estimatedTotalSec = 150;
+        const remaining = Math.max(0, estimatedTotalSec - this.elapsedSeconds);
 
         if (this.timerElapsedEl) this.timerElapsedEl.textContent = formatTime(this.elapsedSeconds);
         if (this.timerRemainingEl) this.timerRemainingEl.textContent = formatTime(remaining);
@@ -536,8 +473,6 @@
 
     togglePause() {
       this.isPaused = !this.isPaused;
-      const label = document.getElementById("ap-pause-label");
-
       if (this.isPaused) {
         this.btnPause.innerHTML = `<i class="fa-solid fa-play"></i> <span id="ap-pause-label">Resume</span>`;
         if (typeof window.showToast === "function") window.showToast("Autopilot tour paused", "info");
@@ -547,187 +482,175 @@
       }
     }
 
-    highlightSection(step) {
-      if (this.lastHighlightedSection) {
-        this.lastHighlightedSection.classList.remove("ap-highlight-section");
+    // Scroll smoothly to a specific section index during prev/next manual clicks
+    scrollToSectionIndex(index) {
+      if (index < 0 || index >= sectionsConfig.length) return;
+      const targetSec = sectionsConfig[index];
+      const el = document.querySelector(targetSec.selector);
+      if (el) {
+        const top = Math.max(0, el.offsetTop - 90);
+        window.scrollTo({ top: top, behavior: "smooth" });
+      }
+    }
+
+    updateSectionAndProgress() {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const currentY = window.pageYOffset || document.documentElement.scrollTop;
+      const progressPercent = Math.min(100, Math.max(0, Math.round((currentY / maxScroll) * 100)));
+
+      if (this.progressPercentEl) this.progressPercentEl.textContent = `${progressPercent}%`;
+      if (this.progressBarFill) this.progressBarFill.style.width = `${progressPercent}%`;
+
+      // Determine active section continuously without jumping
+      let activeIdx = 0;
+      for (let i = 0; i < sectionsConfig.length; i++) {
+        const el = document.querySelector(sectionsConfig[i].selector);
+        if (el) {
+          const top = el.offsetTop - 140;
+          if (currentY >= top) {
+            activeIdx = i;
+          }
+        }
       }
 
-      const target = document.querySelector(step.selector);
-      if (target) {
-        target.classList.add("ap-highlight-section");
-        this.lastHighlightedSection = target;
-      }
+      if (activeIdx !== this.currentSectionIdx) {
+        this.currentSectionIdx = activeIdx;
+        const activeSec = sectionsConfig[activeIdx];
 
-      if (step.navHref) {
+        if (this.viewingTag) this.viewingTag.textContent = activeSec.title;
+
+        // Navbar highlight
         document.querySelectorAll(".nav-link").forEach((link) => {
-          if (link.getAttribute("href") === step.navHref) {
+          if (link.getAttribute("href") === activeSec.navHref) {
             link.classList.add("active");
           } else {
             link.classList.remove("active");
           }
         });
+
+        // Section Glow
+        if (this.lastHighlightedSection) {
+          this.lastHighlightedSection.classList.remove("ap-highlight-section");
+        }
+        const targetEl = document.querySelector(activeSec.selector);
+        if (targetEl) {
+          targetEl.classList.add("ap-highlight-section");
+          this.lastHighlightedSection = targetEl;
+        }
+
+        // Voice Narration
+        this.narrator.speak(activeSec.id, activeSec.speech);
       }
     }
 
-    async runDeepInspection(step) {
-      const sectionEl = document.querySelector(step.selector);
-      if (!sectionEl) return;
+    async scanAndDwellInspectableCards() {
+      if (this.isCardDwelling || this.isPaused || !this.isActive) return;
 
-      // Deep Item Inspections by Section ID:
-      if (step.id === "projects") {
-        const cards = sectionEl.querySelectorAll(".project-card");
-        for (let i = 0; i < cards.length; i++) {
-          if (!this.isActive || this.isPaused) break;
-          const card = cards[i];
+      const viewportTop = window.pageYOffset;
+      const viewportBottom = viewportTop + window.innerHeight;
+      const viewportMiddle = viewportTop + window.innerHeight * 0.55;
 
-          card.classList.add("ap-hover-focus");
-          await this.cursorEngine.moveOverElement(card, 800);
+      // Inspectable elements selector query
+      const selectorStr = `.project-card, .cert-card, .hackathon-card, .skills-category-card, .service-card, .timeline-item, .exp-card`;
+      const candidates = Array.from(document.querySelectorAll(selectorStr));
+
+      for (let i = 0; i < candidates.length; i++) {
+        const el = candidates[i];
+        if (this.inspectedElements.has(el)) continue;
+
+        const rect = el.getBoundingClientRect();
+        const elementTopDoc = rect.top + viewportTop;
+        const elementBottomDoc = rect.bottom + viewportTop;
+
+        // Check if element is at least 50-60% visible in middle viewport focal zone
+        if (elementTopDoc <= viewportMiddle && elementBottomDoc >= viewportTop + 100) {
+          // Trigger card dwell pause
+          this.inspectedElements.add(el);
+          this.isCardDwelling = true;
+
+          el.classList.add("ap-hover-focus");
+          await this.cursorEngine.moveOverElement(el, 650);
           this.cursorEngine.setHovering(true);
 
-          await delay(1800);
-
-          // Hover demo link if available
-          const demoBtn = card.querySelector("a");
-          if (demoBtn) {
-            await this.cursorEngine.moveOverElement(demoBtn, 500);
-            await delay(700);
+          if (this.stepText) {
+            const titleEl = el.querySelector("h3, h4, .project-title, .exp-role");
+            const titleText = titleEl ? titleEl.textContent.trim() : "element";
+            this.stepText.textContent = `Inspecting ${titleText}...`;
           }
 
-          card.classList.remove("ap-hover-focus");
-          this.cursorEngine.setHovering(false);
-        }
-      } else if (step.id === "skills") {
-        const categories = sectionEl.querySelectorAll(".skills-category-card, .skill-badge");
-        for (let i = 0; i < Math.min(6, categories.length); i++) {
-          if (!this.isActive || this.isPaused) break;
-          const cat = categories[i];
-          cat.classList.add("ap-hover-focus");
-          await this.cursorEngine.moveOverElement(cat, 600);
-          this.cursorEngine.setHovering(true);
-          await delay(800);
-          cat.classList.remove("ap-hover-focus");
-          this.cursorEngine.setHovering(false);
-        }
-      } else if (step.id === "hackathons") {
-        const hCards = sectionEl.querySelectorAll(".hackathon-card");
-        for (let i = 0; i < hCards.length; i++) {
-          if (!this.isActive || this.isPaused) break;
-          const hCard = hCards[i];
-          hCard.classList.add("ap-hover-focus");
-          await this.cursorEngine.moveOverElement(hCard, 700);
-          this.cursorEngine.setHovering(true);
-          await delay(1400);
-          hCard.classList.remove("ap-hover-focus");
-          this.cursorEngine.setHovering(false);
-        }
-      } else if (step.id === "certifications") {
-        const certCards = sectionEl.querySelectorAll(".cert-card");
-        for (let i = 0; i < certCards.length; i++) {
-          if (!this.isActive || this.isPaused) break;
-          const cCard = certCards[i];
-          cCard.classList.add("ap-hover-focus");
-          await this.cursorEngine.moveOverElement(cCard, 700);
-          this.cursorEngine.setHovering(true);
+          // Dwell pause (1.8s) while micro-jittering cursor naturally
+          await this.cursorEngine.microJitter(2, 4);
           await delay(1200);
-          cCard.classList.remove("ap-hover-focus");
+
+          el.classList.remove("ap-hover-focus");
           this.cursorEngine.setHovering(false);
+          this.isCardDwelling = false;
+          break;
         }
-      } else {
-        // Generic section element inspection with micro reading jitters
-        await this.cursorEngine.moveOverElement(sectionEl, 900);
-        await this.cursorEngine.microJitter(2, 6);
       }
     }
 
-    async jumpStep(index) {
-      if (index < 0 || index >= tourSteps.length) return;
-      this.currentStepIdx = index;
-      await this.executeStep(index);
-    }
-
-    async executeStep(index) {
+    scrollLoop() {
       if (!this.isActive) return;
 
-      const step = tourSteps[index];
-      const percent = Math.round(((index + 1) / tourSteps.length) * 100);
+      if (!this.isPaused && !this.isCardDwelling) {
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const currentY = window.pageYOffset || document.documentElement.scrollTop;
 
-      // Update Dashboard Metrics
-      if (this.viewingTag) this.viewingTag.textContent = step.title;
-      if (this.stepText) this.stepText.textContent = step.message;
-      if (this.progressPercentEl) this.progressPercentEl.textContent = `${percent}%`;
-      if (this.progressBarFill) this.progressBarFill.style.width = `${percent}%`;
-
-      // Highlight section & nav
-      this.highlightSection(step);
-
-      // Speak narration
-      this.narrator.speak(step.speech);
-
-      // Calculate smooth target scroll position
-      const targetEl = document.querySelector(step.selector);
-      if (targetEl) {
-        const headerOffset = 90;
-        const targetY = Math.max(0, targetEl.getBoundingClientRect().top + window.pageYOffset - headerOffset);
-
-        // Smooth cinematic ease scroll
-        await this.scrollEngine.scrollToTarget(targetY, 1400, Easing.easeInOutExpo);
-      }
-
-      if (!this.isActive) return;
-
-      // Perform deep inspection of cards/elements inside this section
-      await this.runDeepInspection(step);
-
-      // Dwell pause time
-      let dwell = step.inspectionTime;
-      while (dwell > 0 && this.isActive) {
-        if (!this.isPaused) {
-          dwell -= 200;
+        if (currentY >= maxScroll - 3) {
+          this.finishTour();
+          return;
         }
-        await delay(200);
+
+        // Smooth pixel-by-pixel continuous scroll increment
+        window.scrollBy(0, this.currentSpeed);
+
+        this.updateSectionAndProgress();
+        this.scanAndDwellInspectableCards();
       }
+
+      this.animFrameId = requestAnimationFrame(this.scrollLoop.bind(this));
     }
 
-    async startTour() {
+    startTour() {
       if (this.isActive) return;
 
       this.isActive = true;
       this.isPaused = false;
-      this.currentStepIdx = 0;
+      this.isCardDwelling = false;
+      this.inspectedElements.clear();
+      this.currentSectionIdx = -1;
 
       this.controllerBar.classList.add("active");
       this.cursorEngine.show();
       this.setTourButtonsRunning(true);
       this.startTimer();
 
-      for (let i = 0; i < tourSteps.length; i++) {
-        if (!this.isActive) break;
-        this.currentStepIdx = i;
-        await this.executeStep(i);
-      }
-
-      if (this.isActive) {
-        this.finishTour();
-      }
+      // Start continuous requestAnimationFrame loop
+      this.scrollLoop();
     }
 
     finishTour() {
       this.stopTour(false);
 
-      // Show Summary Card Modal
       const overlay = document.getElementById("ap-summary-overlay");
       if (overlay) overlay.classList.add("active");
 
       if (typeof window.showToast === "function") {
-        window.showToast("Recruiter Walkthrough Complete!", "success");
+        window.showToast("Full-Page Recruiter Walkthrough Complete!", "success");
       }
     }
 
     stopTour(fromUser = false) {
       this.isActive = false;
       this.isPaused = false;
+      this.isCardDwelling = false;
 
-      this.scrollEngine.stop();
+      if (this.animFrameId) {
+        cancelAnimationFrame(this.animFrameId);
+        this.animFrameId = null;
+      }
+
       this.narrator.stop();
       this.cursorEngine.hide();
       this.stopTimer();
@@ -743,7 +666,7 @@
       this.setTourButtonsRunning(false);
 
       if (fromUser && typeof window.showToast === "function") {
-        window.showToast("Autopilot tour stopped.", "info");
+        window.showToast("Autopilot walkthrough stopped.", "info");
       }
     }
 
@@ -772,34 +695,10 @@
       }
     }
 
-    setupObserver() {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (!this.isActive) return;
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const id = entry.target.getAttribute("id");
-              const stepIdx = tourSteps.findIndex((s) => s.id === id);
-              if (stepIdx !== -1 && stepIdx !== this.currentStepIdx) {
-                // Keep section sync precise
-              }
-            }
-          });
-        },
-        { threshold: 0.4 }
-      );
-
-      tourSteps.forEach((step) => {
-        const el = document.querySelector(step.selector);
-        if (el) observer.observe(el);
-      });
-    }
-
     setupUserOverrideHandlers() {
       const handleOverride = (e) => {
         if (!this.isActive) return;
 
-        // Ignore clicks inside controller bar or trigger buttons
         if (
           e.target.closest("#ap-controller-bar") ||
           e.target.closest("#ap-summary-overlay") ||
@@ -809,7 +708,6 @@
           return;
         }
 
-        // Stop tour on explicit user interaction
         this.stopTour(true);
       };
 
@@ -826,12 +724,12 @@
   }
 
   // ==========================================================================
-  // 7. INITIALIZATION & GLOBAL EXPORTS
+  // 6. INITIALIZATION & GLOBAL EXPORTS
   // ==========================================================================
   let autopilotInstance = null;
 
   function init() {
-    autopilotInstance = new AutopilotTour();
+    autopilotInstance = new ContinuousAutopilotTour();
     autopilotInstance.init();
 
     window.startAutopilotTour = function () {
