@@ -1,32 +1,146 @@
-/* Autopilot Walkthrough Tour Custom Styles */
+/* ==========================================================================
+   kjs PORTFOLIO AUTOPILOT V2.0 – PREMIUM RECRUITER EXPERIENCE STYLES
+   ========================================================================== */
 
 :root {
   --ap-accent: #ff3c00;
-  /* Matching the orange theme in the portfolio */
-  --ap-bg: rgba(13, 23, 31, 0.95);
-  --ap-border: rgba(255, 60, 0, 0.25);
+  --ap-accent-glow: rgba(255, 60, 0, 0.4);
+  --ap-accent-alpha: rgba(255, 60, 0, 0.12);
+  --ap-bg: rgba(11, 15, 25, 0.92);
+  --ap-border: rgba(255, 60, 0, 0.3);
   --ap-text: #f8fafc;
+  --ap-muted: #94a3b8;
 }
 
-/* Floating Controller - Top Right Positioned */
+/* ==========================================================================
+   1. VIRTUAL / FAKE CURSOR
+   ========================================================================== */
+#ap-virtual-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  z-index: 9999999;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0) scale(1);
+  transition: opacity 0.3s ease, transform 0.15s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#ap-virtual-cursor.active {
+  opacity: 1;
+}
+
+.ap-cursor-pointer {
+  width: 14px;
+  height: 14px;
+  background: var(--ap-accent);
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--ap-accent), 0 0 30px var(--ap-accent-glow);
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ap-cursor-ring {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: 30px;
+  height: 30px;
+  border: 1.5px dashed rgba(255, 60, 0, 0.7);
+  border-radius: 50%;
+  animation: ap-cursor-spin 4s linear infinite;
+  pointer-events: none;
+}
+
+#ap-virtual-cursor.hovering .ap-cursor-pointer {
+  transform: scale(1.6);
+  background: #ffffff;
+  border-color: var(--ap-accent);
+}
+
+#ap-virtual-cursor.clicking .ap-cursor-pointer {
+  transform: scale(0.9);
+}
+
+@keyframes ap-cursor-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   2. SECTION HIGHLIGHT ENGINE
+   ========================================================================== */
+section {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease, border-color 0.6s ease, background-color 0.6s ease;
+}
+
+.ap-highlight-section {
+  transform: scale(1.012) !important;
+  z-index: 5;
+  box-shadow: 0 0 40px rgba(255, 60, 0, 0.12), inset 0 0 20px rgba(255, 60, 0, 0.05) !important;
+  border-color: rgba(255, 60, 0, 0.3) !important;
+  border-radius: 12px;
+  position: relative;
+}
+
+.ap-highlight-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--ap-accent), transparent);
+  box-shadow: 0 0 15px var(--ap-accent);
+  pointer-events: none;
+  animation: ap-scanline 2s ease-in-out infinite;
+}
+
+@keyframes ap-scanline {
+  0% { opacity: 0.3; transform: scaleX(0.7); }
+  50% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0.3; transform: scaleX(0.7); }
+}
+
+/* Element Focus Hover during Inspection */
+.ap-hover-focus {
+  transform: translateY(-8px) scale(1.02) !important;
+  border-color: var(--ap-accent) !important;
+  box-shadow: 0 15px 35px rgba(255, 60, 0, 0.25) !important;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease !important;
+}
+
+.ap-hover-focus .project-overlay {
+  opacity: 1 !important;
+}
+
+/* ==========================================================================
+   3. PREMIUM GLASSMORPHISM DASHBOARD CONTROLLER
+   ========================================================================== */
 #ap-controller-bar {
   position: fixed;
-  top: 90px;
+  top: 85px;
   right: 24px;
   z-index: 999999;
   background: var(--ap-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--ap-border);
-  border-radius: 14px;
-  padding: 12px 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 60, 0, 0.15);
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 60, 0, 0.2);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 360px;
-  max-width: 90vw;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s, max-height 0.3s ease;
+  gap: 12px;
+  width: 380px;
+  max-width: 92vw;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
   opacity: 0;
   pointer-events: none;
   box-sizing: border-box;
@@ -38,32 +152,63 @@
   pointer-events: auto;
 }
 
-/* Minimized State - Compact header bar so content beneath is completely visible */
-#ap-controller-bar.minimized .ap-body,
+#ap-controller-bar.minimized {
+  padding: 10px 16px;
+  width: auto;
+  border-radius: 30px;
+}
+
+#ap-controller-bar.minimized .ap-dashboard-body,
+#ap-controller-bar.minimized .ap-metrics-grid,
+#ap-controller-bar.minimized .ap-nav-controls,
 #ap-controller-bar.minimized .ap-footer {
   display: none !important;
 }
 
-#ap-controller-bar.minimized {
-  padding: 10px 16px;
-  gap: 0;
-  width: auto;
-  border-radius: 25px;
+.ap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 10px;
 }
 
-.ap-controls {
+.ap-title-badge {
   display: flex;
   align-items: center;
   gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ap-text);
 }
 
-.ap-btn-icon,
-.ap-btn-minimize {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.ap-title-badge i {
+  color: var(--ap-accent);
+  font-size: 14px;
+  animation: ap-pulse 1.8s infinite;
+}
+
+@keyframes ap-pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+.ap-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ap-btn-icon {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: var(--ap-text);
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -73,189 +218,181 @@
   transition: all 0.2s ease;
 }
 
-.ap-btn-icon {
-  background: rgba(255, 60, 0, 0.15);
-  border: 1px solid rgba(255, 60, 0, 0.35);
-  color: var(--ap-accent);
-}
-
-.ap-btn-icon:hover,
-.ap-btn-minimize:hover {
+.ap-btn-icon:hover {
   background: var(--ap-accent);
   border-color: var(--ap-accent);
   color: #ffffff;
-  box-shadow: 0 0 10px rgba(255, 60, 0, 0.4);
+  box-shadow: 0 0 12px var(--ap-accent-glow);
 }
 
-.ap-header {
+.ap-btn-icon.active {
+  background: var(--ap-accent);
+  border-color: var(--ap-accent);
+  color: #ffffff;
+}
+
+/* Metrics Grid */
+.ap-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ap-metric-card {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 8px;
+  gap: 2px;
 }
 
-.ap-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px;
+.ap-metric-label {
+  font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
+  color: var(--ap-muted);
   letter-spacing: 0.05em;
+}
+
+.ap-metric-value {
+  font-family: 'Outfit', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ap-text);
+}
+
+.ap-dashboard-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ap-viewing-tag {
+  font-size: 11px;
+  font-weight: 600;
   color: var(--ap-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.ap-title i {
-  animation: ap-pulse 1.5s infinite;
-}
-
-.ap-step-num {
-  font-size: 11px;
-  color: #94a3b8;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2px 8px;
-  border-radius: 9999px;
-  font-weight: 500;
-}
-
-.ap-body {
+.ap-status-msg {
   font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 13px;
+  line-height: 1.45;
   color: var(--ap-text);
-  min-height: 40px;
+  min-height: 38px;
 }
 
+/* Nav Controls */
+.ap-nav-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.ap-ctrl-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--ap-text);
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+  flex: 1;
+  justify-content: center;
+}
+
+.ap-ctrl-btn:hover {
+  background: rgba(255, 60, 0, 0.2);
+  border-color: var(--ap-accent);
+  color: #ffffff;
+}
+
+.ap-ctrl-btn.btn-play-pause {
+  background: var(--ap-accent-alpha);
+  border-color: var(--ap-accent);
+  color: var(--ap-accent);
+}
+
+.ap-ctrl-btn.btn-play-pause:hover {
+  background: var(--ap-accent);
+  color: #ffffff;
+}
+
+/* Footer & Progress Track */
 .ap-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   margin-top: 4px;
 }
 
-/* Progress bar container */
 .ap-progress-track {
   flex-grow: 1;
   height: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
   overflow: hidden;
+  position: relative;
 }
 
 .ap-progress-fill {
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, var(--ap-accent) 0%, #ff8c00 100%);
-  border-radius: 3px;
-  transition: width 0.4s ease;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--ap-accent);
 }
 
-/* Button */
 .ap-btn-stop {
   background: rgba(239, 68, 68, 0.15);
   border: 1px solid rgba(239, 68, 68, 0.4);
   color: #ef4444;
-  padding: 6px 14px;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 6px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   transition: all 0.2s ease;
 }
 
 .ap-btn-stop:hover {
   background: #ef4444;
   color: #ffffff;
-  box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
 }
 
-/* Skip Tour Floating Button (Bottom-Right) */
-#ap-skip-btn {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 999999;
-  background: var(--ap-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--ap-accent);
-  color: var(--ap-text);
-  padding: 10px 18px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  border-radius: 30px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 60, 0, 0.3);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  opacity: 0;
-  transform: scale(0.8) translateY(20px);
-  pointer-events: none;
-}
-
-#ap-skip-btn.active {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-  pointer-events: auto;
-}
-
-#ap-skip-btn:hover {
-  background: var(--ap-accent);
-  color: #ffffff;
-  box-shadow: 0 10px 30px rgba(255, 60, 0, 0.5);
-  transform: scale(1.05) translateY(-2px);
-}
-
-/* Glowing Target Section Highlight Frame */
-.ap-highlight-section {
-  position: relative;
-  outline: 2px solid var(--ap-accent) !important;
-  outline-offset: 4px;
-  box-shadow: 0 0 35px rgba(255, 60, 0, 0.3) !important;
-  transition: all 0.4s ease;
-}
-
-/* Header Auto-Start Button Specific Styling */
-.btn-nav-ap {
-  background: rgba(255, 60, 0, 0.08) !important;
-  border: 1px solid var(--ap-border) !important;
-  color: var(--ap-text) !important;
-  padding: 6px 12px !important;
-  font-size: 12px !important;
-  border-radius: 6px !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  transition: all 0.3s ease !important;
-}
-
-.btn-nav-ap:hover {
-  background: var(--ap-accent) !important;
-  border-color: var(--ap-accent) !important;
-  color: #ffffff !important;
-  box-shadow: 0 0 12px rgba(255, 60, 0, 0.4) !important;
-}
-
-/* End Screen Link Queue Notification Overlay */
-.ap-finish-overlay {
+/* ==========================================================================
+   4. SUMMARY MODAL AT TOUR END
+   ========================================================================== */
+#ap-summary-overlay {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(10, 15, 20, 0.85);
-  backdrop-filter: blur(8px);
-  z-index: 1000000;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(5, 8, 15, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9999999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -264,93 +401,118 @@
   transition: opacity 0.5s ease;
 }
 
-.ap-finish-overlay.active {
+#ap-summary-overlay.active {
   opacity: 1;
   pointer-events: auto;
 }
 
-.ap-finish-card {
-  background: var(--ap-bg);
-  border: 1px solid var(--ap-border);
-  padding: 40px;
+.ap-summary-card {
+  background: rgba(13, 20, 32, 0.95);
+  border: 1px solid var(--ap-accent);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 60, 0, 0.25);
   border-radius: 20px;
+  padding: 35px 40px;
+  max-width: 520px;
+  width: 90%;
   text-align: center;
-  max-width: 450px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
   transform: scale(0.9);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.ap-finish-overlay.active .ap-finish-card {
+#ap-summary-overlay.active .ap-summary-card {
   transform: scale(1);
 }
 
-.ap-finish-card h3 {
-  font-family: 'Syne', sans-serif;
-  color: #ffffff;
-  font-size: 24px;
-  margin-bottom: 12px;
-}
-
-.ap-finish-card p {
-  color: #94a3b8;
-  font-size: 15px;
-  margin-bottom: 24px;
-}
-
-.ap-finish-chimes {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 24px;
-}
-
-.ap-chime-icon {
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.ap-summary-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--ap-accent-alpha);
+  border: 2px solid var(--ap-accent);
+  color: var(--ap-accent);
+  font-size: 28px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #cbd5e1;
-  font-size: 18px;
-  animation: ap-float 2s ease-in-out infinite alternate;
+  box-shadow: 0 0 25px var(--ap-accent-glow);
 }
 
-.ap-chime-icon:nth-child(2) {
-  animation-delay: 0.3s;
+.ap-summary-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
 }
 
-.ap-chime-icon:nth-child(3) {
-  animation-delay: 0.6s;
+.ap-summary-card p {
+  font-size: 15px;
+  color: var(--ap-muted);
+  line-height: 1.6;
+  margin: 0;
 }
 
-/* Animations */
-@keyframes ap-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  50% {
-    transform: scale(1.15);
-    opacity: 0.8;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+.ap-summary-actions {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  margin-top: 10px;
 }
 
-@keyframes ap-float {
-  0% {
-    transform: translateY(0);
+.ap-summary-btn {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ap-summary-btn.primary {
+  background: var(--ap-accent);
+  border: 1px solid var(--ap-accent);
+  color: #ffffff;
+  box-shadow: 0 0 20px var(--ap-accent-glow);
+}
+
+.ap-summary-btn.primary:hover {
+  background: #e03500;
+  transform: translateY(-2px);
+}
+
+.ap-summary-btn.secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.ap-summary-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 600px) {
+  #ap-controller-bar {
+    top: 75px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+    max-width: none;
   }
 
-  100% {
-    transform: translateY(-8px);
+  .ap-metrics-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ap-nav-controls {
+    flex-wrap: wrap;
   }
 }
