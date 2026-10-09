@@ -38,8 +38,7 @@
   const EXTERNAL_LINKS = {
     linkedin: "https://www.linkedin.com/in/kavati-john-shreyan-956a35366",
     github: "https://github.com/KAVATIJOHNSHREYAN",
-    resume: "./resume.html",
-    flagshipDemo: "https://aethermind-multi-modal-ai-fwt8jmcqdbbmoahwveobze.streamlit.app/"
+    resume: "./resume.html"
   };
 
   // ==========================================================================
