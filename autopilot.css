@@ -57,6 +57,7 @@
   gap: 8px;
 }
 
+.ap-btn-icon,
 .ap-btn-minimize {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -72,10 +73,18 @@
   transition: all 0.2s ease;
 }
 
+.ap-btn-icon {
+  background: rgba(255, 60, 0, 0.15);
+  border: 1px solid rgba(255, 60, 0, 0.35);
+  color: var(--ap-accent);
+}
+
+.ap-btn-icon:hover,
 .ap-btn-minimize:hover {
   background: var(--ap-accent);
   border-color: var(--ap-accent);
   color: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 60, 0, 0.4);
 }
 
 .ap-header {
