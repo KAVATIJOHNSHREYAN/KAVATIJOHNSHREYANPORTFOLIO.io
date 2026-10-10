@@ -134,7 +134,7 @@ Which project would you like to inspect?`,
             intents: ["contact", "email", "phone", "hire", "reach", "linkedin", "github", "location", "address"],
             response: `📬 **Contact Information**:
 
-• **Email:** [2400033326cse2@gmail.com](mailto:2400033326cse2@gmail.com)
+• **Email:** [johnshreyan83@gmail.com](mailto:johnshreyan83@gmail.com)
 • **Phone:** +91 8374556692
 • **Location:** Andhra Pradesh, India
 • **LinkedIn:** [linkedin.com/in/kavati-john-shreyan-956a35366](https://linkedin.com/in/kavati-john-shreyan-956a35366)

@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kavati John Shreyan - Resume</title>
+    <title>Kavati John Shreyan - ATS Resume</title>
     <!-- Google Fonts: Inter for clean professional typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for icons in screen UI -->
+    <!-- FontAwesome for icons in UI controls -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --primary-color: #000000;
-            --secondary-color: #000000;
-            --accent-color: #000000;
-            --text-color: #000000;
-            --border-color: #000000;
+            --secondary-color: #1e293b;
+            --text-color: #0f172a;
+            --border-color: #cbd5e1;
             --body-bg: #f8fafc;
             --resume-bg: #ffffff;
+            --accent-orange: #ff3c00;
         }
 
         * {
@@ -29,10 +29,10 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--body-bg);
             color: var(--text-color);
-            line-height: 1.4;
+            line-height: 1.45;
             padding: 1.5rem 1rem;
             display: flex;
             flex-direction: column;
@@ -42,40 +42,40 @@
         /* Floating Controls Header */
         .controls {
             width: 100%;
-            max-width: 820px;
+            max-width: 840px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.6rem 1.25rem;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 1.25rem;
+            padding: 0.75rem 1.25rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
         }
 
         .controls-text {
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 600;
             color: #3b5266;
         }
 
         .btn-print {
-            padding: 0.45rem 1.1rem;
+            padding: 0.5rem 1.25rem;
             font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 700;
             color: #ffffff;
-            background-color: #ff3c00; /* Orange highlight for UI action */
+            background-color: var(--accent-orange);
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 8px rgba(255, 60, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(255, 60, 0, 0.25);
         }
 
         .btn-print:hover {
@@ -84,14 +84,14 @@
         }
 
         .btn-back {
-            padding: 0.45rem 0.9rem;
+            padding: 0.5rem 1rem;
             font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #3b5266;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #334155;
             background: transparent;
-            border: 1px solid #cbd5e1;
-            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -103,33 +103,33 @@
             background-color: #f1f5f9;
         }
 
-        /* Resume A4 Sheet Layout */
+        /* Printable A4 Resume Container */
         .resume-page {
             width: 100%;
-            max-width: 820px;
+            max-width: 840px;
             background: var(--resume-bg);
-            padding: 2.25rem 2.5rem;
-            border: 1px solid #cbd5e1;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            padding: 2.5rem 2.75rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.9rem;
         }
 
-        /* Header section */
+        /* Header Section */
         header {
             text-align: center;
             border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 0.15rem;
+            padding-bottom: 0.6rem;
+            margin-bottom: 0.2rem;
         }
 
         h1 {
-            font-size: 1.8rem;
+            font-size: 1.95rem;
             font-weight: 800;
             color: var(--primary-color);
             letter-spacing: -0.01em;
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.4rem;
             text-transform: uppercase;
         }
 
@@ -138,10 +138,10 @@
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 0.4rem 0.6rem;
-            font-size: 0.78rem;
+            gap: 0.4rem 0.75rem;
+            font-size: 0.82rem;
             color: var(--secondary-color);
-            font-weight: 400;
+            font-weight: 500;
         }
 
         .contact-info span {
@@ -150,44 +150,54 @@
         }
 
         .contact-info a {
-            color: inherit;
+            color: #000000;
             text-decoration: underline;
+            font-weight: 600;
         }
 
         .contact-info a:hover {
-            color: #000000;
+            color: var(--accent-orange);
         }
 
-        /* Section Layout */
+        /* Resume Sections Order:
+           1. Summary
+           2. Technical Skills
+           3. Projects
+           4. Experience
+           5. Education
+           6. Certifications
+           7. Achievements
+        */
         .resume-section {
             display: flex;
             flex-direction: column;
-            gap: 0.3rem;
+            gap: 0.35rem;
         }
 
         h2 {
-            font-size: 0.9rem;
-            font-weight: 700;
+            font-size: 0.92rem;
+            font-weight: 800;
             color: var(--primary-color);
             text-transform: uppercase;
-            letter-spacing: 0.03em;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.15rem;
-            margin-bottom: 0.2rem;
+            letter-spacing: 0.04em;
+            border-bottom: 1.5px solid #000000;
+            padding-bottom: 0.2rem;
+            margin-bottom: 0.25rem;
         }
 
         p.summary-text {
-            font-size: 0.78rem;
+            font-size: 0.82rem;
             color: var(--text-color);
             text-align: justify;
+            line-height: 1.5;
         }
 
-        /* Lists and Timeline Grids */
+        /* Item Rows & Headers */
         .item-row {
             display: flex;
             flex-direction: column;
-            gap: 0.05rem;
-            margin-bottom: 0.25rem;
+            gap: 0.1rem;
+            margin-bottom: 0.35rem;
         }
 
         .item-row:last-child {
@@ -197,35 +207,55 @@
         .item-header {
             display: flex;
             justify-content: space-between;
-            font-size: 0.82rem;
+            align-items: baseline;
+            font-size: 0.85rem;
             font-weight: 700;
             color: var(--primary-color);
+        }
+
+        .item-header a {
+            color: #000000;
+            text-decoration: underline;
+            font-weight: 700;
         }
 
         .item-subheader {
             display: flex;
             justify-content: space-between;
+            align-items: baseline;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 0.15rem;
+        }
+
+        .tech-stack-tag {
             font-size: 0.78rem;
-            font-style: italic;
-            color: var(--secondary-color);
+            font-weight: 600;
+            color: #475569;
         }
 
         ul.item-bullets {
             margin-left: 1.1rem;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             color: var(--text-color);
             display: flex;
             flex-direction: column;
-            gap: 0.1rem;
-            margin-top: 0.1rem;
+            gap: 0.15rem;
+            line-height: 1.45;
         }
 
-        /* Skills Grid Layout */
+        ul.item-bullets li {
+            position: relative;
+        }
+
+        /* Skills Table Layout */
         .skills-table {
             display: grid;
-            grid-template-columns: 150px 1fr;
-            gap: 0.25rem 0.8rem;
-            font-size: 0.78rem;
+            grid-template-columns: 170px 1fr;
+            gap: 0.3rem 1rem;
+            font-size: 0.8rem;
+            line-height: 1.45;
         }
 
         .skills-category {
@@ -237,12 +267,12 @@
             color: var(--text-color);
         }
 
-        /* Certifications & Achievements list */
+        /* Certifications List */
         .cert-row {
             display: flex;
             justify-content: space-between;
-            font-size: 0.78rem;
-            margin-bottom: 0.15rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.2rem;
         }
 
         .cert-row:last-child {
@@ -250,21 +280,39 @@
         }
 
         .cert-name {
-            font-weight: 600;
+            font-weight: 700;
             color: var(--primary-color);
         }
 
         .cert-org {
-            color: var(--secondary-color);
+            color: #475569;
+            font-weight: 500;
         }
 
-        /* Media Queries for Print (forces standard document rules) */
+        .live-badge {
+            display: inline-block;
+            background: #000000;
+            color: #ffffff;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 3px;
+            margin-left: 6px;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        /* Media Queries for Clean Printing & PDF Export */
         @media print {
+            @page {
+                size: letter;
+                margin: 0.4in;
+            }
             body {
-                background: #ffffff;
-                color: #000000;
-                padding: 0;
-                margin: 0;
+                background: #ffffff !important;
+                color: #000000 !important;
+                padding: 0 !important;
+                margin: 0 !important;
             }
             .controls {
                 display: none !important;
@@ -275,58 +323,205 @@
                 padding: 0 !important;
                 width: 100% !important;
                 max-width: 100% !important;
-                min-height: auto !important;
-                background: transparent !important;
-            }
-            :root {
-                --primary-color: #000000;
-                --secondary-color: #000000;
-                --text-color: #000000;
-                --border-color: #000000;
+                background: #ffffff !important;
             }
             a {
-                text-decoration: underline !important;
                 color: #000000 !important;
+                text-decoration: underline !important;
+            }
+            .live-badge {
+                border: 1px solid #000000;
+                color: #000000;
+                background: transparent;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating action controls -->
+    <!-- Floating Action Controls (Screen Only) -->
     <div class="controls">
         <a href="./index.html" class="btn-back"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
-        <span class="controls-text">ATS-Friendly Single-Page Resume</span>
-        <button onclick="window.print()" class="btn-print"><i class="fa-solid fa-download"></i> Download as PDF</button>
+        <span class="controls-text">ATS-Optimized Single-Page Engineering Resume</span>
+        <button onclick="window.print()" class="btn-print"><i class="fa-solid fa-download"></i> Download PDF</button>
     </div>
 
     <!-- Printable Resume Page -->
     <div class="resume-page">
-        <!-- 1. Header Section -->
+        <!-- Header Section -->
         <header>
             <h1>Kavati John Shreyan</h1>
             <div class="contact-info">
-                <span>Email: <a href="mailto:2400033326cse2@gmail.com">2400033326cse2@gmail.com</a></span>
+                <span>Email: <a href="mailto:johnshreyan83@gmail.com">johnshreyan83@gmail.com</a></span>
                 <span>|</span>
-                <span>Phone: +91 8374556692</span>
+                <span>Phone: +91 93924 93902</span>
                 <span>|</span>
                 <span>Location: Andhra Pradesh, India</span>
                 <span>|</span>
-                <span><a href="https://linkedin.com/in/kavati-john-shreyan-956a35366" target="_blank">LinkedIn</a></span>
+                <span>LinkedIn: <a href="https://www.linkedin.com/in/kavati-john-shreyan-956a35366" target="_blank" rel="noopener noreferrer">https://www.linkedin.com/in/kavati-john-shreyan-956a35366</a></span>
                 <span>|</span>
-                <span><a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank">GitHub</a></span>
+                <span>GitHub: <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" rel="noopener noreferrer">https://github.com/KAVATIJOHNSHREYAN</a></span>
+                <span>|</span>
+                <span>Portfolio: <a href="https://kavatijohnshreyan-github-io.vercel.app" target="_blank" rel="noopener noreferrer">https://kavatijohnshreyan-github-io.vercel.app</a></span>
             </div>
         </header>
 
-        <!-- 2. Professional Summary -->
+        <!-- 1. Professional Summary (Exact 2 Factual Lines) -->
         <section class="resume-section">
             <h2>Professional Summary</h2>
             <p class="summary-text">
-                Results-driven AI & Full Stack Software Engineer specializing in Artificial Intelligence, Computational Intelligence, and scalable backend architecture. Proven expertise in building production-ready Large Language Model (LLM) applications, Retrieval-Augmented Generation (RAG) pipelines, and intelligent AI workflows. Adept at leveraging robust Computer Science fundamentals to design scalable software solutions, develop custom REST APIs, and integrate advanced GenAI capabilities into modern web applications.
+                AI & Full Stack Software Engineer specializing in Python, FastAPI, React, TypeScript, RAG, LLM Applications, and scalable backend systems. Built production-ready multimodal AI platforms, intelligent document processing systems, REST APIs, and enterprise-grade AI solutions designed for scalable production deployment.
             </p>
         </section>
 
-        <!-- 3. Education Section -->
+        <!-- 2. Technical Skills -->
+        <section class="resume-section">
+            <h2>Technical Skills</h2>
+            <div class="skills-table">
+                <div class="skills-category">Programming Languages</div>
+                <div class="skills-list">Python, Java, JavaScript, TypeScript, HTML5, CSS3, SQL</div>
+                
+                <div class="skills-category">Artificial Intelligence</div>
+                <div class="skills-list">Multimodal AI, Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), Qdrant Vector DB, Amazon Bedrock, Vision AI, LLM Orchestration, Prompt Engineering</div>
+                
+                <div class="skills-category">Web & Backend Stack</div>
+                <div class="skills-list">FastAPI, Streamlit, React, Next.js, Node.js, Express.js, REST APIs, JWT Authentication, JSON Schemas</div>
+                
+                <div class="skills-category">Databases & Cloud</div>
+                <div class="skills-list">Qdrant Vector DB, Supabase, Firebase Firestore, MySQL, SQLite, Microsoft Azure</div>
+                
+                <div class="skills-category">Engineering Practices</div>
+                <div class="skills-list">Software Architecture, System Design, Git, CI/CD Pipelines, Agile/Scrum, Code Review, Unit Testing</div>
+            </div>
+        </section>
+
+        <!-- 3. Projects -->
+        <section class="resume-section">
+            <h2>Projects</h2>
+            
+            <!-- Project 1: AetherMind Multi-Modal AI -->
+            <div class="item-row">
+                <div class="item-header">
+                    <span>AetherMind Multi-Modal AI <span class="live-badge">Live</span></span>
+                    <span>Jan 2026 – Present</span>
+                </div>
+                <div class="item-subheader">
+                    <span class="tech-stack-tag">Tech Stack: Python, FastAPI, Streamlit, Qdrant Vector DB, Supabase, Firebase, Amazon Bedrock, Vision AI</span>
+                    <span>
+                        <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" rel="noopener noreferrer">GitHub</a> | 
+                        <a href="https://aethermind-multi-modal-ai-fwt8jmcqdbbmoahwveobze.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Engineered a production-grade multimodal AI ecosystem unifying chat workspace, document intelligence (OCR & PDF analysis), Vision AI, and voice interaction using FastAPI and Streamlit.</li>
+                    <li>Built an intelligent AI routing pipeline orchestrating multi-LLM execution across Amazon Bedrock, Google Gemini, and OpenAI GPT-4 with dynamic fallback mechanisms.</li>
+                    <li>Implemented Retrieval-Augmented Generation (RAG) using Qdrant vector memory and Supabase indexing 10,000+ document embeddings with sub-second semantic retrieval.</li>
+                    <li>Developed secure multi-tenant workspace isolation, session persistence, and real-time web search capabilities designed for scalable production deployment.</li>
+                </ul>
+            </div>
+
+            <!-- Project 2: AetherMind Genesis -->
+            <div class="item-row">
+                <div class="item-header">
+                    <span>AetherMind Genesis</span>
+                    <span>Feb 2026 – Mar 2026</span>
+                </div>
+                <div class="item-subheader">
+                    <span class="tech-stack-tag">Tech Stack: Python, FastAPI, React, TypeScript, AI Agents, LLMs, Vector Search</span>
+                    <span>
+                        <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Developed an autonomous AI software architecture system that converts raw product concepts into technical specifications and production-ready system blueprints.</li>
+                    <li>Automated generation of software architecture flowcharts, relational database schemas (SQL/NoSQL), and REST API schemas using agentic LLM workflows.</li>
+                    <li>Integrated prompt engineering pipelines to enforce clean software architecture standards and security protocols, reducing initial design overhead by 60%.</li>
+                </ul>
+            </div>
+
+            <!-- Project 3: Smart Resource & Timetable Optimizer -->
+            <div class="item-row">
+                <div class="item-header">
+                    <span>Smart Resource & Timetable Optimizer (SRTO) <span class="live-badge">Live</span></span>
+                    <span>Mar 2026 – Apr 2026</span>
+                </div>
+                <div class="item-subheader">
+                    <span class="tech-stack-tag">Tech Stack: React, TypeScript, FastAPI, Python, SQLite, JWT</span>
+                    <span>
+                        <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" rel="noopener noreferrer">GitHub</a> | 
+                        <a href="https://kavatijohnshreyan-github-io.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Designed and deployed an academic scheduling optimization platform automating timetable generation, faculty allocation, and classroom capacity tracking.</li>
+                    <li>Implemented conflict resolution algorithms and Role-Based Access Control (RBAC) to process complex constraint matrices with zero scheduling collisions.</li>
+                    <li>Engineered asynchronous REST API endpoints with FastAPI and SQLite, achieving under 150ms average query latency for institutional reporting engines.</li>
+                </ul>
+            </div>
+
+            <!-- Project 4: KL University Attendance Calculator -->
+            <div class="item-row">
+                <div class="item-header">
+                    <span>KL University Attendance Calculator <span class="live-badge">Live</span></span>
+                    <span>Apr 2026 – May 2026</span>
+                </div>
+                <div class="item-subheader">
+                    <span class="tech-stack-tag">Tech Stack: React, Next.js, Tailwind CSS, JavaScript, Vercel</span>
+                    <span>
+                        <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" rel="noopener noreferrer">GitHub</a> | 
+                        <a href="https://kavatijohnshreyan-github-io.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    </span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Engineered an open-source student attendance tracking application with instant percentage calculation and subject-wise attendance forecasting.</li>
+                    <li>Optimized client-side state management and responsive UI layout, delivering smooth 60 FPS user experience across mobile and desktop devices.</li>
+                    <li>Deployed production build on Vercel edge network, supporting active student query sessions with zero downtime.</li>
+                </ul>
+            </div>
+
+            <!-- Project 5: AetherMind EDU -->
+            <div class="item-row">
+                <div class="item-header">
+                    <span>AetherMind EDU</span>
+                    <span>May 2026 – Jun 2026</span>
+                </div>
+                <div class="item-subheader">
+                    <span class="tech-stack-tag">Tech Stack: Next.js, React, FastAPI, Python, AI Agents, RAG, Qdrant</span>
+                    <span>
+                        <a href="https://github.com/KAVATIJOHNSHREYAN" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Architected an AI-powered education ecosystem delivering personalized learning paths, interactive tutoring, and automated assessment tools.</li>
+                    <li>Integrated RAG pipelines over educational courseware to provide context-aware homework guidance and career advisory with sub-second retrieval times.</li>
+                    <li>Built modular microservice architecture decoupling Next.js frontend interfaces from FastAPI backend microservices and vector indices.</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <!-- 4. Experience -->
+        <section class="resume-section">
+            <h2>Experience</h2>
+            <div class="item-row">
+                <div class="item-header">
+                    <span>Siemens</span>
+                    <span>Remote / Virtual</span>
+                </div>
+                <div class="item-subheader">
+                    <span>Data Science Intern</span>
+                    <span>Apr 2026 – Jun 2026</span>
+                </div>
+                <ul class="item-bullets">
+                    <li>Processed and cleaned analytical datasets using Python NumPy and Pandas libraries to establish baseline data quality standards.</li>
+                    <li>Evaluated baseline classification models and precision-recall metrics for machine learning pipeline optimization.</li>
+                    <li>Automated data preparation and ETL processing scripts for downstream model ingestion, reducing manual pipeline prep time.</li>
+                    <li>Applied enterprise Git version control workflows, code reviews, and technical documentation practices.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 5. Education -->
         <section class="resume-section">
             <h2>Education</h2>
             <div class="item-row">
@@ -339,145 +534,12 @@
                     <span>2024 – Present</span>
                 </div>
                 <ul class="item-bullets">
-                    <li>CGPA: 7.74</li>
+                    <li>CGPA: 7.74 | Specialization in Artificial Intelligence & Computational Intelligence</li>
                 </ul>
             </div>
         </section>
 
-        <!-- 4. Experience Section -->
-        <section class="resume-section">
-            <h2>Experience</h2>
-            <div class="item-row">
-                <div class="item-header">
-                    <span>Siemens</span>
-                    <span>Remote / Virtual</span>
-                </div>
-                <div class="item-subheader">
-                    <span>Data Science Intern</span>
-                    <span>April 2026 – June 2026</span>
-                </div>
-                <ul class="item-bullets">
-                    <li>Cleaned and manipulated large datasets using Python NumPy and Pandas libraries to establish clean analytical models.</li>
-                    <li>Developed and evaluated baseline classification models, analyzing precision and regression thresholds.</li>
-                    <li>Structured automated data preparation and ETL scripts for downstream machine learning model pipelines.</li>
-                    <li>Acquired foundational expertise in enterprise development cycles, git operations, and technical reporting workflows.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- 5. Projects Section -->
-        <section class="resume-section">
-            <h2>Projects</h2>
-            
-            <div class="item-row">
-                <div class="item-header">
-                    <span>AetherMind Multi-Modal AI</span>
-                    <span>Python, FastAPI, Streamlit, Firebase, Supabase, Qdrant, Amazon Bedrock, JS, CSS</span>
-                </div>
-                <div class="item-subheader">
-                    <span>Enterprise Multimodal AI Platform — Flagship Project</span>
-                    <span>Completed (Live)</span>
-                </div>
-                <ul class="item-bullets">
-                    <li>Engineered an enterprise-grade multimodal AI ecosystem unifying intelligent conversations, document intelligence (OCR & PDF analysis), Vision AI, image generation, and voice interaction.</li>
-                    <li>Architected an Intelligent AI Router supporting dynamic multi-LLM orchestration across Amazon Bedrock, Google Gemini, OpenAI GPT-4, and Cohere architectures.</li>
-                    <li>Built high-performance Retrieval-Augmented Generation (RAG) pipelines leveraging Qdrant vector memory, Supabase/Firebase backend services, and multi-threaded document parsing.</li>
-                    <li>Implemented secure workspace isolation, persistent multi-session chat history, real-time web intelligence search, and responsive glassmorphism UI components.</li>
-                </ul>
-            </div>
-
-            <div class="item-row">
-                <div class="item-header">
-                    <span>AetherMind Genesis</span>
-                    <span>Python, FastAPI, React, TypeScript, AI Agents, LLMs, Prompt Engineering, Vector Search</span>
-                </div>
-                <div class="item-subheader">
-                    <span>AI Software Architecture & Product Engineering Platform</span>
-                    <span>Completed</span>
-                </div>
-                <ul class="item-bullets">
-                    <li>Developed an autonomous AI software architecture system that transforms raw product ideas into production-ready technical blueprints and system specifications.</li>
-                    <li>Automated the generation of end-to-end software architectures, flowchart diagrams, relational database schemas (SQL/NoSQL), REST API definitions, and UX/UI interaction wireframes.</li>
-                    <li>Implemented intelligent prompt engineering pipelines and agentic workflows to enforce software engineering best practices, clean architecture, and security protocols.</li>
-                </ul>
-            </div>
-
-            <div class="item-row">
-                <div class="item-header">
-                    <span>Smart Resource & Timetable Optimizer</span>
-                    <span>React, TypeScript, FastAPI, Python, SQLite, JWT</span>
-                </div>
-                <div class="item-subheader">
-                    <span>AI-Assisted University Resource & Scheduling Platform</span>
-                    <span>Completed (Live)</span>
-                </div>
-                <ul class="item-bullets">
-                    <li>Designed and deployed an AI-assisted academic management platform to automate complex timetable generation, faculty allocation, and classroom scheduling.</li>
-                    <li>Implemented role-based access control (RBAC), automated conflict resolution algorithms, real-time classroom capacity analytics, and custom institutional PDF reporting engines.</li>
-                    <li>Engineered asynchronous REST API endpoints with FastAPI and SQLite persistence; deployed frontend on Vercel and backend microservices on Render.</li>
-                </ul>
-            </div>
-
-            <div class="item-row">
-                <div class="item-header">
-                    <span>KL University Attendance Calculator</span>
-                    <span>React, Next.js, Tailwind CSS, JavaScript, UI/UX</span>
-                </div>
-                <div class="item-subheader">
-                    <span>Open-Source Utility & Frontend Optimization</span>
-                    <span>Completed (Live)</span>
-                </div>
-                <ul class="item-bullets">
-                    <li>Redesigned and optimized an open-source student attendance tracking application to significantly elevate usability and interface aesthetics.</li>
-                    <li>Implemented responsive design patterns and mobile-first layouts, ensuring seamless cross-device compatibility for university students.</li>
-                    <li>Enhanced state management and calculation responsiveness for instant percentage feedback and subject forecast calculations.</li>
-                </ul>
-            </div>
-
-            <div class="item-row">
-                <div class="item-header">
-                    <span>AetherMind EDU</span>
-                    <span>Next.js, React, FastAPI, Python, AI Agents, LLMs, RAG</span>
-                </div>
-                <div class="item-subheader">
-                    <span>Comprehensive AI-Powered Education & Tutoring Ecosystem</span>
-                    <span>Completed</span>
-                </div>
-                <ul class="item-bullets">
-                    <li>Architected an AI-powered education platform delivering personalized learning paths, interactive AI tutoring, adaptive student assessments, and automated study tools.</li>
-                    <li>Integrated Retrieval-Augmented Generation (RAG) over educational courseware to provide instant, context-aware homework guidance and career advisory insights.</li>
-                    <li>Designed modular microservice architecture combining Next.js frontend components with FastAPI backend services and vector database indices.</li>
-                </ul>
-            </div>
-
-        </section>
-        <!-- 6. Technical & Soft Skills Section -->
-        <section class="resume-section">
-            <h2>Technical & Soft Skills</h2>
-            <div class="skills-table">
-                <div class="skills-category">Programming Languages</div>
-                <div class="skills-list">Python, Java, JavaScript, TypeScript, HTML5, CSS3</div>
-                
-                <div class="skills-category">Artificial Intelligence</div>
-                <div class="skills-list">Multimodal AI, Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), AI Agents, Intelligent AI Routing, Vision AI, Vector Memory, Prompt Engineering, AI Chatbots</div>
-                
-                <div class="skills-category">Web & Cloud Stack</div>
-                <div class="skills-list">FastAPI, Streamlit, React, Next.js, REST APIs, JWT Authentication, Qdrant Vector DB, Supabase, Firebase, Amazon Bedrock, Google Cloud, Vercel, Render</div>
-                
-                <div class="skills-category">Databases & Storage</div>
-                <div class="skills-list">Qdrant, Supabase, Firebase Firestore, MySQL, SQLite</div>
-                
-                <div class="skills-category">Auth & Security</div>
-                <div class="skills-list">Google Sign-In, Firebase Auth, JWT, Role-Based Access Control (RBAC), Face & Fingerprint Authentication</div>
-                
-                <div class="skills-category">Development Tools</div>
-                <div class="skills-list">Git, GitHub, Antigravity, Streamlit, Postman, VS Code</div>
-
-                <div class="skills-category">Soft Skills</div>
-                <div class="skills-list">Software Architecture, Problem Solving, Team Leadership, Technical Communication, System Design, Critical Thinking</div>
-            </div>
-        </section>
-        <!-- 7. Certifications Section -->
+        <!-- 6. Certifications -->
         <section class="resume-section">
             <h2>Certifications</h2>
             
@@ -498,13 +560,12 @@
             </div>
         </section>
 
-        <!-- 8. Achievements Section -->
+        <!-- 7. Achievements (Verifiable Hackathons) -->
         <section class="resume-section">
-            <h2>Achievements & Hackathons</h2>
+            <h2>Achievements</h2>
             <ul class="item-bullets">
-                <li><strong>AWS 18-Hour Hackathon (KL University):</strong> Engineered a cloud-native prototype during an intensive 18-hour sprint, presenting the architecture to expert judges for official evaluation, scoring, and architectural feedback.</li>
-                <li><strong>Smart India Hackathon (SIH 2026 - KL University):</strong> Participated in an 18-hour development sprint at KL University in a 6-member team, executing rapid problem solving and full-stack API integration under strict deadlines.</li>
-                <li><strong>Enterprise Software Architecture:</strong> Designed and deployed 5 production-grade AI platforms (AetherMind Multi-Modal AI, AetherMind Genesis, SRTO, Attendance Calc, EDU) leveraging RAG, Qdrant Vector DB, FastAPI, and Streamlit.</li>
+                <li><strong>AWS 18-Hour Hackathon (KL University):</strong> Engineered a cloud-native prototype during an intensive 18-hour sprint at KL University, evaluated and scored by industry experts.</li>
+                <li><strong>Smart India Hackathon (SIH 2026 - KL University):</strong> Participated in an 18-hour continuous development sprint at KL University in a 6-member team, executing rapid problem solving and REST API integration under strict deadlines.</li>
             </ul>
         </section>
     </div>
