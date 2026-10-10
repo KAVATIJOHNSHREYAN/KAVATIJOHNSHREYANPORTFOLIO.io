@@ -47,7 +47,8 @@ Which project would you like to inspect?`,
 
 • **Description:** AI-powered software architecture and product engineering platform that transforms raw ideas into production-ready software blueprints.
 • **Tech Stack:** Python, FastAPI, React, TypeScript, AI Agents, LLMs, Prompt Engineering, Vector Search.
-• **Key Features:** AI Software Architect, Blueprint Generator, System Design, UI/UX Planning, Database & API Architecture, Flowcharts, Documentation Generator.`,
+• **Key Features:** AI Software Architect, Blueprint Generator, System Design, UI/UX Planning, Database & API Architecture, Flowcharts, Documentation Generator.
+• **Live Demo:** [aethermind-genesis-ai.streamlit.app](https://aethermind-genesis-ai.streamlit.app/)`,
             chips: ["⚡ AetherMind Multi-Modal AI", "📚 AetherMind EDU", "📜 Resume"]
         },
         {
